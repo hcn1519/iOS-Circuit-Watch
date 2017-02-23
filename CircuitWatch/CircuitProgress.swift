@@ -19,7 +19,7 @@ public class CircuitProgress : NSObject {
 
     //// Drawing Methods
 
-    public dynamic class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 300, height: 300), resizing: ResizingBehavior = .aspectFit, progress: CGFloat = 0.664) {
+    public dynamic class func drawCircuitProgress(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 300, height: 300), resizing: ResizingBehavior = .aspectFit, progress: CGFloat = 0.664) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -38,7 +38,7 @@ public class CircuitProgress : NSObject {
 
         //// Variable Declarations
         let resultAngle: CGFloat = -1 * progress * 360 + 90
-        let percent: CGFloat = 100 - progress * 100
+        let percent: CGFloat = progress * 100
         let expression = "\(Int(round(percent)))" + "%"
 
         //// Group

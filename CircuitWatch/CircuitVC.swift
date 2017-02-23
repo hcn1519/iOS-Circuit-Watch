@@ -10,9 +10,15 @@ import UIKit
 
 class CircuitVC: UIViewController {
 
+    @IBOutlet weak var circuitProgressView: ProgressBar!
+    @IBOutlet weak var testSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    @IBAction func sliderMoved(_ sender: Any) {
+        circuitProgressView.progress = CGFloat(testSlider.value)
     }
 
 }

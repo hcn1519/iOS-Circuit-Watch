@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */; };
-		7E5AF3621E5DAAA400999E1D /* CircuitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3611E5DAAA400999E1D /* CircuitProgress.swift */; };
 		7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */; };
+		7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */; };
+		7E5AF36A1E5DC9C300999E1D /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3691E5DC9C300999E1D /* TimeCell.swift */; };
 		7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */; };
 		7EAD9B2D1E5D7356005B48A3 /* CircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */; };
 		7EAD9B301E5D7356005B48A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2E1E5D7356005B48A3 /* Main.storyboard */; };
@@ -30,8 +31,9 @@
 
 /* Begin PBXFileReference section */
 		7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		7E5AF3611E5DAAA400999E1D /* CircuitProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitProgress.swift; sourceTree = "<group>"; };
 		7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitBtn.swift; sourceTree = "<group>"; };
+		7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitProgress.swift; sourceTree = "<group>"; };
+		7E5AF3691E5DC9C300999E1D /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
 		7EAD9B271E5D7356005B48A3 /* CircuitWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircuitWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitVC.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		7E5AF36B1E5DC9C900999E1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E5AF3691E5DC9C300999E1D /* TimeCell.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7EAD9B1E1E5D7356005B48A3 = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +101,9 @@
 		7EAD9B291E5D7356005B48A3 /* CircuitWatch */ = {
 			isa = PBXGroup;
 			children = (
-				7E5AF35C1E5DA48800999E1D /* Controller */,
+				7E5AF36B1E5DC9C900999E1D /* Model */,
 				7EAD9B4A1E5D80EF005B48A3 /* View */,
+				7E5AF35C1E5DA48800999E1D /* Controller */,
 				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
 				7EAD9B2E1E5D7356005B48A3 /* Main.storyboard */,
 				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
@@ -114,7 +125,7 @@
 		7EAD9B4A1E5D80EF005B48A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7E5AF3611E5DAAA400999E1D /* CircuitProgress.swift */,
+				7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */,
 				7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */,
 				7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */,
 			);
@@ -226,10 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5AF3621E5DAAA400999E1D /* CircuitProgress.swift in Sources */,
+				7E5AF36A1E5DC9C300999E1D /* TimeCell.swift in Sources */,
 				7EAD9B2D1E5D7356005B48A3 /* CircuitVC.swift in Sources */,
 				7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */,
 				7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */,
+				7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */,
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
