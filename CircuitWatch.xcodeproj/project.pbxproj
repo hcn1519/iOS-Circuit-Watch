@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
 		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
 		7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */; };
@@ -19,6 +20,7 @@
 		7EAD9B321E5D7356005B48A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EAD9B311E5D7356005B48A3 /* Assets.xcassets */; };
 		7EAD9B351E5D7356005B48A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */; };
 		7EAD9B401E5D7356005B48A3 /* CircuitWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B3F1E5D7356005B48A3 /* CircuitWatchTests.swift */; };
+		7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4CAE51E6022A200B7A78A /* FormCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
 		7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		7EAD9B3B1E5D7356005B48A3 /* CircuitWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircuitWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAD9B3F1E5D7356005B48A3 /* CircuitWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitWatchTests.swift; sourceTree = "<group>"; };
 		7EAD9B411E5D7356005B48A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EB4CAE51E6022A200B7A78A /* FormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 			children = (
 				7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */,
 				7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */,
+				7E0561541E633118002C4096 /* AddCircuitVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -110,11 +115,8 @@
 				7E5AF36B1E5DC9C900999E1D /* Model */,
 				7EAD9B4A1E5D80EF005B48A3 /* View */,
 				7E5AF35C1E5DA48800999E1D /* Controller */,
-				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
 				7EAD9B2E1E5D7356005B48A3 /* Main.storyboard */,
-				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
-				7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */,
-				7EAD9B361E5D7356005B48A3 /* Info.plist */,
+				7EB4CAE71E6059D900B7A78A /* Supporting Files */,
 			);
 			path = CircuitWatch;
 			sourceTree = "<group>";
@@ -134,8 +136,20 @@
 				7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */,
 				7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */,
 				7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */,
+				7EB4CAE51E6022A200B7A78A /* FormCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		7EB4CAE71E6059D900B7A78A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
+				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
+				7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */,
+				7EAD9B361E5D7356005B48A3 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +259,9 @@
 			files = (
 				7E5AF36A1E5DC9C300999E1D /* TimeCell.swift in Sources */,
 				7EAD9B2D1E5D7356005B48A3 /* CircuitVC.swift in Sources */,
+				7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */,
 				7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */,
+				7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */,
 				7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */,
 				7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */,
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,

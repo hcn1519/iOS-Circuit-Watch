@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-oe-rA8" customClass="ProgressBar" customModule="CircuitWatch" customModuleProvider="target">
-                                <rect key="frame" x="37" y="183" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="FQc-ru-oLC"/>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRG-Bx-5Bw" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
-                                <rect key="frame" x="37" y="493" width="75" height="75"/>
+                                <rect key="frame" x="37" y="493.5" width="75" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Prw-60-Ig5"/>
@@ -50,7 +50,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-vJ-noO" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
-                                <rect key="frame" x="263" y="493" width="75" height="75"/>
+                                <rect key="frame" x="263" y="493.5" width="75" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="bC6-Kr-KUz"/>
@@ -107,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2764" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2454" y="139"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="6zA-8s-6YP">
@@ -133,16 +133,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-bo-AAc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20분 서킷 트레이닝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpW-1q-Tdp">
-                                                            <rect key="frame" x="8" y="25.5" width="185.5" height="29"/>
+                                                            <rect key="frame" x="8" y="25" width="186" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fP-oi-YEe">
-                                                            <rect key="frame" x="266.5" y="15.5" width="100.5" height="48"/>
+                                                            <rect key="frame" x="266" y="15" width="101" height="48"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="40"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -180,7 +180,14 @@
                             <constraint firstItem="xYc-Xm-Ye2" firstAttribute="leading" secondItem="RQ1-rZ-6w5" secondAttribute="leading" id="knF-O4-9Dm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Vhy-uW-A55"/>
+                    <navigationItem key="navigationItem" id="Vhy-uW-A55">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewe-eS-JfM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="iy4-Rh-dcx" kind="show" id="7wV-bn-7lj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="xYc-Xm-Ye2" id="ZvG-Ne-dnJ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToCircuit" id="Avw-6l-Ekf"/>
@@ -190,6 +197,66 @@
             </objects>
             <point key="canvasLocation" x="1672.8" y="138.98050974512745"/>
         </scene>
+        <!--Add CircuitVC-->
+        <scene sceneID="cW5-hz-Jkr">
+            <objects>
+                <tableViewController id="iy4-Rh-dcx" customClass="AddCircuitVC" customModule="CircuitWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" sectionHeaderHeight="28" sectionFooterHeight="28" id="bNU-tg-jnG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="formCell" rowHeight="240" id="eZr-Fq-nc3" customClass="FormCell" customModule="CircuitWatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="240"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZr-Fq-nc3" id="NmX-ir-evc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MyDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1e-9M-77q">
+                                            <rect key="frame" x="300.5" y="8" width="66.5" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-OQ-Vum">
+                                            <rect key="frame" x="0.0" y="36" width="375" height="203"/>
+                                        </pickerView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8a-Fg-fMH">
+                                            <rect key="frame" x="8" y="8" width="56" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Y1e-9M-77q" secondAttribute="trailing" constant="8" id="02D-nE-QI8"/>
+                                        <constraint firstItem="yRT-OQ-Vum" firstAttribute="leading" secondItem="NmX-ir-evc" secondAttribute="leading" id="69b-N7-ako"/>
+                                        <constraint firstItem="d8a-Fg-fMH" firstAttribute="leading" secondItem="NmX-ir-evc" secondAttribute="leading" constant="8" id="Bgq-n5-Wtk"/>
+                                        <constraint firstItem="d8a-Fg-fMH" firstAttribute="top" secondItem="NmX-ir-evc" secondAttribute="top" constant="8" id="HCq-XL-fww"/>
+                                        <constraint firstItem="yRT-OQ-Vum" firstAttribute="top" secondItem="Y1e-9M-77q" secondAttribute="bottom" constant="8" id="PJu-j7-hSy"/>
+                                        <constraint firstItem="Y1e-9M-77q" firstAttribute="top" secondItem="NmX-ir-evc" secondAttribute="top" constant="8" id="SzA-pw-f6y"/>
+                                        <constraint firstAttribute="bottom" secondItem="yRT-OQ-Vum" secondAttribute="bottom" id="ZMc-1j-cev"/>
+                                        <constraint firstAttribute="trailing" secondItem="yRT-OQ-Vum" secondAttribute="trailing" id="gMA-2v-6TS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="detailLabel" destination="Y1e-9M-77q" id="xJK-bS-rOD"/>
+                                    <outlet property="pickerView" destination="yRT-OQ-Vum" id="KZZ-o5-je2"/>
+                                    <outlet property="titleLabel" destination="d8a-Fg-fMH" id="xlN-Vw-90J"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iy4-Rh-dcx" id="WcE-tA-wkm"/>
+                            <outlet property="delegate" destination="iy4-Rh-dcx" id="6JN-Y2-Ix3"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asL-n7-7wv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2205.5999999999999" y="853.22338830584715"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="r4j-EM-qQa">
             <objects>
@@ -198,7 +265,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Vu-Ot-ytQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
