@@ -11,16 +11,16 @@ import Foundation
 // date로 변환해야함
 
 class TimeCell {
-    private var _prepareTime: Double!
-    private var _workoutTime: Double!
+    private var _prepareTime: Int!
+    private var _workoutTime: Int!
     private var _workoutCount: Int!
     private var _setCount: Int!
-    private var _workoutBreakTime: Double!
-    private var _setBreakTime: Double!
-    private var _wrapUpTime: Double!
-    private var _totalTime: Double!
+    private var _workoutBreakTime: Int!
+    private var _setBreakTime: Int!
+    private var _wrapUpTime: Int!
+    private var _totalTime: Int!
     
-    init(prepareTime: Double, workoutTime: Double, workoutCount: Int, setCount: Int, workoutBreakTime: Double, setBreakTime: Double, wrapUpTime: Double) {
+    init(prepareTime: Int, workoutTime: Int, workoutCount: Int, setCount: Int, workoutBreakTime: Int, setBreakTime: Int, wrapUpTime: Int) {
         self._prepareTime = prepareTime
         self._workoutTime = workoutTime
         self._workoutCount = workoutCount
@@ -30,14 +30,14 @@ class TimeCell {
         self._wrapUpTime = wrapUpTime
     }
 
-    var prepareTime: Double {
+    var prepareTime: Int {
         get {
             return _prepareTime
         } set {
             _prepareTime = newValue
         }
     }
-    var workoutTime: Double {
+    var workoutTime: Int {
         get {
             return _workoutTime
         } set {
@@ -58,21 +58,21 @@ class TimeCell {
             _setCount = newValue
         }
     }
-    var workoutBreakTime: Double {
+    var workoutBreakTime: Int {
         get {
             return _workoutBreakTime
         } set {
             _workoutBreakTime = newValue
         }
     }
-    var setBreakTime: Double {
+    var setBreakTime: Int {
         get {
             return _setBreakTime
         } set {
             _setBreakTime = newValue
         }
     }
-    var wrapUpTime: Double {
+    var wrapUpTime: Int {
         get {
             return _wrapUpTime
         } set {
