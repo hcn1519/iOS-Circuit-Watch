@@ -8,9 +8,11 @@
 
 import UIKit
 
+@IBDesignable
 class ProgressBar: UIView {
+    
+    
     private var _innerProgress: CGFloat = 0.0
-    private var _totalTime: Double = 0
     
     var progress : CGFloat {
         set (newProgress) {
@@ -27,9 +29,16 @@ class ProgressBar: UIView {
             return _innerProgress
         }
     }
-    
+//    var remainTime : String {
+//        get {
+//            return _remainTime
+//        } set {
+//            _remainTime = newValue
+//        }
+//    }
     
     override func draw(_ rect: CGRect) {
         CircuitProgress.drawCircuitProgress(frame: bounds, progress: progress)
+        
     }
 }

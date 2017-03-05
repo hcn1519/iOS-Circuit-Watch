@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
+		7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB21E6BDC5700BD627D /* pause.m4r */; };
+		7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */; };
 		7E2CA9CC1E64439100CBF2DC /* NumberInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */; };
 		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
@@ -16,8 +18,8 @@
 		7E4F2D841E64179500E27F26 /* FormTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F2D831E64179500E27F26 /* FormTableFooter.swift */; };
 		7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */; };
 		7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */; };
-		7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */; };
 		7E5AF36A1E5DC9C300999E1D /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3691E5DC9C300999E1D /* Time.swift */; };
+		7EA6EA121E672CB400BA1E7F /* CircuitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA6EA111E672CB400BA1E7F /* CircuitProgress.swift */; };
 		7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */; };
 		7EAD9B2D1E5D7356005B48A3 /* CircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */; };
 		7EAD9B301E5D7356005B48A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAD9B2E1E5D7356005B48A3 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
+		7E1DEBB21E6BDC5700BD627D /* pause.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = pause.m4r; sourceTree = "<group>"; };
+		7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = breakTime.m4r; sourceTree = "<group>"; };
 		7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberInputCell.swift; sourceTree = "<group>"; };
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
@@ -47,8 +51,8 @@
 		7E4F2D831E64179500E27F26 /* FormTableFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableFooter.swift; sourceTree = "<group>"; };
 		7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitBtn.swift; sourceTree = "<group>"; };
-		7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitProgress.swift; sourceTree = "<group>"; };
 		7E5AF3691E5DC9C300999E1D /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		7EA6EA111E672CB400BA1E7F /* CircuitProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitProgress.swift; sourceTree = "<group>"; };
 		7EAD9B271E5D7356005B48A3 /* CircuitWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircuitWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitVC.swift; sourceTree = "<group>"; };
@@ -140,15 +144,15 @@
 		7EAD9B4A1E5D80EF005B48A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7EA6EA111E672CB400BA1E7F /* CircuitProgress.swift */,
 				7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */,
-				7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */,
 				7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */,
 				7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */,
 				7EB4CAE51E6022A200B7A78A /* FormCell.swift */,
 				7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */,
+				7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */,
 				7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */,
 				7E4F2D831E64179500E27F26 /* FormTableFooter.swift */,
-				7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -156,6 +160,8 @@
 		7EB4CAE71E6059D900B7A78A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */,
+				7E1DEBB21E6BDC5700BD627D /* pause.m4r */,
 				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
 				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
 				7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */,
@@ -249,6 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */,
+				7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */,
 				7EAD9B351E5D7356005B48A3 /* LaunchScreen.storyboard in Resources */,
 				7EAD9B321E5D7356005B48A3 /* Assets.xcassets in Resources */,
 				7EAD9B301E5D7356005B48A3 /* Main.storyboard in Resources */,
@@ -278,10 +286,10 @@
 				7E4F2D841E64179500E27F26 /* FormTableFooter.swift in Sources */,
 				7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */,
 				7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */,
-				7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */,
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,
 				7E4F2D821E64178A00E27F26 /* FormTableHeader.swift in Sources */,
 				7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */,
+				7EA6EA121E672CB400BA1E7F /* CircuitProgress.swift in Sources */,
 				7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
