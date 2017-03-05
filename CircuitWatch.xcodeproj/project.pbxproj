@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
 		7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB21E6BDC5700BD627D /* pause.m4r */; };
+		7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */; };
 		7E2CA9CC1E64439100CBF2DC /* NumberInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */; };
 		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
 		7E1DEBB21E6BDC5700BD627D /* pause.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = pause.m4r; sourceTree = "<group>"; };
+		7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = breakTime.m4r; sourceTree = "<group>"; };
 		7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberInputCell.swift; sourceTree = "<group>"; };
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		7EB4CAE71E6059D900B7A78A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */,
 				7E1DEBB21E6BDC5700BD627D /* pause.m4r */,
 				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
 				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */,
+				7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */,
 				7EAD9B351E5D7356005B48A3 /* LaunchScreen.storyboard in Resources */,
 				7EAD9B321E5D7356005B48A3 /* Assets.xcassets in Resources */,
 				7EAD9B301E5D7356005B48A3 /* Main.storyboard in Resources */,
