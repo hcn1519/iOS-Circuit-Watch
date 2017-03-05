@@ -10,6 +10,9 @@ import UIKit
 
 class NumberInputCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var numberField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
