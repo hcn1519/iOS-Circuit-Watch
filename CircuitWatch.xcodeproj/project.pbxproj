@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
+		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
 		7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */; };
 		7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */; };
 		7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
 		7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitBtn.swift; sourceTree = "<group>"; };
 		7E5AF3671E5DC95300999E1D /* CircuitProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitProgress.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				7EAD9B2C1E5D7356005B48A3 /* CircuitVC.swift */,
+				7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5AF3691E5DC9C300999E1D /* TimeCell.swift */,
+				7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 				7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */,
 				7E5AF3681E5DC95300999E1D /* CircuitProgress.swift in Sources */,
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,
+				7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */,
+				7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
