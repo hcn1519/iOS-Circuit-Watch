@@ -18,6 +18,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     // variable
     var isObserving = false
     let minutes = Array(0...59)
+    var pickerValue: String!
     
     // initialize pickerView delegate, dataSource
     override func awakeFromNib() {
@@ -38,7 +39,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let minLabel: UILabel = {
         let label = UILabel()
-        label.text = "분"
+        label.text = "min"
         label.font = UIFont(name: "Helvetica Neue", size: 16)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +47,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     }()
     let secLabel: UILabel = {
         let label = UILabel()
-        label.text = "초"
+        label.text = "sec"
         label.font = UIFont(name: "Helvetica Neue", size: 16)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +60,8 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         
         pickerView.selectRow(1, inComponent: 0, animated: true)
         pickerView.selectRow(30, inComponent: 1, animated: true)
-        detailLabel.text = "01분 30초"
+        detailLabel.text = "01min 30sec"
+        timeSetup = "01min 30sec"
         
         let marginTop = pickerView.frame.height / 3 + 3
         let marginLeft = pickerView.frame.width / 3 + 20
@@ -93,29 +95,51 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var label = self.detailLabel.text // "01분 30초"
+        var label = self.detailLabel.text
         
-        let minIndex = label?.index((label?.startIndex)!, offsetBy: 3)
+        let minIndex = label?.index((label?.startIndex)!, offsetBy: 5)
         var minute = label?.substring(to: minIndex!)
         
-        let secIndex = label?.index((label?.startIndex)!, offsetBy: 3)
+        let secIndex = label?.index((label?.startIndex)!, offsetBy: 5)
         var second = label?.substring(from: secIndex!)
         
         if component == 0 {
             if row < 10 {
-                minute = "0\(row)분"
+                if row == 0 {
+                    minute = "0min"
+                } else {
+                    minute = "0\(row)min"
+                }
+                
             } else {
-                minute = "\(row)분"
+                minute = "\(row)min"
             }
         } else {
             if row < 10 {
-                second = " 0\(row)초"
+                if row == 0 {
+                    second = " 0sec"
+                } else {
+                    second = " 0\(row)sec"
+                }
+                
             } else {
-                second = " \(row)초"
+                second = " \(row)sec"
             }
         }
         label = minute! + second!
         self.detailLabel.text = label
+        print("from pick \(label!)")
+        
+        timeSetup = self.detailLabel.text
+        
+        let min = pickerView.selectedRow(inComponent: 0)
+        let sec = pickerView.selectedRow(inComponent: 1)
+        
+        selectedMin = min
+        selectedSec = sec
+        
+        
+        print("from pick timeSetup \(timeSetup)")
         
     }
     
