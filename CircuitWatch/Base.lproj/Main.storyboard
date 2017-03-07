@@ -181,6 +181,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vhy-uW-A55">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="cNU-fC-xpw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="editBtnPressed:" destination="QHW-G3-5Oy" id="huE-j9-hZY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewe-eS-JfM">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -189,6 +195,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="cNU-fC-xpw" id="lcp-bu-kYQ"/>
                         <outlet property="tableView" destination="xYc-Xm-Ye2" id="ZvG-Ne-dnJ"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToCircuit" id="Avw-6l-Ekf"/>
                     </connections>

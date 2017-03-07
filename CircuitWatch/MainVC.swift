@@ -11,10 +11,10 @@ import UIKit
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var circuitData = [Time]()
-    
-
+    var isEditingMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         circuitData = getUserDefaultData()
         self.tableView.reloadData()
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -94,6 +95,28 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         return dataArray
         
+    }
+
+    @IBAction func editBtnPressed(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        if tableView.isEditing {
+            self.editButton.title = "Done"
+        } else {
+            self.editButton.title = "Edit"
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            circuitData.remove(at: indexPath.row)
+            
+            let encodedTimeData = NSKeyedArchiver.archivedData(withRootObject: circuitData)
+            UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
+            
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            print(circuitData)
+        }
     }
 /*  테스트 데이터 생성용
     func generateTestData() {
