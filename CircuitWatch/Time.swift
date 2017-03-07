@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Time: CustomStringConvertible {
+class Time: NSObject, NSCoding {
     private var _circuitTitle: String!
     private var _prepareTimeMin: Int!
     private var _prepareTimeSec: Int!
@@ -153,10 +153,45 @@ class Time: CustomStringConvertible {
             _totalTimeSec = newValue
         }
     }
-    
-    var description: String {
-        
-        let string = "\(_circuitTitle): \(_prepareTimeMin) \(_prepareTimeSec) \(_workoutTimeMin) \(_workoutTimeSec) \(_workoutCount) \(_setCount) \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) \(_setBreakTimeMin) \(_setBreakTimeSec) \(_wrapUpTimeMin) \(_wrapUpTimeSec) \(_totalTimeMin) \(_totalTimeSec)"
-        return string
+
+    required convenience init(coder aDecoder: NSCoder) {
+         let circuitTitle = aDecoder.decodeObject(forKey: "circuitTitle") as! String
+         let prepareTimeMin = aDecoder.decodeInteger(forKey: "prepareTimeMin") 
+         let prepareTimeSec = aDecoder.decodeInteger(forKey: "prepareTimeSec")
+         let workoutTimeMin = aDecoder.decodeInteger(forKey: "workoutTimeMin")
+         let workoutTimeSec = aDecoder.decodeInteger(forKey: "workoutTimeSec")
+         let workoutCount = aDecoder.decodeInteger(forKey: "workoutCount")
+         let setCount = aDecoder.decodeInteger(forKey: "setCount")
+         let workoutBreakTimeMin = aDecoder.decodeInteger(forKey: "workoutBreakTimeMin")
+         let workoutBreakTimeSec = aDecoder.decodeInteger(forKey: "workoutBreakTimeSec")
+         let setBreakTimeMin = aDecoder.decodeInteger(forKey: "setBreakTimeMin")
+         let setBreakTimeSec = aDecoder.decodeInteger(forKey: "setBreakTimeSec")
+         let wrapUpTimeMin = aDecoder.decodeInteger(forKey: "wrapUpTimeMin")
+         let wrapUpTimeSec = aDecoder.decodeInteger(forKey: "wrapUpTimeSec")
+         let totalTimeMin = aDecoder.decodeInteger(forKey: "totalTimeMin")
+         let totalTimeSec = aDecoder.decodeInteger(forKey: "totalTimeSec")
+        self.init(circuitTitle: circuitTitle, prepareTimeMin: prepareTimeMin, prepareTimeSec: prepareTimeSec, workoutTimeMin: workoutTimeMin, workoutTimeSec: workoutTimeSec, workoutCount: workoutCount, setCount: setCount, workoutBreakTimeMin: workoutBreakTimeMin, workoutBreakTimeSec: workoutBreakTimeSec, setBreakTimeMin: setBreakTimeMin, setBreakTimeSec: setBreakTimeSec, wrapUpTimeMin: wrapUpTimeMin, wrapUpTimeSec: wrapUpTimeSec, totalTimeMin: totalTimeMin, totalTimeSec: totalTimeSec)
     }
+    func encode(with aCoder: NSCoder) {
+        if let circuitTitle = _circuitTitle { aCoder.encode(circuitTitle, forKey: "circuitTitle") }
+        if let prepareTimeMin = _prepareTimeMin { aCoder.encode(prepareTimeMin, forKey: "prepareTimeMin") }
+        if let prepareTimeSec = _prepareTimeSec { aCoder.encode(prepareTimeSec, forKey: "prepareTimeSec") }
+        if let workoutTimeMin = _workoutTimeMin { aCoder.encode(workoutTimeMin, forKey: "workoutTimeMin") }
+        if let workoutTimeSec = _workoutTimeSec { aCoder.encode(workoutTimeSec, forKey: "workoutTimeSec") }
+        if let workoutCount = _workoutCount { aCoder.encode(workoutCount, forKey: "workoutCount") }
+        if let setCount = _setCount { aCoder.encode(setCount, forKey: "setCount") }
+        if let workoutBreakTimeMin = _workoutBreakTimeMin { aCoder.encode(workoutBreakTimeMin, forKey: "workoutBreakTimeMin") }
+        if let workoutBreakTimeSec = _workoutBreakTimeSec { aCoder.encode(workoutBreakTimeSec, forKey: "workoutBreakTimeSec") }
+        if let setBreakTimeMin = _setBreakTimeMin { aCoder.encode(setBreakTimeMin, forKey: "setBreakTimeMin") }
+        if let setBreakTimeSec = _setBreakTimeSec { aCoder.encode(setBreakTimeSec, forKey: "setBreakTimeSec") }
+        if let wrapUpTimeMin = _wrapUpTimeMin { aCoder.encode(wrapUpTimeMin, forKey: "wrapUpTimeMin") }
+        if let wrapUpTimeSec = _wrapUpTimeSec { aCoder.encode(wrapUpTimeSec, forKey: "wrapUpTimeSec") }
+        if let totalTimeMin = _totalTimeMin { aCoder.encode(totalTimeMin, forKey: "totalTimeMin") }
+        if let totalTimeSec = _totalTimeSec { aCoder.encode(totalTimeSec, forKey: "totalTimeSec") }
+    }
+//    override var description: String {
+//        
+//        let string = "\(_circuitTitle): \(_prepareTimeMin) \(_prepareTimeSec) \(_workoutTimeMin) \(_workoutTimeSec) \(_workoutCount) \(_setCount) \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) \(_setBreakTimeMin) \(_setBreakTimeSec) \(_wrapUpTimeMin) \(_wrapUpTimeSec) \(_totalTimeMin) \(_totalTimeSec)"
+//        return string
+//    }
 }

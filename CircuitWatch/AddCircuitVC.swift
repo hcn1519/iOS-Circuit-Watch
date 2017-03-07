@@ -34,7 +34,7 @@ class AddCircuitVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .white
-    
+ 
         let title = [titleKey: "Name"]
         let itemOne = [titleKey : "Prepare Time"]
         let itemTwo = [titleKey : "Workout Time"]
@@ -48,9 +48,6 @@ class AddCircuitVC: UITableViewController {
         
         let total = [titleKey : "Total Time"]
         
-    
-//        dataArray.append(title)
-        
         dataArray.append(title)
         dataArray.append(itemOne)
         dataArray.append(itemTwo)
@@ -59,10 +56,10 @@ class AddCircuitVC: UITableViewController {
         dataArray.append(itemFive)
         dataArray.append(itemSix)
         dataArray.append(itemSeven)
-        
         dataArray.append(total)
         
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -128,10 +125,6 @@ class AddCircuitVC: UITableViewController {
                     cell?.pickerView.selectRow(30, inComponent: 1, animated: true)
                     cell?.detailLabel.text = "01min 30sec"
                 }
-                
-                
-                
-               
             }
             
             
@@ -194,6 +187,40 @@ class AddCircuitVC: UITableViewController {
         return 44
     }
     
+    // UserDefault 데이터 저장
+    func saveToUserDefaults(dataObject: Time) {
+        var newTime = [Time]()
+        if let loadedData = UserDefaults().data(forKey: "encodedTimeData") {
+            
+            if let loadedTime = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Time] {
+                for time in loadedTime {
+                    newTime.append(time)
+                }
+            }
+        }
+        newTime.append(dataObject)
+        print(newTime)
+        
+        let encodedTimeData = NSKeyedArchiver.archivedData(withRootObject: newTime)
+        UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
+    }
+    
+    // 전체시간 계산
+    func calulateTotalTime(_ time: Time) -> (Int, Int) {
+        let prepareTime = (time.prepareTimeMin * 60) + time.prepareTimeSec
+        let workoutTime = ((time.workoutTimeMin * 60) + time.workoutTimeSec) * time.workoutCount * time.setCount
+        let workoutBreakTime = (time.workoutTimeMin * 60 + time.workoutTimeSec) * (time.workoutCount - 1)
+        let setBreakTime = (time.setBreakTimeMin * 60 + time.setBreakTimeSec) * (time.setCount - 1) * time.workoutCount
+        let wrapUpTime = (time.wrapUpTimeMin * 60 + time.wrapUpTimeSec)
+        
+        let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
+        
+        let totalMinute = totalTime / 60
+        let totalSecond = totalTime % 60
+        
+        return (totalMinute, totalSecond)
+    }
+    
     @IBAction func addBtnPressed(_ sender: UIButton) {
         
         let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
@@ -212,8 +239,8 @@ class AddCircuitVC: UITableViewController {
                         let second: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 1)
                         
                         // pickerView에서 value값이 제대로 넘어오지 않음
-                        print(minute!)
-                        print(second!)
+//                        print(minute!)
+//                        print(second!)
                         
                         if flagForFormCell == 1 {
                             if let min = minute {
@@ -369,21 +396,10 @@ class AddCircuitVC: UITableViewController {
         time.totalTimeMin = total.0
         time.totalTimeSec = total.1
         
-        print(time.description)
+        saveToUserDefaults(dataObject: time)
         
+        _ = navigationController?.popViewController(animated: true)
     }
-    func calulateTotalTime(_ time: Time) -> (Int, Int) {
-        let prepareTime = (time.prepareTimeMin * 60) + time.prepareTimeSec
-        let workoutTime = ((time.workoutTimeMin * 60) + time.workoutTimeSec) * time.workoutCount * time.setCount
-        let workoutBreakTime = (time.workoutTimeMin * 60 + time.workoutTimeSec) * (time.workoutCount - 1)
-        let setBreakTime = (time.setBreakTimeMin * 60 + time.setBreakTimeSec) * (time.setCount - 1) * time.workoutCount
-        let wrapUpTime = (time.wrapUpTimeMin * 60 + time.wrapUpTimeSec)
-        
-        let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
-        
-        let totalMinute = totalTime / 60
-        let totalSecond = totalTime % 60
-        
-        return (totalMinute, totalSecond)
-    }
+    
+    
 }
