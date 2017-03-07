@@ -15,6 +15,12 @@ class NumberInputCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+        viewTapGestureRec.cancelsTouchesInView = false
+        self.addGestureRecognizer(viewTapGestureRec)
+    }
+    func handleViewTap(recognizer: UIGestureRecognizer) {
+        numberField.resignFirstResponder()
     }
 }
