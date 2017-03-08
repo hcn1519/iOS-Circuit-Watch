@@ -154,6 +154,7 @@ class Time: NSObject, NSCoding {
         }
     }
 
+    // UserDefault용 encode
     required convenience init(coder aDecoder: NSCoder) {
          let circuitTitle = aDecoder.decodeObject(forKey: "circuitTitle") as! String
          let prepareTimeMin = aDecoder.decodeInteger(forKey: "prepareTimeMin") 
@@ -189,9 +190,41 @@ class Time: NSObject, NSCoding {
         if let totalTimeMin = _totalTimeMin { aCoder.encode(totalTimeMin, forKey: "totalTimeMin") }
         if let totalTimeSec = _totalTimeSec { aCoder.encode(totalTimeSec, forKey: "totalTimeSec") }
     }
-//    override var description: String {
-//        
-//        let string = "\(_circuitTitle): \(_prepareTimeMin) \(_prepareTimeSec) \(_workoutTimeMin) \(_workoutTimeSec) \(_workoutCount) \(_setCount) \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) \(_setBreakTimeMin) \(_setBreakTimeSec) \(_wrapUpTimeMin) \(_wrapUpTimeSec) \(_totalTimeMin) \(_totalTimeSec)"
-//        return string
-//    }
+    
+    func detectTimeData(indexPath: IndexPath, min: Int, sec: Int) {
+        if indexPath.row == 1{
+            self.prepareTimeMin = min
+            self.prepareTimeSec = sec
+        } else if indexPath.row == 2 {
+            self.workoutTimeMin = min
+            self.workoutTimeSec = sec
+        } else if indexPath.row == 5 {
+            self.workoutBreakTimeMin = min
+            self.workoutBreakTimeSec = sec
+        } else if indexPath.row == 6 {
+            self.setBreakTimeMin = min
+            self.setBreakTimeSec = sec
+        } else if indexPath.row == 7 {
+            self.wrapUpTimeMin = min
+            self.wrapUpTimeSec = sec
+        }
+    }
+    
+    // 전체시간 계산
+    func calulateTotalTime() -> (Int, Int) {
+        let prepareTime = (self.prepareTimeMin * 60) + self.prepareTimeSec
+        let workoutTime = ((self.workoutTimeMin * 60) + self.workoutTimeSec) * self.workoutCount * self.setCount
+        let workoutBreakTime = (self.workoutTimeMin * 60 + self.workoutTimeSec) * (self.workoutCount - 1)
+        let setBreakTime = (self.setBreakTimeMin * 60 + self.setBreakTimeSec) * (self.setCount - 1) * self.workoutCount
+        let wrapUpTime = (self.wrapUpTimeMin * 60 + self.wrapUpTimeSec)
+        
+        let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
+        
+        let totalMinute = totalTime / 60
+        let totalSecond = totalTime % 60
+        
+        return (totalMinute, totalSecond)
+    }
+    
+    
 }

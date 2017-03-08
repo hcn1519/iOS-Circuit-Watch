@@ -21,27 +21,23 @@ class AddCircuitVC: UITableViewController {
     let numberInputCellID = "numberInputCell"
 
     var selectedIndexPath: IndexPath?
-    
     var dataArray: [[String: String]] = []
     
-    var isAlreadyPicked = Array(repeating: false, count: 8)
-    
     let titleKey = "title"
-    
     let minuteKey = "min"
     let secondkey = "sec"
     
+    var currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.tintColor = .blue
-//            UIColor(red: 255, green: 235, blue: 59, alpha: 1)
  
-        let title = [titleKey: "Name"]
+        let title = [titleKey: "Title of Training"]
         let itemOne = [titleKey : "Prepare Time"]
         let itemTwo = [titleKey : "Workout Time"]
         
-        let itemThree = [titleKey : "Workout Count"]
-        let itemFour = [titleKey : "Set Count"]
+        let itemThree = [titleKey : "How many Workout?"]
+        let itemFour = [titleKey : "How many Set?"]
         
         let itemFive = [titleKey : "Workout BreakTime"]
         let itemSix = [titleKey : "Set BreakTime"]
@@ -60,16 +56,17 @@ class AddCircuitVC: UITableViewController {
         dataArray.append(total)
         
     }
-    
+
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9
     }
     
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let itemData = dataArray[indexPath.row]
@@ -80,18 +77,25 @@ class AddCircuitVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? WordCell
             cell?.selectionStyle = .none;
             cell?.titleLabel.text = itemData[titleKey]
+            cell?.detailLabel.text = "03min 0sec"
             
             return cell!
         } else if indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 4 {
             cellID = numberInputCellID
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? NumberInputCell
             cell?.selectionStyle = .none;
+            cell?.numberField.frame.size.width = 120
             cell?.titleLabel.text = itemData[titleKey]
             
             if indexPath.row == 0 {
-               cell?.numberField.frame.size.width = 150
-               cell?.numberField.placeholder = "Title of the Training"
+                cell?.numberField.placeholder = "Title of Training"
+            } else {
+                cell?.numberField.placeholder = "Count"
             }
+            
+            let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+            viewTapGestureRec.cancelsTouchesInView = false
+            self.tableView.addGestureRecognizer(viewTapGestureRec)
             
             return cell!
         } else {
@@ -99,8 +103,8 @@ class AddCircuitVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell
             cell?.titleLabel.text = itemData[titleKey]
             
-            // check indexPath is what I tapped
             // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
+            // 값 초기화 로직
             if indexPath != selectedIndexPath {
                 if let timeSetup = timeSetup {
                     cell?.detailLabel.text = timeSetup
@@ -108,6 +112,7 @@ class AddCircuitVC: UITableViewController {
                     if selectedIndexPath != nil {
                         cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
                         cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
+                        currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                     }
                     
                     print("from if \(timeSetup)")
@@ -120,11 +125,13 @@ class AddCircuitVC: UITableViewController {
                     cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
                     cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
                     cell?.detailLabel.text = timeSetup
+                    currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                 } else {
                     // initialize value to default one.
                     cell?.pickerView.selectRow(1, inComponent: 0, animated: true)
                     cell?.pickerView.selectRow(30, inComponent: 1, animated: true)
                     cell?.detailLabel.text = "01min 30sec"
+                    currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 3)
                 }
             }
             
@@ -135,24 +142,26 @@ class AddCircuitVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let previousIndexPath = selectedIndexPath
-        
-        if indexPath == selectedIndexPath {
-            selectedIndexPath = nil
-        } else {
-            selectedIndexPath = indexPath
-        }
-        
-        var indexPaths: Array<IndexPath> = []
-        if let previous = previousIndexPath {
-            indexPaths += [previous]
-        }
-        if let current = selectedIndexPath {
-            indexPaths += [current]
-        }
-        
-        if indexPaths.count > 0 {
-            tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+        if indexPath.row != 0 && indexPath.row != 3 && indexPath.row != 4 && indexPath.row != 8 {
+            let previousIndexPath = selectedIndexPath
+            
+            if indexPath == selectedIndexPath {
+                selectedIndexPath = nil
+            } else {
+                selectedIndexPath = indexPath
+            }
+            
+            var indexPaths: Array<IndexPath> = []
+            if let previous = previousIndexPath {
+                indexPaths += [previous]
+            }
+            if let current = selectedIndexPath {
+                indexPaths += [current]
+            }
+            
+            if indexPaths.count > 0 {
+                tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+            }
         }
     }
     
@@ -167,7 +176,6 @@ class AddCircuitVC: UITableViewController {
             (cell as! FormCell).ignoreFrameChanges()
         }
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         for cell in tableView.visibleCells {
@@ -176,7 +184,6 @@ class AddCircuitVC: UITableViewController {
             }
         }
     }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row != 0 && indexPath.row != 3 && indexPath.row != 4 && indexPath.row != 8 {
             if indexPath == selectedIndexPath {
@@ -200,26 +207,13 @@ class AddCircuitVC: UITableViewController {
             }
         }
         newTime.append(dataObject)
-        print(newTime)
         
         let encodedTimeData = NSKeyedArchiver.archivedData(withRootObject: newTime)
         UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
     }
     
-    // 전체시간 계산
-    func calulateTotalTime(_ time: Time) -> (Int, Int) {
-        let prepareTime = (time.prepareTimeMin * 60) + time.prepareTimeSec
-        let workoutTime = ((time.workoutTimeMin * 60) + time.workoutTimeSec) * time.workoutCount * time.setCount
-        let workoutBreakTime = (time.workoutTimeMin * 60 + time.workoutTimeSec) * (time.workoutCount - 1)
-        let setBreakTime = (time.setBreakTimeMin * 60 + time.setBreakTimeSec) * (time.setCount - 1) * time.workoutCount
-        let wrapUpTime = (time.wrapUpTimeMin * 60 + time.wrapUpTimeSec)
-        
-        let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
-        
-        let totalMinute = totalTime / 60
-        let totalSecond = totalTime % 60
-        
-        return (totalMinute, totalSecond)
+    func handleViewTap(recognizer: UIGestureRecognizer) {
+        self.tableView.endEditing(true)
     }
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
@@ -238,10 +232,6 @@ class AddCircuitVC: UITableViewController {
                         // Input from PickerView
                         let minute: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 0)
                         let second: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 1)
-                        
-                        // pickerView에서 value값이 제대로 넘어오지 않음
-//                        print(minute!)
-//                        print(second!)
                         
                         if flagForFormCell == 1 {
                             if let min = minute {
@@ -393,7 +383,7 @@ class AddCircuitVC: UITableViewController {
                 }
             }
         }
-        let total = calulateTotalTime(time)
+        let total = time.calulateTotalTime()
         time.totalTimeMin = total.0
         time.totalTimeSec = total.1
         
@@ -401,6 +391,5 @@ class AddCircuitVC: UITableViewController {
         
         _ = navigationController?.popViewController(animated: true)
     }
-    
-    
 }
+
