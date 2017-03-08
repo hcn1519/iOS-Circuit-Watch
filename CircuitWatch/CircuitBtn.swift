@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircuitBtn: UIButton {
+class CircuitBtn: RoundBtn {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,4 +20,32 @@ class CircuitBtn: UIButton {
         
         layer.cornerRadius = self.frame.width / 2
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            switch isSelected {
+            case true:
+                
+                UIView.transition(with: self, duration: 0.1, options: .transitionCrossDissolve, animations: {
+                    self.backgroundColor = UIColor(red: 183/255, green: 28/255, blue: 28/255, alpha: 0.9)
+                    self.tintColor = self.backgroundColor
+                    self.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.9), for: .selected)
+                    self.setTitle("일시정지", for: .selected)
+                }, completion: nil)
+                
+            case false:
+                
+                UIView.transition(with: self, duration: 0.1, options: .transitionCrossDissolve, animations: {
+                    self.backgroundColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 0.9)
+                    self.tintColor = self.backgroundColor
+                    self.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.9), for: .normal)
+                    self.setTitle("시작", for: .normal)
+                }, completion: nil)
+                
+            }
+        }
+    }
+    
+    
+    
 }
