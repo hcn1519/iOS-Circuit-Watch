@@ -85,27 +85,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let loadedData = UserDefaults().data(forKey: "encodedTimeData") {
             
             if let loadedTime = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Time] {
-                print(loadedTime)
                 for time in loadedTime {
                     dataArray.append(time)
                 }
-                print(dataArray)
                 return dataArray
             }
         }
         return dataArray
-        
     }
-
-    @IBAction func editBtnPressed(_ sender: UIBarButtonItem) {
-        tableView.setEditing(!tableView.isEditing, animated: true)
-        
-        if tableView.isEditing {
-            self.editButton.title = "Done"
-        } else {
-            self.editButton.title = "Edit"
-        }
-    }
+    
+    // edit state에서 delete 클릭시 UserDefault 데이터 삭제
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             circuitData.remove(at: indexPath.row)
@@ -118,7 +107,19 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             print(circuitData)
         }
     }
-/*  테스트 데이터 생성용
+
+    // IBAction
+    @IBAction func editBtnPressed(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        if tableView.isEditing {
+            self.editButton.title = "Done"
+        } else {
+            self.editButton.title = "Edit"
+        }
+    }
+    
+    /*  테스트 데이터 생성용
     func generateTestData() {
         let temp1 = Time(circuitTitle: "첫 번째 트레이닝", prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 22, totalTimeSec: 0)
         let temp2 = Time(circuitTitle: "23분 트레이닝",prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 23, totalTimeSec: 0)

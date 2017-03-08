@@ -18,7 +18,6 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     // variable
     var isObserving = false
     let minutes = Array(0...59)
-    var pickerValue: String!
     
     // initialize pickerView delegate, dataSource
     override func awakeFromNib() {
