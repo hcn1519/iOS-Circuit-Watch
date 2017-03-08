@@ -33,7 +33,8 @@ class AddCircuitVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .white
+//        self.navigationController?.navigationBar.tintColor = .blue
+//            UIColor(red: 255, green: 235, blue: 59, alpha: 1)
  
         let title = [titleKey: "Name"]
         let itemOne = [titleKey : "Prepare Time"]

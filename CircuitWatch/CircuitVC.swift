@@ -20,6 +20,8 @@ class CircuitVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressDescriptionLabel: UILabel!
     @IBOutlet weak var startAndPauseBtn: CircuitBtn!
+    @IBOutlet weak var resetBtn: RoundBtn!
+    
     
     // variable
     var btnSound: AVAudioPlayer!
@@ -28,25 +30,33 @@ class CircuitVC: UIViewController {
     var progress: CGFloat!
     var currentProgress: CGFloat = 0
     var timeSection = [Int: String]()
+    
     var subTitle: [String: String] = ["section1": "Prepare Time", "section2": "Workout Time", "section3": "Workout BreakTime", "section4": "Set BreakTime", "section5": "Wrapup Time"]
     var timeData: Time!
+    var minuteCounter = -1
+    var secondCounter = -1
+
+    var isInProgress: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .white
 
         remainTime.text = timeStringSet(timeData.totalTimeMin, timeData.totalTimeSec)
         titleLabel.text = timeData.circuitTitle
         
         timeSection = makeSection(timeData)
+        minuteCounter = timeData.totalTimeMin
+        secondCounter = timeData.totalTimeSec
         
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        timeSet.invalidate()
+    }
+    
     // 매 초 당 돌아가는 코드
     func runTimedCode() {
-        let maxProgress: CGFloat = CGFloat(timeData.totalTimeMin * 60 + timeData.totalTimeSec)
-        var minuteCounter = timeData.totalTimeMin
-        var secondCounter = timeData.totalTimeSec
+        let maxProgress: CGFloat = CGFloat(toSecond(min: timeData.totalTimeMin, sec: timeData.totalTimeSec))
         
         progress = CGFloat(currentProgress / maxProgress)
         currentProgress += 1
@@ -59,8 +69,8 @@ class CircuitVC: UIViewController {
             minuteCounter -= 1
         }
         secondCounter -= 1
+    
         remainTime.text = timeStringSet(minuteCounter, secondCounter)
-        
         progressDescriptionLabel.text = checkSection(timeData, currentProgress)
     }
     
@@ -150,7 +160,7 @@ class CircuitVC: UIViewController {
     }
 */
     
-    // 시작 때 하나를 만들고 그 섹션에 맞춰서 출력하기
+    // 시간 섹션 구간 설정
     func makeSection(_ data: Time) -> [Int: String] {
         var allTime = toSecond(min: data.totalTimeMin, sec: data.totalTimeSec)
         
@@ -193,41 +203,42 @@ class CircuitVC: UIViewController {
     }
     
     // IBAction
-    @IBAction func startBtnPressed(_ sender: UIButton) {
+    @IBAction func runningBtnPressed(_ sender: CircuitBtn) {
         playSound(isBtnPressed: true)
-        timeSet = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
+        if isInProgress {
+            sender.isSelected = false
+            isInProgress = false
+            timeSet.invalidate()
+        } else {
+            sender.isSelected = true
+            isInProgress = true
+            timeSet = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        }
+    }
+  
+    @IBAction func resetBtnPressed(_ sender: Any) {
+        playSound(isBtnPressed: true)
         
-        // button color toggle action!
-//        if startAndPauseBtn.isHighlighted {
-//            startAndPauseBtn.setBackgroundColor(color: UIColor(red: 1, green: 87, blue: 155, alpha: 0.7), forState: .highlighted)
-////            startAndPauseBtn.setBackgroundColor(color: UIColor(red: 183, green: 28, blue: 28, alpha: 0.7), forState: .highlighted)
-//            startAndPauseBtn.setTitle("다시시작", for: .normal)
-//            
-//        } else {
-//            startAndPauseBtn.setBackgroundColor(color: UIColor(red: 1, green: 87, blue: 155, alpha: 0.7), forState: .normal)
-//            startAndPauseBtn.setTitle("시작", for: .normal)
-//        }
+        // 시간 초기화
+        timeSet.invalidate()
+        currentProgress = 0
+        circuitProgressView.progress = currentProgress
+        minuteCounter = timeData.totalTimeMin
+        secondCounter = timeData.totalTimeSec
+        remainTime.text = timeStringSet(minuteCounter, secondCounter)
+        progressDescriptionLabel.text = "Before Start"
+        
+        // 시작 버튼 초기화
+        startAndPauseBtn.isSelected = false
+        startAndPauseBtn.setTitle("시작", for: .selected)
+        isInProgress = false
         
     }
     
-    @IBAction func pauseBtnPressed(_ sender: UIButton) {
-        playSound(isBtnPressed: true)
-        timeSet.invalidate()
-    }
-
     
 //    순서
 //    준비시간 -> 운동 개수 * (세트 개수 * (운동시간 -> 마지막 운동시간 후는 제외(세트 쉬는 시간)) -> 운동 쉬는 시간) -> 마무리시간
     
 }
 
-extension UIButton {
-    func setBackgroundColor(color: UIColor, forState: UIControlState) {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
-        UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.setBackgroundImage(colorImage, for: forState)
-    }}
