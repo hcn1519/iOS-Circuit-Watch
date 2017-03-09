@@ -64,11 +64,31 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         
         let marginTop = pickerView.frame.height / 3 + 3
         let marginLeft = pickerView.frame.width / 3 + 20
-        minLabel.topAnchor.constraint(equalTo: pickerView.topAnchor, constant: marginTop).isActive = true
-        minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft).isActive = true
         
+        minLabel.topAnchor.constraint(equalTo: pickerView.topAnchor, constant: marginTop).isActive = true
         secLabel.topAnchor.constraint(equalTo: pickerView.topAnchor, constant: marginTop + 0.5).isActive = true
-        secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft * 2).isActive = true
+        
+        
+        if UIDevice.current.isiPadPro12 {
+            let padMargin = self.frame.width
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: padMargin).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: padMargin * 2).isActive = true
+        } else if UIDevice.current.isiPad {
+            let padMargin = self.frame.width / 2
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: padMargin + 90).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: padMargin * 2 + 160).isActive = true
+        } else if UIDevice.current.isiPhonePlus {
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft + 5).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft * 2 + 5).isActive = true
+        } else if UIDevice.current.isiPhoneSE {
+            let seMargin = self.frame.width / 4
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin + 10).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin * 2 + 15).isActive = true
+        } else {
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft * 2 - 20).isActive = true
+        }
+        
     }
     
     // for pickerView
@@ -160,3 +180,5 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
 }
+
+

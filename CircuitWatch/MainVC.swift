@@ -19,6 +19,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.navigationController?.navigationBar.isTranslucent = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

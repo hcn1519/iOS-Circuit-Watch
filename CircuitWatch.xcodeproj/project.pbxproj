@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
+		7E0D763A1E716DCA009BB8E2 /* ScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */; };
 		7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB21E6BDC5700BD627D /* pause.m4r */; };
 		7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */; };
 		7E2CA9CC1E64439100CBF2DC /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* InputCell.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
+		7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenExtension.swift; sourceTree = "<group>"; };
 		7E1DEBB21E6BDC5700BD627D /* pause.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = pause.m4r; sourceTree = "<group>"; };
 		7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = breakTime.m4r; sourceTree = "<group>"; };
 		7E2CA9CB1E64439100CBF2DC /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				7E2CA9CB1E64439100CBF2DC /* InputCell.swift */,
 				7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */,
 				7E4F2D831E64179500E27F26 /* FormTableFooter.swift */,
+				7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,
 				7E4F2D821E64178A00E27F26 /* FormTableHeader.swift in Sources */,
 				7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */,
+				7E0D763A1E716DCA009BB8E2 /* ScreenExtension.swift in Sources */,
 				7EA6EA121E672CB400BA1E7F /* CircuitProgress.swift in Sources */,
 				7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */,
 			);

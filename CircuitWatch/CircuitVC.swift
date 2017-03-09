@@ -41,6 +41,8 @@ class CircuitVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.isTranslucent = false
+        
         remainTime.text = timeStringSet(timeData.totalTimeMin, timeData.totalTimeSec)
         titleLabel.text = timeData.circuitTitle
         

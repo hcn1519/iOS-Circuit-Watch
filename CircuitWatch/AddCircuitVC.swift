@@ -35,6 +35,8 @@ class AddCircuitVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        self.navigationController?.navigationBar.isTranslucent = false
+        
         let title = [titleKey: "Title of Training"]
         let itemOne = [titleKey : "Prepare Time"]
         let itemTwo = [titleKey : "Workout Time"]
@@ -239,177 +241,178 @@ class AddCircuitVC: UITableViewController {
     }
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
+        refreshTotalTime()
+//        
+//        let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
+//        
+//        let indexPath = self.tableView.indexPathsForVisibleRows
+//
+//        
+//        var flagForFormCell = 1
+//        var flagForCountCell = 1
+//        for i in 0...tableView.numberOfSections-1 {
+//            for j in 0...tableView.numberOfRows(inSection: i)-1 {
+//                if let cell = tableView.cellForRow(at: (indexPath?[j])!) {
+//                    if cell.isKind(of: FormCell.self) {
+//                        // Input from PickerView
+//                        let minute: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 0)
+//                        let second: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 1)
+//                        
+//                        if flagForFormCell == 1 {
+//                            if let min = minute {
+//                                if let sec = second {
+//                                    time.prepareTimeMin = min
+//                                    time.prepareTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.prepareTimeMin = min
+//                                    time.prepareTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            } else {
+//                                if let sec = second {
+//                                    time.prepareTimeMin = 1
+//                                    time.prepareTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.prepareTimeMin = 1
+//                                    time.prepareTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            }
+//                            
+//                        } else if flagForFormCell == 2{
+//                            if let min = minute {
+//                                if let sec = second {
+//                                    time.workoutTimeMin = min
+//                                    time.workoutTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.workoutTimeMin = min
+//                                    time.workoutTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            } else {
+//                                if let sec = second {
+//                                    time.workoutTimeMin = 1
+//                                    time.workoutTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.workoutTimeMin = 1
+//                                    time.workoutTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            }
+//                        } else if flagForFormCell == 3{
+//                            if let min = minute {
+//                                if let sec = second {
+//                                    time.workoutBreakTimeMin = min
+//                                    time.workoutBreakTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.workoutBreakTimeMin = min
+//                                    time.workoutBreakTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            } else {
+//                                if let sec = second {
+//                                    time.workoutBreakTimeMin = 1
+//                                    time.workoutBreakTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.workoutBreakTimeMin = 1
+//                                    time.workoutBreakTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            }
+//                        } else if flagForFormCell == 4{
+//                            if let min = minute {
+//                                if let sec = second {
+//                                    time.setBreakTimeMin = min
+//                                    time.setBreakTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.setBreakTimeMin = min
+//                                    time.setBreakTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            } else {
+//                                if let sec = second {
+//                                    time.setBreakTimeMin = 1
+//                                    time.setBreakTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.setBreakTimeMin = 1
+//                                    time.setBreakTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            }
+//                        } else if flagForFormCell == 5{
+//                            if let min = minute {
+//                                if let sec = second {
+//                                    time.wrapUpTimeMin = min
+//                                    time.wrapUpTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.wrapUpTimeMin = min
+//                                    time.wrapUpTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            } else {
+//                                if let sec = second {
+//                                    time.wrapUpTimeMin = 1
+//                                    time.wrapUpTimeSec = sec
+//                                    flagForFormCell += 1
+//                                } else {
+//                                    time.wrapUpTimeMin = 1
+//                                    time.wrapUpTimeSec = 30
+//                                    flagForFormCell += 1
+//                                }
+//                            }
+//                        }
+//                        
+//                    } else if cell.isKind(of: InputCell.self) {
+//                        // Input from TextField(title)
+//                        if flagForCountCell == 1 {
+//                            let title = (cell  as! InputCell).textField.text!
+//                            if title != "" {
+//                                time.circuitTitle = title
+//                            } else {
+//                                time.circuitTitle = ""
+//                                
+//                            }
+//                            flagForCountCell += 1
+//                            continue
+//                        }
+//                        
+//                        // Input from TextField(count)
+//                        let count: Int? = Int((cell  as! InputCell).textField.text!)
+//                        
+//                        if let number = count {
+//                            if flagForCountCell == 2 {
+//                                time.workoutCount = number
+//                                flagForCountCell += 1
+//                            } else {
+//                                time.setCount = number
+//                            }
+//                        } else {
+//                            if flagForCountCell == 2 {
+//                                time.workoutCount = 0
+//                                flagForCountCell += 1
+//                            } else {
+//                                time.setCount = 0
+//                            }
+//                        }
+//                        
+//                    }
+//                }
+//            }
+//        }
+//        let total = time.calulateTotalTime()
+//        time.totalTimeMin = total.0
+//        time.totalTimeSec = total.1
         
-        let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
-        
-        let indexPath = self.tableView.indexPathsForVisibleRows
-
-        
-        var flagForFormCell = 1
-        var flagForCountCell = 1
-        for i in 0...tableView.numberOfSections-1 {
-            for j in 0...tableView.numberOfRows(inSection: i)-1 {
-                if let cell = tableView.cellForRow(at: (indexPath?[j])!) {
-                    if cell.isKind(of: FormCell.self) {
-                        // Input from PickerView
-                        let minute: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 0)
-                        let second: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 1)
-                        
-                        if flagForFormCell == 1 {
-                            if let min = minute {
-                                if let sec = second {
-                                    time.prepareTimeMin = min
-                                    time.prepareTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.prepareTimeMin = min
-                                    time.prepareTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            } else {
-                                if let sec = second {
-                                    time.prepareTimeMin = 1
-                                    time.prepareTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.prepareTimeMin = 1
-                                    time.prepareTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            }
-                            
-                        } else if flagForFormCell == 2{
-                            if let min = minute {
-                                if let sec = second {
-                                    time.workoutTimeMin = min
-                                    time.workoutTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.workoutTimeMin = min
-                                    time.workoutTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            } else {
-                                if let sec = second {
-                                    time.workoutTimeMin = 1
-                                    time.workoutTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.workoutTimeMin = 1
-                                    time.workoutTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            }
-                        } else if flagForFormCell == 3{
-                            if let min = minute {
-                                if let sec = second {
-                                    time.workoutBreakTimeMin = min
-                                    time.workoutBreakTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.workoutBreakTimeMin = min
-                                    time.workoutBreakTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            } else {
-                                if let sec = second {
-                                    time.workoutBreakTimeMin = 1
-                                    time.workoutBreakTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.workoutBreakTimeMin = 1
-                                    time.workoutBreakTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            }
-                        } else if flagForFormCell == 4{
-                            if let min = minute {
-                                if let sec = second {
-                                    time.setBreakTimeMin = min
-                                    time.setBreakTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.setBreakTimeMin = min
-                                    time.setBreakTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            } else {
-                                if let sec = second {
-                                    time.setBreakTimeMin = 1
-                                    time.setBreakTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.setBreakTimeMin = 1
-                                    time.setBreakTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            }
-                        } else if flagForFormCell == 5{
-                            if let min = minute {
-                                if let sec = second {
-                                    time.wrapUpTimeMin = min
-                                    time.wrapUpTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.wrapUpTimeMin = min
-                                    time.wrapUpTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            } else {
-                                if let sec = second {
-                                    time.wrapUpTimeMin = 1
-                                    time.wrapUpTimeSec = sec
-                                    flagForFormCell += 1
-                                } else {
-                                    time.wrapUpTimeMin = 1
-                                    time.wrapUpTimeSec = 30
-                                    flagForFormCell += 1
-                                }
-                            }
-                        }
-                        
-                    } else if cell.isKind(of: InputCell.self) {
-                        // Input from TextField(title)
-                        if flagForCountCell == 1 {
-                            let title = (cell  as! InputCell).textField.text!
-                            if title != "" {
-                                time.circuitTitle = title
-                            } else {
-                                time.circuitTitle = ""
-                                
-                            }
-                            flagForCountCell += 1
-                            continue
-                        }
-                        
-                        // Input from TextField(count)
-                        let count: Int? = Int((cell  as! InputCell).textField.text!)
-                        
-                        if let number = count {
-                            if flagForCountCell == 2 {
-                                time.workoutCount = number
-                                flagForCountCell += 1
-                            } else {
-                                time.setCount = number
-                            }
-                        } else {
-                            if flagForCountCell == 2 {
-                                time.workoutCount = 0
-                                flagForCountCell += 1
-                            } else {
-                                time.setCount = 0
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        }
-        let total = time.calulateTotalTime()
-        time.totalTimeMin = total.0
-        time.totalTimeSec = total.1
-        
-        saveToUserDefaults(dataObject: time)
+        saveToUserDefaults(dataObject: currentTime)
         
         _ = navigationController?.popViewController(animated: true)
     }
