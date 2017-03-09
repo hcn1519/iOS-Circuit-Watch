@@ -189,7 +189,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ewe-eS-JfM">
                             <color key="tintColor" red="0.99904614690000004" green="0.92020398380000001" blue="0.23121184110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="iy4-Rh-dcx" kind="show" id="7wV-bn-7lj"/>
+                                <segue destination="iy4-Rh-dcx" kind="show" identifier="goToAddCircuit" id="7wV-bn-7lj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -330,7 +330,7 @@
                                     <outlet property="titleLabel" destination="hcj-XM-8g1" id="les-C7-Ytr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberInputCell" rowHeight="44" id="ySR-RO-1ep" customClass="NumberInputCell" customModule="CircuitWatch" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inputCell" rowHeight="44" id="ySR-RO-1ep" customClass="InputCell" customModule="CircuitWatch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="362" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ySR-RO-1ep" id="S4B-a2-Dlw">
@@ -353,7 +353,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                                             <connections>
-                                                <action selector="didEndOnExit:" destination="ySR-RO-1ep" eventType="editingDidEndOnExit" id="4L3-FR-WSC"/>
+                                                <action selector="didEndOnExit:" destination="ySR-RO-1ep" eventType="editingDidEnd" id="pw8-DV-xD9"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -366,7 +366,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.12939286229999999" green="0.12942266459999999" blue="0.12939092520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="numberField" destination="Ner-FJ-0B6" id="ADt-tl-1vg"/>
+                                    <outlet property="textField" destination="Ner-FJ-0B6" id="iLd-hl-mjR"/>
                                     <outlet property="titleLabel" destination="pV8-GC-COg" id="DRj-WF-Yc0"/>
                                 </connections>
                             </tableViewCell>

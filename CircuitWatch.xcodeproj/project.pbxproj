@@ -10,7 +10,7 @@
 		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
 		7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB21E6BDC5700BD627D /* pause.m4r */; };
 		7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */; };
-		7E2CA9CC1E64439100CBF2DC /* NumberInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */; };
+		7E2CA9CC1E64439100CBF2DC /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* InputCell.swift */; };
 		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
 		7E3518191E70010A001B0C92 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3518181E70010A001B0C92 /* RoundBtn.swift */; };
@@ -44,7 +44,7 @@
 		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
 		7E1DEBB21E6BDC5700BD627D /* pause.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = pause.m4r; sourceTree = "<group>"; };
 		7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = breakTime.m4r; sourceTree = "<group>"; };
-		7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberInputCell.swift; sourceTree = "<group>"; };
+		7E2CA9CB1E64439100CBF2DC /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
 		7E3518181E70010A001B0C92 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				7E3518181E70010A001B0C92 /* RoundBtn.swift */,
 				7EB4CAE51E6022A200B7A78A /* FormCell.swift */,
 				7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */,
-				7E2CA9CB1E64439100CBF2DC /* NumberInputCell.swift */,
+				7E2CA9CB1E64439100CBF2DC /* InputCell.swift */,
 				7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */,
 				7E4F2D831E64179500E27F26 /* FormTableFooter.swift */,
 			);
@@ -281,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E5AF36A1E5DC9C300999E1D /* Time.swift in Sources */,
-				7E2CA9CC1E64439100CBF2DC /* NumberInputCell.swift in Sources */,
+				7E2CA9CC1E64439100CBF2DC /* InputCell.swift in Sources */,
 				7E4F2D7E1E63F18D00E27F26 /* WordCell.swift in Sources */,
 				7EAD9B2D1E5D7356005B48A3 /* CircuitVC.swift in Sources */,
 				7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */,

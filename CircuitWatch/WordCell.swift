@@ -15,6 +15,31 @@ class WordCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
-    
+    // 시간 string 만들기
+    func timeStringSet(_ min: Int, _ sec: Int) {
+        
+        var temp1 = ""
+        var temp2 = ""
+        
+        if min < 10 {
+            if min == 0 {
+                temp1 = "0"
+            } else {
+                temp1 = "0\(min)"
+            }
+        } else {
+            temp1 = "\(min)"
+        }
+        if sec < 10 {
+            if sec == 0 {
+                temp2 = "0"
+            }
+            temp2 = "0\(sec)"
+        } else {
+            temp2 = "\(sec)"
+        }
+        detailLabel.text = (temp1 + "min " + temp2 + "sec")
+    }
 }
