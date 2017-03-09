@@ -9,21 +9,104 @@
 import Foundation
 
 class Time: NSObject, NSCoding {
-    private var _circuitTitle: String!
-    private var _prepareTimeMin: Int!
-    private var _prepareTimeSec: Int!
-    private var _workoutTimeMin: Int!
-    private var _workoutTimeSec: Int!
-    private var _workoutCount: Int!
-    private var _setCount: Int!
-    private var _workoutBreakTimeMin: Int!
-    private var _workoutBreakTimeSec: Int!
-    private var _setBreakTimeMin: Int!
-    private var _setBreakTimeSec: Int!
-    private var _wrapUpTimeMin: Int!
-    private var _wrapUpTimeSec: Int!
-    private var _totalTimeMin: Int!
-    private var _totalTimeSec: Int!
+    fileprivate var _circuitTitle: String!
+    fileprivate var _prepareTimeMin: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+    fileprivate var _prepareTimeSec: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _workoutTimeMin: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _workoutTimeSec: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _workoutCount: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _setCount: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _workoutBreakTimeMin: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _workoutBreakTimeSec: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _setBreakTimeMin: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _setBreakTimeSec: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _wrapUpTimeMin: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _wrapUpTimeSec: Int! {
+        didSet {
+            let time = self.calulateTotalTime()
+            self._totalTimeMin = time.0
+            self._totalTimeSec = time.1
+        }
+    }
+
+    fileprivate var _totalTimeMin: Int!
+    fileprivate var _totalTimeSec: Int!
     
     init(circuitTitle: String, prepareTimeMin: Int, prepareTimeSec: Int, workoutTimeMin: Int, workoutTimeSec: Int, workoutCount: Int, setCount: Int, workoutBreakTimeMin: Int, workoutBreakTimeSec: Int, setBreakTimeMin: Int, setBreakTimeSec: Int, wrapUpTimeMin: Int, wrapUpTimeSec: Int, totalTimeMin: Int, totalTimeSec: Int) {
         self._circuitTitle = circuitTitle
@@ -209,22 +292,47 @@ class Time: NSObject, NSCoding {
             self.wrapUpTimeSec = sec
         }
     }
-    
+    func detectTextFieldData(indexPath: IndexPath, value: String) {
+        if indexPath.row == 0 {
+            self.circuitTitle = value
+        } else if indexPath.row == 3 {
+            self.workoutCount = Int(value)!
+        } else if indexPath.row == 4 {
+            self.setCount = Int(value)!
+        }
+    }
     // 전체시간 계산
     func calulateTotalTime() -> (Int, Int) {
-        let prepareTime = (self.prepareTimeMin * 60) + self.prepareTimeSec
-        let workoutTime = ((self.workoutTimeMin * 60) + self.workoutTimeSec) * self.workoutCount * self.setCount
-        let workoutBreakTime = (self.workoutTimeMin * 60 + self.workoutTimeSec) * (self.workoutCount - 1)
-        let setBreakTime = (self.setBreakTimeMin * 60 + self.setBreakTimeSec) * (self.setCount - 1) * self.workoutCount
-        let wrapUpTime = (self.wrapUpTimeMin * 60 + self.wrapUpTimeSec)
+        let prepareTime = toSecond(self.prepareTimeMin, self.prepareTimeSec)
+        let workoutTime = toSecond(self.workoutTimeMin, self.workoutTimeSec) * self.workoutCount * self.setCount
         
+        var workoutBreakTime = 0
+        if self.workoutCount != 0 {
+            workoutBreakTime = toSecond(self.workoutTimeMin, self.workoutTimeSec) * (self.workoutCount - 1)
+        }
+        var setBreakTime = 0
+        if self.setCount != 0 {
+            setBreakTime = toSecond(self.setBreakTimeMin, self.setBreakTimeSec) * (self.setCount - 1) * self.workoutCount
+        }
+        
+        let wrapUpTime = toSecond(self.wrapUpTimeMin, self.wrapUpTimeSec)
         let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
         
         let totalMinute = totalTime / 60
         let totalSecond = totalTime % 60
-        
+
         return (totalMinute, totalSecond)
     }
     
+    private func toSecond(_ min: Int, _ sec: Int) -> Int {
+        return (min * 60 + sec)
+    }
     
+}
+
+extension Time {
+    override var description: String {
+        let string = "\(_circuitTitle): \(_prepareTimeMin) \(_prepareTimeSec) \(_workoutTimeMin) \(_workoutTimeSec) \(_workoutCount) \(_setCount) \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) \(_setBreakTimeMin) \(_setBreakTimeSec) \(_wrapUpTimeMin) \(_wrapUpTimeSec) \(_totalTimeMin) \(_totalTimeSec)"
+        return string
+    }
 }

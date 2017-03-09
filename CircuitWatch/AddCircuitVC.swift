@@ -13,12 +13,16 @@ import UIKit
 var timeSetup: String!
 var selectedMin: Int! = 1
 var selectedSec: Int! = 30
+var workoutTitle: String = ""
+var workoutCount: Int = 0
+var setCount: Int = 0
+var currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
 
 class AddCircuitVC: UITableViewController {
 
     let formCellID = "formCell"
     let wordCellID = "wordCell"
-    let numberInputCellID = "numberInputCell"
+    let inputCellID = "inputCell"
 
     var selectedIndexPath: IndexPath?
     var dataArray: [[String: String]] = []
@@ -27,7 +31,6 @@ class AddCircuitVC: UITableViewController {
     let minuteKey = "min"
     let secondkey = "sec"
     
-    var currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,16 +84,24 @@ class AddCircuitVC: UITableViewController {
             
             return cell!
         } else if indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 4 {
-            cellID = numberInputCellID
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? NumberInputCell
+            cellID = inputCellID
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? InputCell
             cell?.selectionStyle = .none;
-            cell?.numberField.frame.size.width = 120
+            cell?.textField.frame.size.width = 120
             cell?.titleLabel.text = itemData[titleKey]
             
             if indexPath.row == 0 {
-                cell?.numberField.placeholder = "Title of Training"
+                cell?.textField.placeholder = "Title of Training"
+                cell?.fieldType = textFieldCase.StringFieldTag
+//                currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
+            } else if indexPath.row == 3 {
+                cell?.textField.placeholder = "Count"
+                cell?.fieldType = textFieldCase.NumberFieldTag
+//                currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
             } else {
-                cell?.numberField.placeholder = "Count"
+                cell?.textField.placeholder = "Count"
+                cell?.fieldType = textFieldCase.NumberFieldTag
+//                currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
             }
             
             let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
@@ -116,7 +127,6 @@ class AddCircuitVC: UITableViewController {
                     }
                     
                     print("from if \(timeSetup)")
-                    
                 }
             } else {
                 print("from else timeSetup \(timeSetup)")
@@ -131,10 +141,9 @@ class AddCircuitVC: UITableViewController {
                     cell?.pickerView.selectRow(1, inComponent: 0, animated: true)
                     cell?.pickerView.selectRow(30, inComponent: 1, animated: true)
                     cell?.detailLabel.text = "01min 30sec"
-                    currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 3)
+                    currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
                 }
             }
-            
             
             return cell!
         }
@@ -163,6 +172,7 @@ class AddCircuitVC: UITableViewController {
                 tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
             }
         }
+        refreshTotalTime()
     }
     
     // observer
@@ -214,6 +224,18 @@ class AddCircuitVC: UITableViewController {
     
     func handleViewTap(recognizer: UIGestureRecognizer) {
         self.tableView.endEditing(true)
+        print(currentTime.description)
+        
+        refreshTotalTime()
+        
+    }
+    
+    func refreshTotalTime() {
+        if let lastIndexPath = tableView.lastIndexPath {
+            let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
+            
+            lastCell?.timeStringSet(currentTime.totalTimeMin, currentTime.totalTimeSec)
+        }
     }
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
@@ -346,10 +368,10 @@ class AddCircuitVC: UITableViewController {
                             }
                         }
                         
-                    } else if cell.isKind(of: NumberInputCell.self) {
+                    } else if cell.isKind(of: InputCell.self) {
                         // Input from TextField(title)
                         if flagForCountCell == 1 {
-                            let title = (cell  as! NumberInputCell).numberField.text!
+                            let title = (cell  as! InputCell).textField.text!
                             if title != "" {
                                 time.circuitTitle = title
                             } else {
@@ -361,7 +383,7 @@ class AddCircuitVC: UITableViewController {
                         }
                         
                         // Input from TextField(count)
-                        let count: Int? = Int((cell  as! NumberInputCell).numberField.text!)
+                        let count: Int? = Int((cell  as! InputCell).textField.text!)
                         
                         if let number = count {
                             if flagForCountCell == 2 {
@@ -391,5 +413,19 @@ class AddCircuitVC: UITableViewController {
         
         _ = navigationController?.popViewController(animated: true)
     }
+    
 }
 
+extension UITableView {
+    
+    var lastIndexPath: IndexPath? {
+        
+        let lastSectionIndex = numberOfSections - 1
+        guard lastSectionIndex >= 0 else { return nil }
+        
+        let lastIndexInLastSection = numberOfRows(inSection: lastSectionIndex) - 1
+        guard lastIndexInLastSection >= 0 else { return nil }
+        
+        return IndexPath(row: lastIndexInLastSection, section: lastSectionIndex)
+    }
+}

@@ -137,14 +137,8 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         selectedMin = min
         selectedSec = sec
         
-        
-        print("from pick timeSetup \(timeSetup)")
-        
     }
-    
-    
-    
-    
+
     // set observer for expanding
     func watchFrameChanges() {
         if !isObserving {
