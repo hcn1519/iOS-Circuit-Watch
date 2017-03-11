@@ -23,7 +23,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +107,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
-            print(circuitData)
+//            print(circuitData)
         }
     }
 

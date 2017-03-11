@@ -58,7 +58,7 @@ class CircuitVC: UIViewController {
     
     // 매 초 당 돌아가는 코드
     func runTimedCode() {
-        let maxProgress: CGFloat = CGFloat(toSecond(min: timeData.totalTimeMin, sec: timeData.totalTimeSec))
+        let maxProgress: CGFloat = CGFloat(toSecond(timeData.totalTimeMin, timeData.totalTimeSec))
         
         progress = CGFloat(currentProgress / maxProgress)
         currentProgress += 1
@@ -129,7 +129,7 @@ class CircuitVC: UIViewController {
     func checkSection(_ data: Time, _ currentTime: CGFloat) -> String {
         let sortedTimeSection = timeSection.sorted(by: { $0.0 > $1.0 })
         
-        let time = toSecond(min: data.totalTimeMin, sec: data.totalTimeSec)
+        let time = toSecond(data.totalTimeMin, data.totalTimeSec)
         let currentTime = CGFloat(time) - currentTime
         var currentSection = ""
         var maximum = false
@@ -162,16 +162,17 @@ class CircuitVC: UIViewController {
     }
 */
     
+    
     // 시간 섹션 구간 설정
     func makeSection(_ data: Time) -> [Int: String] {
-        var allTime = toSecond(min: data.totalTimeMin, sec: data.totalTimeSec)
+        var allTime = toSecond(data.totalTimeMin, data.totalTimeSec)
         
-        let prepareEnd = toSecond(min: data.prepareTimeMin, sec: data.prepareTimeSec)
+        let prepareEnd = toSecond(data.prepareTimeMin, data.prepareTimeSec)
         
-        let workoutTimeTotal = toSecond(min: data.workoutTimeMin, sec: data.workoutTimeSec)
-        let setBreakTotal = toSecond(min: data.setBreakTimeMin, sec: data.setBreakTimeSec)
-        let workoutBreakTotal = toSecond(min: data.workoutBreakTimeMin, sec: data.workoutBreakTimeSec)
-        let wrapupTotal = toSecond(min: data.wrapUpTimeMin, sec: data.wrapUpTimeSec)
+        let workoutTimeTotal = toSecond(data.workoutTimeMin, data.workoutTimeSec)
+        let setBreakTotal = toSecond(data.setBreakTimeMin, data.setBreakTimeSec)
+        let workoutBreakTotal = toSecond(data.workoutBreakTimeMin, data.workoutBreakTimeSec)
+        let wrapupTotal = toSecond(data.wrapUpTimeMin, data.wrapUpTimeSec)
         
         // 준비시간 설정
         timeSection.updateValue(subTitle["section1"]!, forKey: allTime)
@@ -200,7 +201,7 @@ class CircuitVC: UIViewController {
         return timeSection
     }
     
-    func toSecond(min: Int, sec: Int) -> Int {
+    func toSecond(_ min: Int, _ sec: Int) -> Int {
         return (min * 60 + sec)
     }
     

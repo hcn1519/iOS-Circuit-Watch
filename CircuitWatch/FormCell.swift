@@ -82,8 +82,8 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
             secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft * 2 + 5).isActive = true
         } else if UIDevice.current.isiPhoneSE {
             let seMargin = self.frame.width / 4
-            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin + 10).isActive = true
-            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin * 2 + 15).isActive = true
+            minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin + 15).isActive = true
+            secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: seMargin * 2 + 32).isActive = true
         } else {
             minLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft).isActive = true
             secLabel.leftAnchor.constraint(equalTo: pickerView.leftAnchor, constant: marginLeft * 2 - 20).isActive = true
@@ -147,7 +147,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         }
         label = minute! + second!
         self.detailLabel.text = label
-        print("from pick \(label!)")
+//        print("from pick \(label!)")
         
         timeSetup = self.detailLabel.text
         

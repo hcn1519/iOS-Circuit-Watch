@@ -37,6 +37,8 @@ class AddCircuitVC: UITableViewController {
  
         self.navigationController?.navigationBar.isTranslucent = false
         
+        
+        
         let title = [titleKey: "Title of Training"]
         let itemOne = [titleKey : "Prepare Time"]
         let itemTwo = [titleKey : "Workout Time"]
@@ -116,6 +118,7 @@ class AddCircuitVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell
             cell?.titleLabel.text = itemData[titleKey]
             
+            
             // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
             // 값 초기화 로직
             if indexPath != selectedIndexPath {
@@ -128,10 +131,11 @@ class AddCircuitVC: UITableViewController {
                         currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                     }
                     
-                    print("from if \(timeSetup)")
+//                    print("from if \(timeSetup)")
+//                    print("from if \(currentTime.totalTimeSec)")
                 }
             } else {
-                print("from else timeSetup \(timeSetup)")
+//                print("from else timeSetup \(timeSetup)")
                 
                 if selectedIndexPath != nil && selectedIndexPath != indexPath {
                     cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
@@ -236,13 +240,32 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
+//            print("=== RefreshTotalTime Start ===")
+//            print("min - \(currentTime.totalTimeMin)")
+//            print("sec - \(currentTime.totalTimeSec)")
+//            print("=== RefreshTotalTime End ===")
+            
             lastCell?.timeStringSet(currentTime.totalTimeMin, currentTime.totalTimeSec)
         }
     }
     
+    func alertHandle(title: String, message: String, style: UIAlertControllerStyle) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     @IBAction func addBtnPressed(_ sender: UIButton) {
         refreshTotalTime()
-//        
+        
+        // error handle
+        if workoutCount == 0{
+            alertHandle(title: "Count Value Error", message: "Invalid Workout Count", style: .alert)
+        } else if setCount == 0 {
+            alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
+        }
+
+        
+        
 //        let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
 //        
 //        let indexPath = self.tableView.indexPathsForVisibleRows

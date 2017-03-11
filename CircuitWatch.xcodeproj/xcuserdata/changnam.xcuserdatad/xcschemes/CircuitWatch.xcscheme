@@ -38,6 +38,16 @@
                ReferencedContainer = "container:CircuitWatch.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7ECD9C301E726A0A00949316"
+               BuildableName = "CircuitWatchUITests.xctest"
+               BlueprintName = "CircuitWatchUITests"
+               ReferencedContainer = "container:CircuitWatch.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

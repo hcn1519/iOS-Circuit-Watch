@@ -29,10 +29,20 @@
 		7EAD9B351E5D7356005B48A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */; };
 		7EAD9B401E5D7356005B48A3 /* CircuitWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B3F1E5D7356005B48A3 /* CircuitWatchTests.swift */; };
 		7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4CAE51E6022A200B7A78A /* FormCell.swift */; };
+		7ECD9C341E726A0A00949316 /* CircuitWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */; };
+		7ECD9C421E726B3700949316 /* snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD9C3F1E726B3700949316 /* snapfile */; };
+		7ECD9C461E72700100949316 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C451E72700100949316 /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		7EAD9B3C1E5D7356005B48A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7EAD9B1F1E5D7356005B48A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EAD9B261E5D7356005B48A3;
+			remoteInfo = CircuitWatch;
+		};
+		7ECD9C361E726A0A00949316 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7EAD9B1F1E5D7356005B48A3 /* Project object */;
 			proxyType = 1;
@@ -68,6 +78,11 @@
 		7EAD9B3F1E5D7356005B48A3 /* CircuitWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitWatchTests.swift; sourceTree = "<group>"; };
 		7EAD9B411E5D7356005B48A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EB4CAE51E6022A200B7A78A /* FormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		7ECD9C311E726A0A00949316 /* CircuitWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircuitWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitWatchUITests.swift; sourceTree = "<group>"; };
+		7ECD9C351E726A0A00949316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ECD9C3F1E726B3700949316 /* snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = snapfile; sourceTree = "<group>"; };
+		7ECD9C451E72700100949316 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +94,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7EAD9B381E5D7356005B48A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ECD9C2E1E726A0A00949316 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -111,6 +133,7 @@
 			children = (
 				7EAD9B291E5D7356005B48A3 /* CircuitWatch */,
 				7EAD9B3E1E5D7356005B48A3 /* CircuitWatchTests */,
+				7ECD9C321E726A0A00949316 /* CircuitWatchUITests */,
 				7EAD9B281E5D7356005B48A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,6 +143,7 @@
 			children = (
 				7EAD9B271E5D7356005B48A3 /* CircuitWatch.app */,
 				7EAD9B3B1E5D7356005B48A3 /* CircuitWatchTests.xctest */,
+				7ECD9C311E726A0A00949316 /* CircuitWatchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +200,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7ECD9C321E726A0A00949316 /* CircuitWatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD9C3F1E726B3700949316 /* snapfile */,
+				7ECD9C451E72700100949316 /* SnapshotHelper.swift */,
+				7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */,
+				7ECD9C351E726A0A00949316 /* Info.plist */,
+			);
+			path = CircuitWatchUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,6 +249,24 @@
 			productReference = 7EAD9B3B1E5D7356005B48A3 /* CircuitWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7ECD9C301E726A0A00949316 /* CircuitWatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ECD9C3A1E726A0A00949316 /* Build configuration list for PBXNativeTarget "CircuitWatchUITests" */;
+			buildPhases = (
+				7ECD9C2D1E726A0A00949316 /* Sources */,
+				7ECD9C2E1E726A0A00949316 /* Frameworks */,
+				7ECD9C2F1E726A0A00949316 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ECD9C371E726A0A00949316 /* PBXTargetDependency */,
+			);
+			name = CircuitWatchUITests;
+			productName = CircuitWatchUITests;
+			productReference = 7ECD9C311E726A0A00949316 /* CircuitWatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,6 +283,12 @@
 						ProvisioningStyle = Automatic;
 					};
 					7EAD9B3A1E5D7356005B48A3 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = W6XUQ3PPN9;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7EAD9B261E5D7356005B48A3;
+					};
+					7ECD9C301E726A0A00949316 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = W6XUQ3PPN9;
 						ProvisioningStyle = Automatic;
@@ -252,6 +311,7 @@
 			targets = (
 				7EAD9B261E5D7356005B48A3 /* CircuitWatch */,
 				7EAD9B3A1E5D7356005B48A3 /* CircuitWatchTests */,
+				7ECD9C301E726A0A00949316 /* CircuitWatchUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,6 +333,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ECD9C2F1E726A0A00949316 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECD9C421E726B3700949316 /* snapfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +378,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ECD9C2D1E726A0A00949316 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECD9C341E726A0A00949316 /* CircuitWatchUITests.swift in Sources */,
+				7ECD9C461E72700100949316 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -317,6 +394,11 @@
 			isa = PBXTargetDependency;
 			target = 7EAD9B261E5D7356005B48A3 /* CircuitWatch */;
 			targetProxy = 7EAD9B3C1E5D7356005B48A3 /* PBXContainerItemProxy */;
+		};
+		7ECD9C371E726A0A00949316 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7EAD9B261E5D7356005B48A3 /* CircuitWatch */;
+			targetProxy = 7ECD9C361E726A0A00949316 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,6 +571,32 @@
 			};
 			name = Release;
 		};
+		7ECD9C381E726A0A00949316 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = W6XUQ3PPN9;
+				INFOPLIST_FILE = CircuitWatchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hcn1519.CircuitWatchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CircuitWatch;
+			};
+			name = Debug;
+		};
+		7ECD9C391E726A0A00949316 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = W6XUQ3PPN9;
+				INFOPLIST_FILE = CircuitWatchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hcn1519.CircuitWatchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CircuitWatch;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -518,6 +626,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7ECD9C3A1E726A0A00949316 /* Build configuration list for PBXNativeTarget "CircuitWatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ECD9C381E726A0A00949316 /* Debug */,
+				7ECD9C391E726A0A00949316 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

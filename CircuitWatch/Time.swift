@@ -106,7 +106,12 @@ class Time: NSObject, NSCoding {
     }
 
     fileprivate var _totalTimeMin: Int!
-    fileprivate var _totalTimeSec: Int!
+    fileprivate var _totalTimeSec: Int! {
+        didSet {
+            print("Change")
+            print(self._totalTimeSec)
+        }
+    }
     
     init(circuitTitle: String, prepareTimeMin: Int, prepareTimeSec: Int, workoutTimeMin: Int, workoutTimeSec: Int, workoutCount: Int, setCount: Int, workoutBreakTimeMin: Int, workoutBreakTimeSec: Int, setBreakTimeMin: Int, setBreakTimeSec: Int, wrapUpTimeMin: Int, wrapUpTimeSec: Int, totalTimeMin: Int, totalTimeSec: Int) {
         self._circuitTitle = circuitTitle
@@ -323,7 +328,7 @@ class Time: NSObject, NSCoding {
 
         return (totalMinute, totalSecond)
     }
-    
+
     private func toSecond(_ min: Int, _ sec: Int) -> Int {
         return (min * 60 + sec)
     }
