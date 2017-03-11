@@ -158,7 +158,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         selectedSec = sec
         
     }
-
+    
     // set observer for expanding
     func watchFrameChanges() {
         if !isObserving {

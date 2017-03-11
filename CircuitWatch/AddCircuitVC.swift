@@ -16,7 +16,8 @@ var selectedSec: Int! = 30
 var workoutTitle: String = ""
 var workoutCount: Int = 0
 var setCount: Int = 0
-var currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
+
+
 
 class AddCircuitVC: UITableViewController {
 
@@ -36,20 +37,15 @@ class AddCircuitVC: UITableViewController {
         super.viewDidLoad()
  
         self.navigationController?.navigationBar.isTranslucent = false
-        
-        
-        
+ 
         let title = [titleKey: "Title of Training"]
         let itemOne = [titleKey : "Prepare Time"]
         let itemTwo = [titleKey : "Workout Time"]
-        
         let itemThree = [titleKey : "How many Workout?"]
         let itemFour = [titleKey : "How many Set?"]
-        
         let itemFive = [titleKey : "Workout BreakTime"]
         let itemSix = [titleKey : "Set BreakTime"]
         let itemSeven = [titleKey : "Wrapup Time"]
-        
         let total = [titleKey : "Total Time"]
         
         dataArray.append(title)
@@ -62,10 +58,9 @@ class AddCircuitVC: UITableViewController {
         dataArray.append(itemSeven)
         dataArray.append(total)
         
+        
     }
 
-
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -97,15 +92,15 @@ class AddCircuitVC: UITableViewController {
             if indexPath.row == 0 {
                 cell?.textField.placeholder = "Title of Training"
                 cell?.fieldType = textFieldCase.StringFieldTag
-//                currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
+//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
             } else if indexPath.row == 3 {
                 cell?.textField.placeholder = "Count"
                 cell?.fieldType = textFieldCase.NumberFieldTag
-//                currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
+//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
             } else {
                 cell?.textField.placeholder = "Count"
                 cell?.fieldType = textFieldCase.NumberFieldTag
-//                currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
+//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
             }
             
             let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
@@ -118,7 +113,6 @@ class AddCircuitVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell
             cell?.titleLabel.text = itemData[titleKey]
             
-            
             // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
             // 값 초기화 로직
             if indexPath != selectedIndexPath {
@@ -128,26 +122,30 @@ class AddCircuitVC: UITableViewController {
                     if selectedIndexPath != nil {
                         cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
                         cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
-                        currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
+                        Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                     }
                     
-//                    print("from if \(timeSetup)")
-//                    print("from if \(currentTime.totalTimeSec)")
+                    print("from if")
+                    print(Time.currentTime.totalTimeSec)
+                    print("from if \(Time.currentTime.description)")
+                    
                 }
             } else {
-//                print("from else timeSetup \(timeSetup)")
+                print("from else")
+                print(Time.currentTime.totalTimeSec)
+                print("from else \(Time.currentTime.description)")
                 
                 if selectedIndexPath != nil && selectedIndexPath != indexPath {
                     cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
                     cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
                     cell?.detailLabel.text = timeSetup
-                    currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
+                    Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                 } else {
                     // initialize value to default one.
                     cell?.pickerView.selectRow(1, inComponent: 0, animated: true)
                     cell?.pickerView.selectRow(30, inComponent: 1, animated: true)
                     cell?.detailLabel.text = "01min 30sec"
-                    currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
+                    Time.currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
                 }
             }
             
@@ -175,9 +173,11 @@ class AddCircuitVC: UITableViewController {
             }
             
             if indexPaths.count > 0 {
-                tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+                tableView.reloadRows(at: indexPaths, with: .automatic)
             }
         }
+        print(Time.currentTime.totalTimeSec)
+        print(Time.currentTime.description)
         refreshTotalTime()
     }
     
@@ -230,8 +230,10 @@ class AddCircuitVC: UITableViewController {
     
     func handleViewTap(recognizer: UIGestureRecognizer) {
         self.tableView.endEditing(true)
-        print(currentTime.description)
-        
+        print("==== Handle View Tap Start ====")
+        print(Time.currentTime.totalTimeSec)
+        print(Time.currentTime.description)
+        print("==== Handle View Tap End ====")
         refreshTotalTime()
         
     }
@@ -240,12 +242,13 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
-//            print("=== RefreshTotalTime Start ===")
-//            print("min - \(currentTime.totalTimeMin)")
-//            print("sec - \(currentTime.totalTimeSec)")
-//            print("=== RefreshTotalTime End ===")
+            print("=== RefreshTotalTime Start ===")
+            print("min - \(Time.currentTime.totalTimeMin)")
+            print("sec - \(Time.currentTime.totalTimeSec)")
+            print(Time.currentTime.description)
+            print("=== RefreshTotalTime End ===")
             
-            lastCell?.timeStringSet(currentTime.totalTimeMin, currentTime.totalTimeSec)
+            lastCell?.timeStringSet(Time.currentTime.totalTimeMin, Time.currentTime.totalTimeSec)
         }
     }
     
@@ -258,7 +261,7 @@ class AddCircuitVC: UITableViewController {
         refreshTotalTime()
         
         // error handle
-        if workoutCount == 0{
+        if workoutCount == 0 {
             alertHandle(title: "Count Value Error", message: "Invalid Workout Count", style: .alert)
         } else if setCount == 0 {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
@@ -435,7 +438,7 @@ class AddCircuitVC: UITableViewController {
 //        time.totalTimeMin = total.0
 //        time.totalTimeSec = total.1
         
-        saveToUserDefaults(dataObject: currentTime)
+        saveToUserDefaults(dataObject: Time.currentTime)
         
         _ = navigationController?.popViewController(animated: true)
     }

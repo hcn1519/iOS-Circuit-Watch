@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -77,8 +78,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     destination.timeData = item
                 }
             }
-        } else if segue.identifier == "goToAddCircuit" {
-            currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
         }
     }
     
