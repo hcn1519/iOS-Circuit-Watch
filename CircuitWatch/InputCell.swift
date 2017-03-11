@@ -43,19 +43,19 @@ class InputCell: UITableViewCell, UITextFieldDelegate {
                     if value != nil {
                         workoutCount = value!
                     }
-                    currentTime.workoutCount = workoutCount
+                    Time.currentTime.workoutCount = workoutCount
                 } else {
                     if value != nil {
                         setCount = value!
                     }
-                    currentTime.setCount = setCount
+                    Time.currentTime.setCount = setCount
                 }
             }
         case .StringFieldTag:
             if let text = self.textField.text {
                 let value = text
                 workoutTitle = value
-                currentTime.circuitTitle = workoutTitle
+                Time.currentTime.circuitTitle = workoutTitle
             }
             break
         case .DefaultTag:

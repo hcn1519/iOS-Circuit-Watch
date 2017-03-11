@@ -21,17 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circuit Watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X9-D2-DZq">
-                                <rect key="frame" x="131.5" y="321.5" width="111" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WYx-tP-nBF">
+                                <rect key="frame" x="127.5" y="261.5" width="120" height="144"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CircuitWatch-120" translatesAutoresizingMaskIntoConstraints="NO" id="Hu8-NE-CLd">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Circuit Watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X9-D2-DZq">
+                                        <rect key="frame" x="0.0" y="120" width="120" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.12939286229999999" green="0.12942266459999999" blue="0.12939092520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6X9-D2-DZq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="X1a-rw-gvd"/>
-                            <constraint firstItem="6X9-D2-DZq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sac-aE-ybh"/>
+                            <constraint firstItem="WYx-tP-nBF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4rV-EJ-EwZ"/>
+                            <constraint firstItem="WYx-tP-nBF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Aip-sw-fW5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +48,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CircuitWatch-120" width="120" height="120"/>
+    </resources>
 </document>
