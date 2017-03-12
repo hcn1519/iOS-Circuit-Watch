@@ -40,12 +40,12 @@ class WordCell: UITableViewCell {
         } else {
             temp2 = "\(sec)"
         }
-//        print("=== WordCell Start ===")
-//        print("min - \(min)")
-//        print("sec - \(sec)")
-//        print("temp1 - \(temp1)")
-//        print("temp2 - \(temp2)")
-//        print("=== WordCell End ===")
+        print("=== WordCell Start ===")
+        print("min - \(min)")
+        print("sec - \(sec)")
+        print("temp1 - \(temp1)")
+        print("temp2 - \(temp2)")
+        print("=== WordCell End ===")
         
         detailLabel.text = (temp1 + "min " + temp2 + "sec")
     }

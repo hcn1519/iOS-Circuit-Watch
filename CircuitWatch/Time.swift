@@ -241,6 +241,8 @@ class Time: NSObject, NSCoding {
         get {
             return _workoutTimeSec
         } set {
+            print("hey")
+            print(newValue)
             _totalTimeSec = newValue
         }
     }
@@ -340,7 +342,7 @@ class Time: NSObject, NSCoding {
 
 extension Time {
     override var description: String {
-        let string = "\(_circuitTitle): \(_prepareTimeMin) \(_prepareTimeSec) \(_workoutTimeMin) \(_workoutTimeSec) \(_workoutCount) \(_setCount) \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) \(_setBreakTimeMin) \(_setBreakTimeSec) \(_wrapUpTimeMin) \(_wrapUpTimeSec) \(_totalTimeMin) \(_totalTimeSec)"
+        let string = "\(_circuitTitle) PrepareTime: \(_prepareTimeMin) \(_prepareTimeSec) WorkOut Time: \(_workoutTimeMin) \(_workoutTimeSec) Count: \(_workoutCount) \(_setCount) workOutBreak Time: \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) setBreak Time: \(_setBreakTimeMin) \(_setBreakTimeSec) wrapup Time: \(_wrapUpTimeMin) \(_wrapUpTimeSec) TotalTime: \(_totalTimeMin) \(_totalTimeSec)"
         return string
     }
 }

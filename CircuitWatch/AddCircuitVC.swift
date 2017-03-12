@@ -58,8 +58,8 @@ class AddCircuitVC: UITableViewController {
         dataArray.append(itemSeven)
         dataArray.append(total)
         
-        
     }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -76,80 +76,89 @@ class AddCircuitVC: UITableViewController {
         
         if indexPath.row == 8 {
             cellID = wordCellID
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? WordCell
-            cell?.selectionStyle = .none;
-            cell?.titleLabel.text = itemData[titleKey]
-            cell?.detailLabel.text = "03min 0sec"
-            
-            return cell!
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? WordCell {
+                
+                cell.selectionStyle = .none;
+                cell.titleLabel.text = itemData[titleKey]
+                cell.detailLabel.text = "03min 0sec"
+                
+                return cell
+            }
+            return UITableViewCell()
         } else if indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 4 {
             cellID = inputCellID
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? InputCell
-            cell?.selectionStyle = .none;
-            cell?.textField.frame.size.width = 120
-            cell?.titleLabel.text = itemData[titleKey]
-            
-            if indexPath.row == 0 {
-                cell?.textField.placeholder = "Title of Training"
-                cell?.fieldType = textFieldCase.StringFieldTag
-//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
-            } else if indexPath.row == 3 {
-                cell?.textField.placeholder = "Count"
-                cell?.fieldType = textFieldCase.NumberFieldTag
-//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
-            } else {
-                cell?.textField.placeholder = "Count"
-                cell?.fieldType = textFieldCase.NumberFieldTag
-//                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? InputCell {
+                
+                cell.selectionStyle = .none;
+                cell.textField.frame.size.width = 120
+                cell.titleLabel.text = itemData[titleKey]
+                
+                if indexPath.row == 0 {
+                    cell.textField.placeholder = "Title of Training"
+                    cell.fieldType = textFieldCase.StringFieldTag
+    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
+                } else if indexPath.row == 3 {
+                    cell.textField.placeholder = "Count"
+                    cell.fieldType = textFieldCase.NumberFieldTag
+    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
+                } else {
+                    cell.textField.placeholder = "Count"
+                    cell.fieldType = textFieldCase.NumberFieldTag
+    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
+                }
+                
+                let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+                viewTapGestureRec.cancelsTouchesInView = false
+                self.tableView.addGestureRecognizer(viewTapGestureRec)
+                
+                return cell
             }
+            return UITableViewCell()
             
-            let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
-            viewTapGestureRec.cancelsTouchesInView = false
-            self.tableView.addGestureRecognizer(viewTapGestureRec)
-            
-            return cell!
         } else {
             cellID = formCellID
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell
-            cell?.titleLabel.text = itemData[titleKey]
-            
-            // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
-            // 값 초기화 로직
-            if indexPath != selectedIndexPath {
-                if let timeSetup = timeSetup {
-                    cell?.detailLabel.text = timeSetup
-                    
-                    if selectedIndexPath != nil {
-                        cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
-                        cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
-                        Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell {
+                cell.titleLabel.text = itemData[titleKey]
+
+                // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
+                // 값 초기화 로직
+                if indexPath != selectedIndexPath {
+                    if let timeSetup = timeSetup {
+                        cell.detailLabel.text = timeSetup
+                        
+                        if selectedIndexPath != nil {
+                            cell.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
+                            cell.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
+                            Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
+                        }
+                        
+                        print("from if")
+                        print(Time.currentTime.totalTimeSec)
+                        print("from if \(Time.currentTime.description)")
+                        
                     }
-                    
-                    print("from if")
-                    print(Time.currentTime.totalTimeSec)
-                    print("from if \(Time.currentTime.description)")
-                    
-                }
-            } else {
-                print("from else")
-                print(Time.currentTime.totalTimeSec)
-                print("from else \(Time.currentTime.description)")
-                
-                if selectedIndexPath != nil && selectedIndexPath != indexPath {
-                    cell?.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
-                    cell?.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
-                    cell?.detailLabel.text = timeSetup
-                    Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
                 } else {
-                    // initialize value to default one.
-                    cell?.pickerView.selectRow(1, inComponent: 0, animated: true)
-                    cell?.pickerView.selectRow(30, inComponent: 1, animated: true)
-                    cell?.detailLabel.text = "01min 30sec"
-                    Time.currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
+                    print("from else")
+                    print(Time.currentTime.totalTimeSec)
+                    print("from else \(Time.currentTime.description)")
+                    
+                    if selectedIndexPath != nil && selectedIndexPath != indexPath {
+                        cell.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
+                        cell.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
+                        cell.detailLabel.text = timeSetup
+                        Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
+                    } else {
+                        // initialize value to default one.
+                        cell.pickerView.selectRow(1, inComponent: 0, animated: true)
+                        cell.pickerView.selectRow(30, inComponent: 1, animated: true)
+                        cell.detailLabel.text = "01min 30sec"
+                        Time.currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
+                    }
                 }
+                
+                return cell
             }
-            
-            return cell!
+            return UITableViewCell()
         }
         
     }
