@@ -49,7 +49,7 @@ class CircuitVC: UIViewController {
         timeSection = makeSection(timeData)
         minuteCounter = timeData.totalTimeMin
         secondCounter = timeData.totalTimeSec
-        print(timeSection)
+        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -72,6 +72,13 @@ class CircuitVC: UIViewController {
         }
         secondCounter -= 1
     
+        if minuteCounter == 0 && secondCounter == 0 {
+            alertHandle(title: "Workout Finish", message: "Great job, You are done!", style: .alert)
+            remainTime.text = "00:00"
+            circuitProgressView.progress = CGFloat(1)
+            timeSet.invalidate()
+            
+        }
         remainTime.text = timeStringSet(minuteCounter, secondCounter)
         progressDescriptionLabel.text = checkSection(timeData, currentProgress)
     }
@@ -173,12 +180,12 @@ class CircuitVC: UIViewController {
         let workoutBreakTotal = toSecond(data.workoutBreakTimeMin, data.workoutBreakTimeSec)
         let wrapupTotal = toSecond(data.wrapUpTimeMin, data.wrapUpTimeSec)
         
-        print("=============")
-        print(workoutTimeTotal)
-        print(setBreakTotal)
-        print(workoutBreakTotal)
-        print(wrapupTotal)
-        print("=============")
+//        print("=============")
+//        print(workoutTimeTotal)
+//        print(setBreakTotal)
+//        print(workoutBreakTotal)
+//        print(wrapupTotal)
+//        print("=============")
         
         // 준비시간 설정
         timeSection.updateValue(subTitle["section1"]!, forKey: allTime)
@@ -209,6 +216,12 @@ class CircuitVC: UIViewController {
     
     func toSecond(_ min: Int, _ sec: Int) -> Int {
         return (min * 60 + sec)
+    }
+    
+    func alertHandle(title: String, message: String, style: UIAlertControllerStyle) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // IBAction

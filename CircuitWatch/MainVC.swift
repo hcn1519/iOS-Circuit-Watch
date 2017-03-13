@@ -43,8 +43,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "circuitCell", for: indexPath) as? CircuitCell {
             let dataArray = circuitData[indexPath.row]
-
+            
             cell.trainingTitle.text = "\(dataArray.circuitTitle)"
+
+            
             if dataArray.totalTimeMin < 10 {
                 if dataArray.totalTimeSec < 10 {
                     cell.trainingTime.text = "0\(dataArray.totalTimeMin):0\(dataArray.totalTimeSec)"
@@ -107,8 +109,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
             
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            
-//            print(circuitData)
+
         }
     }
 

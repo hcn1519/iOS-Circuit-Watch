@@ -25,14 +25,14 @@ class AddCircuitVC: UITableViewController {
 
     var selectedIndexPath: IndexPath?
     var dataArray: [[String: String]] = []
-    var sameIndexPath: IndexPath?
     
     let titleKey = "title"
     let minuteKey = "min"
     let secondkey = "sec"
     var isFirstLoad: Bool = true
     var pickerData = [[Int]?]()
-
+    
+    var updateTime = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,9 @@ class AddCircuitVC: UITableViewController {
         pickerData.append([1,30])
         pickerData.append([1,30])
         pickerData.append([1,30])
-
+        
+        updateTime = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshTotalTime), userInfo: nil, repeats: true)
+        updateTime.fire()
     }
     
 
@@ -190,17 +192,17 @@ class AddCircuitVC: UITableViewController {
                 cell.pickerView.selectRow(min!, inComponent: 0, animated: true)
                 cell.pickerView.selectRow(sec!, inComponent: 1, animated: true)
                 
-                print("drawing \(indexPath.row)")
-                print(pickerData)
-                print("===")
+//                print("drawing \(indexPath.row)")
+//                print(pickerData)
+//                print("===")
                 
                 // 펼쳐진 셀을 접을 때 실행
                 // 다른 셀
                 if selectedIndexPath != nil && selectedIndexPath != indexPath {
-                    print("from draw \(indexPath)")
+//                    print("from draw \(indexPath)")
                     let prevMin = pickerData[indexPath.row]?[0]
                     let prevSec = pickerData[indexPath.row]?[1]
-                    print("selected from draw \(selectedIndexPath)")
+//                    print("selected from draw \(selectedIndexPath)")
                     
                     if let prev = tableView.cellForRow(at: indexPath) as? FormCell {
                         prev.detailLabel.text = makeTimeString(min: prevMin!, sec: prevSec!)
@@ -229,10 +231,12 @@ class AddCircuitVC: UITableViewController {
 //                print("selected \(selectedIndexPath?.row)")
 //                print(previousIndexPath)
 //                print("=====")
-                
+//                
 //                print("-------------------------")
+//                print("draw End")
             }
         }
+        refreshTotalTime()
     }
     // specified cell was removed from the table
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -275,7 +279,6 @@ class AddCircuitVC: UITableViewController {
                     
                     if let sameCell = tableView.cellForRow(at: indexPath) as? FormCell {
                         sameCell.detailLabel.text = makeTimeString(min: currentMin, sec: currentSec)
-//                        print(sameCell.detailLabel.text)
                     }
                 }
             
@@ -296,11 +299,12 @@ class AddCircuitVC: UITableViewController {
                     Time.currentTime.wrapUpTimeMin = min
                     Time.currentTime.wrapUpTimeSec = sec
                 }
-                refreshTotalTime()
+                
             }
             
-            print("enddisplay indexPath \(indexPath.row)")
+//            print("enddisplay indexPath \(indexPath.row)")
         }
+        refreshTotalTime()
     }
     
     func makeTimeString(min: Int, sec: Int) -> String {
@@ -369,11 +373,7 @@ class AddCircuitVC: UITableViewController {
     // view tap
     func handleViewTap(recognizer: UIGestureRecognizer) {
         self.tableView.endEditing(true)
-//        print("==== Handle View Tap Start ====")
-//        print(Time.currentTime.totalTimeSec)
 //        print(Time.currentTime.description)
-//        print("==== Handle View Tap End ====")
-        print(Time.currentTime.description)
         refreshTotalTime()
     }
     
@@ -382,14 +382,14 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
+//            
+//            print("=== RefreshTotalTime Start ===")
+//            print(Time.currentTime.description)
+//            print("=== RefreshTotalTime End ===")
+            let total = Time.currentTime.calulateTotalTime()
             
-            print("=== RefreshTotalTime Start ===")
-//            print("min - \(Time.currentTime.totalTimeMin)")
-//            print("sec - \(Time.currentTime.totalTimeSec)")
-            print(Time.currentTime.description)
-            print("=== RefreshTotalTime End ===")
             
-            lastCell?.timeStringSet(Time.currentTime.totalTimeMin, Time.currentTime.totalTimeSec)
+            lastCell?.timeStringSet(total.0, total.1)
         }
     }
     
@@ -399,7 +399,7 @@ class AddCircuitVC: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     @IBAction func addBtnPressed(_ sender: UIButton) {
-        refreshTotalTime()
+//        refreshTotalTime()
         
         // error handle
         if workoutCount == 0 {
@@ -408,178 +408,10 @@ class AddCircuitVC: UITableViewController {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
         }
 
-        
-//        let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
-//        
-//        let indexPath = self.tableView.indexPathsForVisibleRows
-//
-//        
-//        var flagForFormCell = 1
-//        var flagForCountCell = 1
-//        for i in 0...tableView.numberOfSections-1 {
-//            for j in 0...tableView.numberOfRows(inSection: i)-1 {
-//                if let cell = tableView.cellForRow(at: (indexPath?[j])!) {
-//                    if cell.isKind(of: FormCell.self) {
-//                        // Input from PickerView
-//                        let minute: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 0)
-//                        let second: Int? = (cell  as! FormCell).pickerView.selectedRow(inComponent: 1)
-//                        
-//                        if flagForFormCell == 1 {
-//                            if let min = minute {
-//                                if let sec = second {
-//                                    time.prepareTimeMin = min
-//                                    time.prepareTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.prepareTimeMin = min
-//                                    time.prepareTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            } else {
-//                                if let sec = second {
-//                                    time.prepareTimeMin = 1
-//                                    time.prepareTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.prepareTimeMin = 1
-//                                    time.prepareTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            }
-//                            
-//                        } else if flagForFormCell == 2{
-//                            if let min = minute {
-//                                if let sec = second {
-//                                    time.workoutTimeMin = min
-//                                    time.workoutTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.workoutTimeMin = min
-//                                    time.workoutTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            } else {
-//                                if let sec = second {
-//                                    time.workoutTimeMin = 1
-//                                    time.workoutTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.workoutTimeMin = 1
-//                                    time.workoutTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            }
-//                        } else if flagForFormCell == 3{
-//                            if let min = minute {
-//                                if let sec = second {
-//                                    time.workoutBreakTimeMin = min
-//                                    time.workoutBreakTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.workoutBreakTimeMin = min
-//                                    time.workoutBreakTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            } else {
-//                                if let sec = second {
-//                                    time.workoutBreakTimeMin = 1
-//                                    time.workoutBreakTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.workoutBreakTimeMin = 1
-//                                    time.workoutBreakTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            }
-//                        } else if flagForFormCell == 4{
-//                            if let min = minute {
-//                                if let sec = second {
-//                                    time.setBreakTimeMin = min
-//                                    time.setBreakTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.setBreakTimeMin = min
-//                                    time.setBreakTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            } else {
-//                                if let sec = second {
-//                                    time.setBreakTimeMin = 1
-//                                    time.setBreakTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.setBreakTimeMin = 1
-//                                    time.setBreakTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            }
-//                        } else if flagForFormCell == 5{
-//                            if let min = minute {
-//                                if let sec = second {
-//                                    time.wrapUpTimeMin = min
-//                                    time.wrapUpTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.wrapUpTimeMin = min
-//                                    time.wrapUpTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            } else {
-//                                if let sec = second {
-//                                    time.wrapUpTimeMin = 1
-//                                    time.wrapUpTimeSec = sec
-//                                    flagForFormCell += 1
-//                                } else {
-//                                    time.wrapUpTimeMin = 1
-//                                    time.wrapUpTimeSec = 30
-//                                    flagForFormCell += 1
-//                                }
-//                            }
-//                        }
-//                        
-//                    } else if cell.isKind(of: InputCell.self) {
-//                        // Input from TextField(title)
-//                        if flagForCountCell == 1 {
-//                            let title = (cell  as! InputCell).textField.text!
-//                            if title != "" {
-//                                time.circuitTitle = title
-//                            } else {
-//                                time.circuitTitle = ""
-//                                
-//                            }
-//                            flagForCountCell += 1
-//                            continue
-//                        }
-//                        
-//                        // Input from TextField(count)
-//                        let count: Int? = Int((cell  as! InputCell).textField.text!)
-//                        
-//                        if let number = count {
-//                            if flagForCountCell == 2 {
-//                                time.workoutCount = number
-//                                flagForCountCell += 1
-//                            } else {
-//                                time.setCount = number
-//                            }
-//                        } else {
-//                            if flagForCountCell == 2 {
-//                                time.workoutCount = 0
-//                                flagForCountCell += 1
-//                            } else {
-//                                time.setCount = 0
-//                            }
-//                        }
-//                        
-//                    }
-//                }
-//            }
-//        }
-//        let total = time.calulateTotalTime()
-//        time.totalTimeMin = total.0
-//        time.totalTimeSec = total.1
-        
-        print(Time.currentTime.description)
+//        print(Time.currentTime.description)
         saveToUserDefaults(dataObject: Time.currentTime)
+        
+        updateTime.invalidate()
         
         _ = navigationController?.popViewController(animated: true)
     }

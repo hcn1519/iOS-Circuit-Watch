@@ -634,6 +634,7 @@
 				7ECD9C391E726A0A00949316 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -234,10 +234,8 @@ class Time: NSObject, NSCoding {
     }
     var totalTimeSec: Int {
         get {
-            return _workoutTimeSec
+            return _totalTimeSec
         } set {
-            print("hey")
-            print(newValue)
             _totalTimeSec = newValue
         }
     }
@@ -329,9 +327,9 @@ class Time: NSObject, NSCoding {
         let totalMinute = totalTime / 60
         let totalSecond = totalTime % 60
 
-        print(totalTime)
-        print(totalMinute)
-        print(totalSecond)
+//        print(totalTime)
+//        print(totalMinute)
+//        print(totalSecond)
         
         return (totalMinute, totalSecond)
     }

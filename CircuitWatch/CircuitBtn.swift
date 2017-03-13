@@ -12,7 +12,6 @@ class CircuitBtn: RoundBtn {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func layoutSubviews() {
@@ -30,7 +29,7 @@ class CircuitBtn: RoundBtn {
                     self.backgroundColor = UIColor(red: 183/255, green: 28/255, blue: 28/255, alpha: 0.9)
                     self.tintColor = self.backgroundColor
                     self.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.9), for: .selected)
-                    self.setTitle("일시정지", for: .selected)
+                    self.setTitle("Pause", for: .selected)
                 }, completion: nil)
                 
             case false:
@@ -39,13 +38,13 @@ class CircuitBtn: RoundBtn {
                     self.backgroundColor = UIColor(red: 1/255, green: 87/255, blue: 155/255, alpha: 0.9)
                     self.tintColor = self.backgroundColor
                     self.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.9), for: .normal)
-                    self.setTitle("시작", for: .normal)
+                    self.setTitle("Start", for: .normal)
+                    
                 }, completion: nil)
                 
             }
         }
     }
-    
     
     
 }

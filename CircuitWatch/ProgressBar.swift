@@ -11,7 +11,11 @@ import UIKit
 @IBDesignable
 class ProgressBar: UIView {
     
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+//        setSize()
+    }
     private var _innerProgress: CGFloat = 0.0
     
     var progress : CGFloat {
@@ -29,16 +33,19 @@ class ProgressBar: UIView {
             return _innerProgress
         }
     }
-//    var remainTime : String {
-//        get {
-//            return _remainTime
-//        } set {
-//            _remainTime = newValue
-//        }
-//    }
     
     override func draw(_ rect: CGRect) {
         CircuitProgress.drawCircuitProgress(frame: bounds, progress: progress)
-        
     }
+//    func setSize() {
+//        if UIDevice.current.isiPadPro12 {
+//            var newFrame = self.frame;
+//            
+//            newFrame.size.width = 200
+//            newFrame.size.height = 200
+//            
+//            self.frame = newFrame
+//            
+//        }
+//    }
 }
