@@ -6,17 +6,15 @@
 //  Copyright © 2017년 홍창남. All rights reserved.
 //
 
-// issue - 텍스트필드 눌렀을 때, 키보드가 사라지지 않음.
 // issue - 수정을 위해 설정해놓은 시간 고치려고 칸을 누르면 리셋되어 버림
 import UIKit
 
-var timeSetup: String!
+
 var selectedMin: Int! = 1
 var selectedSec: Int! = 30
 var workoutTitle: String = ""
 var workoutCount: Int = 0
 var setCount: Int = 0
-
 
 
 class AddCircuitVC: UITableViewController {
@@ -27,11 +25,14 @@ class AddCircuitVC: UITableViewController {
 
     var selectedIndexPath: IndexPath?
     var dataArray: [[String: String]] = []
+    var sameIndexPath: IndexPath?
     
     let titleKey = "title"
     let minuteKey = "min"
     let secondkey = "sec"
-    
+    var isFirstLoad: Bool = true
+    var pickerData = [[Int]?]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,16 @@ class AddCircuitVC: UITableViewController {
         dataArray.append(itemSeven)
         dataArray.append(total)
         
+        
+        pickerData.append(nil)
+        pickerData.append([1,30])
+        pickerData.append([1,30])
+        pickerData.append(nil)
+        pickerData.append(nil)
+        pickerData.append([1,30])
+        pickerData.append([1,30])
+        pickerData.append([1,30])
+
     }
     
 
@@ -82,6 +93,9 @@ class AddCircuitVC: UITableViewController {
                 cell.titleLabel.text = itemData[titleKey]
                 cell.detailLabel.text = "03min 0sec"
                 
+                if let _ = tableView.lastIndexPath {
+                    isFirstLoad = false
+                }
                 return cell
             }
             return UITableViewCell()
@@ -96,15 +110,12 @@ class AddCircuitVC: UITableViewController {
                 if indexPath.row == 0 {
                     cell.textField.placeholder = "Title of Training"
                     cell.fieldType = textFieldCase.StringFieldTag
-    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: workoutTitle)
                 } else if indexPath.row == 3 {
                     cell.textField.placeholder = "Count"
                     cell.fieldType = textFieldCase.NumberFieldTag
-    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(workoutCount)")
                 } else {
                     cell.textField.placeholder = "Count"
                     cell.fieldType = textFieldCase.NumberFieldTag
-    //                Time.currentTime.detectTextFieldData(indexPath: indexPath, value: "\(setCount)")
                 }
                 
                 let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
@@ -119,43 +130,17 @@ class AddCircuitVC: UITableViewController {
             cellID = formCellID
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell {
                 cell.titleLabel.text = itemData[titleKey]
-
-                // 안되는 기능 : 다시 눌렀을 때 숫자가 변경되어 버림
-                // 값 초기화 로직
-                if indexPath != selectedIndexPath {
-                    if let timeSetup = timeSetup {
-                        cell.detailLabel.text = timeSetup
-                        
-                        if selectedIndexPath != nil {
-                            cell.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
-                            cell.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
-                            Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
-                        }
-                        
-                        print("from if")
-                        print(Time.currentTime.totalTimeSec)
-                        print("from if \(Time.currentTime.description)")
-                        
-                    }
-                } else {
-                    print("from else")
-                    print(Time.currentTime.totalTimeSec)
-                    print("from else \(Time.currentTime.description)")
-                    
-                    if selectedIndexPath != nil && selectedIndexPath != indexPath {
-                        cell.pickerView.selectRow(selectedMin, inComponent: 0, animated: true)
-                        cell.pickerView.selectRow(selectedSec, inComponent: 1, animated: true)
-                        cell.detailLabel.text = timeSetup
-                        Time.currentTime.detectTimeData(indexPath: indexPath, min: selectedMin, sec: selectedSec)
-                    } else {
-                        // initialize value to default one.
-                        cell.pickerView.selectRow(1, inComponent: 0, animated: true)
-                        cell.pickerView.selectRow(30, inComponent: 1, animated: true)
-                        cell.detailLabel.text = "01min 30sec"
-                        Time.currentTime.detectTimeData(indexPath: indexPath, min: 1, sec: 30)
-                    }
-                }
                 
+                let min = pickerData[indexPath.row]?[0]
+                let sec = pickerData[indexPath.row]?[1]
+                
+                
+                cell.detailLabel.text = makeTimeString(min: min!, sec: sec!)
+                
+                if isFirstLoad {
+                    cell.detailLabel.text = makeTimeString(min: min!, sec: sec!)
+                }
+            
                 return cell
             }
             return UITableViewCell()
@@ -181,26 +166,170 @@ class AddCircuitVC: UITableViewController {
                 indexPaths += [current]
             }
             
+            
             if indexPaths.count > 0 {
                 tableView.reloadRows(at: indexPaths, with: .automatic)
             }
         }
-        print(Time.currentTime.totalTimeSec)
-        print(Time.currentTime.description)
-        refreshTotalTime()
+//        print(Time.currentTime.totalTimeSec)
+//        print(Time.currentTime.description)
+//        refreshTotalTime()
     }
     
-    // observer
+    // draw a cell for a particular row
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row != 0 && indexPath.row != 3 && indexPath.row != 4 && indexPath.row != 8 {
-            (cell as! FormCell).watchFrameChanges()
+            if let cell = (cell as? FormCell) {
+                // observer
+                cell.watchFrameChanges()
+
+                // pickerView 바꾼 value 불러오기
+                let min = pickerData[indexPath.row]?[0]
+                let sec = pickerData[indexPath.row]?[1]
+                
+                cell.pickerView.selectRow(min!, inComponent: 0, animated: true)
+                cell.pickerView.selectRow(sec!, inComponent: 1, animated: true)
+                
+                print("drawing \(indexPath.row)")
+                print(pickerData)
+                print("===")
+                
+                // 펼쳐진 셀을 접을 때 실행
+                // 다른 셀
+                if selectedIndexPath != nil && selectedIndexPath != indexPath {
+                    print("from draw \(indexPath)")
+                    let prevMin = pickerData[indexPath.row]?[0]
+                    let prevSec = pickerData[indexPath.row]?[1]
+                    print("selected from draw \(selectedIndexPath)")
+                    
+                    if let prev = tableView.cellForRow(at: indexPath) as? FormCell {
+                        prev.detailLabel.text = makeTimeString(min: prevMin!, sec: prevSec!)
+                        pickerData[indexPath.row]?[0] = prevMin!
+                        pickerData[indexPath.row]?[1] = prevSec!
+                    }
+                // 같은 셀
+                }
+//                else if selectedIndexPath == nil {
+//                    let currentMin = cell.pickerView.selectedRow(inComponent: 0)
+//                    let currentSec = cell.pickerView.selectedRow(inComponent: 1)
+//                    
+//                    pickerData[indexPath.row]?[0] = currentMin
+//                    pickerData[indexPath.row]?[1] = currentSec
+//                    
+//                    if let sameCell = tableView.cellForRow(at: indexPath) as? FormCell {
+//                        sameCell.detailLabel.text = makeTimeString(min: currentMin, sec: currentSec)
+//                        print(sameCell.detailLabel.text)
+//                    }
+//                    
+//                    print(pickerData)
+//                }
+                
+                
+//                print("=====")
+//                print("selected \(selectedIndexPath?.row)")
+//                print(previousIndexPath)
+//                print("=====")
+                
+//                print("-------------------------")
+            }
         }
     }
+    // specified cell was removed from the table
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row != 0 && indexPath.row != 3 && indexPath.row != 4 && indexPath.row != 8 {
-            (cell as! FormCell).ignoreFrameChanges()
+            
+            if let cell = (cell as? FormCell) {
+                cell.ignoreFrameChanges()
+                
+                // pickerView value 지정하기
+                
+                let min = cell.pickerView.selectedRow(inComponent: 0)
+                let sec = cell.pickerView.selectedRow(inComponent: 1)
+
+                pickerData[indexPath.row]?[0] = min
+                pickerData[indexPath.row]?[1] = sec
+
+//                print("removing \(indexPath.row)")
+//                print(pickerData)
+//                print("selected \(selectedIndexPath?.row)")
+                
+                if selectedIndexPath != nil && selectedIndexPath != indexPath {
+//                    print("from did \(indexPath)")
+                    let prevMin = pickerData[indexPath.row]?[0]
+                    let prevSec = pickerData[indexPath.row]?[1]
+//                    print("from did \(selectedIndexPath)")
+                    
+                    if let prev = tableView.cellForRow(at: indexPath) as? FormCell {
+                        prev.detailLabel.text = makeTimeString(min: prevMin!, sec: prevSec!)
+                        pickerData[indexPath.row]?[0] = prevMin!
+                        pickerData[indexPath.row]?[1] = prevSec!
+                    }
+                    
+                }
+                else if selectedIndexPath == nil {
+                    let currentMin = cell.pickerView.selectedRow(inComponent: 0)
+                    let currentSec = cell.pickerView.selectedRow(inComponent: 1)
+                    
+                    pickerData[indexPath.row]?[0] = currentMin
+                    pickerData[indexPath.row]?[1] = currentSec
+                    
+                    if let sameCell = tableView.cellForRow(at: indexPath) as? FormCell {
+                        sameCell.detailLabel.text = makeTimeString(min: currentMin, sec: currentSec)
+//                        print(sameCell.detailLabel.text)
+                    }
+                }
+            
+                
+                if indexPath.row == 1 {
+                    Time.currentTime.prepareTimeMin = min
+                    Time.currentTime.prepareTimeSec = sec
+                } else if indexPath.row == 2 {
+                    Time.currentTime.workoutTimeMin = min
+                    Time.currentTime.workoutTimeSec = sec
+                } else if indexPath.row == 5 {
+                    Time.currentTime.workoutBreakTimeMin = min
+                    Time.currentTime.workoutBreakTimeSec = sec
+                } else if indexPath.row == 6 {
+                    Time.currentTime.setBreakTimeMin = min
+                    Time.currentTime.setBreakTimeSec = sec
+                } else if indexPath.row == 7 {
+                    Time.currentTime.wrapUpTimeMin = min
+                    Time.currentTime.wrapUpTimeSec = sec
+                }
+                refreshTotalTime()
+            }
+            
+            print("enddisplay indexPath \(indexPath.row)")
         }
     }
+    
+    func makeTimeString(min: Int, sec: Int) -> String {
+        var minute = ""
+        var second = ""
+        
+        if min < 10 {
+            if min == 0 {
+                minute = "0min"
+            } else {
+                minute = "0\(min)min"
+            }
+        } else {
+            minute = "\(min)min"
+        }
+    
+        if sec < 10 {
+            if sec == 0 {
+                second = " 0sec"
+            } else {
+                second = " 0\(sec)sec"
+            }
+        } else {
+            second = " \(sec)sec"
+        }
+        return (minute + second)
+    }
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         for cell in tableView.visibleCells {
@@ -237,23 +366,26 @@ class AddCircuitVC: UITableViewController {
         UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
     }
     
+    // view tap
     func handleViewTap(recognizer: UIGestureRecognizer) {
         self.tableView.endEditing(true)
-        print("==== Handle View Tap Start ====")
-        print(Time.currentTime.totalTimeSec)
+//        print("==== Handle View Tap Start ====")
+//        print(Time.currentTime.totalTimeSec)
+//        print(Time.currentTime.description)
+//        print("==== Handle View Tap End ====")
         print(Time.currentTime.description)
-        print("==== Handle View Tap End ====")
         refreshTotalTime()
-        
     }
     
+    // 전체시간 Label 업데이트
     func refreshTotalTime() {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
+            
             print("=== RefreshTotalTime Start ===")
-            print("min - \(Time.currentTime.totalTimeMin)")
-            print("sec - \(Time.currentTime.totalTimeSec)")
+//            print("min - \(Time.currentTime.totalTimeMin)")
+//            print("sec - \(Time.currentTime.totalTimeSec)")
             print(Time.currentTime.description)
             print("=== RefreshTotalTime End ===")
             
@@ -276,7 +408,6 @@ class AddCircuitVC: UITableViewController {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
         }
 
-        
         
 //        let time = Time(circuitTitle: "", prepareTimeMin: 0, prepareTimeSec: 0, workoutTimeMin: 0, workoutTimeSec: 0, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 0, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 0, wrapUpTimeMin: 0, wrapUpTimeSec: 0, totalTimeMin: 0, totalTimeSec: 0)
 //        
@@ -447,6 +578,7 @@ class AddCircuitVC: UITableViewController {
 //        time.totalTimeMin = total.0
 //        time.totalTimeSec = total.1
         
+        print(Time.currentTime.description)
         saveToUserDefaults(dataObject: Time.currentTime)
         
         _ = navigationController?.popViewController(animated: true)

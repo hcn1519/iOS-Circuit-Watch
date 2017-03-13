@@ -73,7 +73,7 @@
                                     <constraint firstItem="D7l-W8-PrC" firstAttribute="centerY" secondItem="PNv-oe-rA8" secondAttribute="centerY" id="voP-YG-Tbi"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-vJ-noO" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-vJ-noO" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
                                 <rect key="frame" x="263" y="493" width="75" height="75"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.3411764706" blue="0.60784313729999995" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>

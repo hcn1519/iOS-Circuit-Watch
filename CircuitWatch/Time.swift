@@ -10,7 +10,7 @@ import Foundation
 
 class Time: NSObject, NSCoding {
     
-    static let currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
+    static var currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
     
     fileprivate var _circuitTitle: String!
     fileprivate var _prepareTimeMin: Int! {
@@ -109,14 +109,9 @@ class Time: NSObject, NSCoding {
     }
 
     fileprivate var _totalTimeMin: Int!
-    fileprivate var _totalTimeSec: Int! {
-        didSet {
-            print("Change")
-            print(self._totalTimeSec)
-        }
-    }
+    fileprivate var _totalTimeSec: Int!
     
-    private init(circuitTitle: String, prepareTimeMin: Int, prepareTimeSec: Int, workoutTimeMin: Int, workoutTimeSec: Int, workoutCount: Int, setCount: Int, workoutBreakTimeMin: Int, workoutBreakTimeSec: Int, setBreakTimeMin: Int, setBreakTimeSec: Int, wrapUpTimeMin: Int, wrapUpTimeSec: Int, totalTimeMin: Int, totalTimeSec: Int) {
+    init(circuitTitle: String, prepareTimeMin: Int, prepareTimeSec: Int, workoutTimeMin: Int, workoutTimeSec: Int, workoutCount: Int, setCount: Int, workoutBreakTimeMin: Int, workoutBreakTimeSec: Int, setBreakTimeMin: Int, setBreakTimeSec: Int, wrapUpTimeMin: Int, wrapUpTimeSec: Int, totalTimeMin: Int, totalTimeSec: Int) {
         self._circuitTitle = circuitTitle
         self._prepareTimeMin = prepareTimeMin
         self._prepareTimeSec = prepareTimeSec
@@ -284,7 +279,7 @@ class Time: NSObject, NSCoding {
         if let totalTimeSec = _totalTimeSec { aCoder.encode(totalTimeSec, forKey: "totalTimeSec") }
     }
     
-    func detectTimeData(indexPath: IndexPath, min: Int, sec: Int) {
+    public func detectTimeData(indexPath: IndexPath, min: Int, sec: Int) {
         if indexPath.row == 1{
             self.prepareTimeMin = min
             self.prepareTimeSec = sec
@@ -316,10 +311,12 @@ class Time: NSObject, NSCoding {
         let prepareTime = toSecond(self.prepareTimeMin, self.prepareTimeSec)
         let workoutTime = toSecond(self.workoutTimeMin, self.workoutTimeSec) * self.workoutCount * self.setCount
         
+        
         var workoutBreakTime = 0
         if self.workoutCount != 0 {
-            workoutBreakTime = toSecond(self.workoutTimeMin, self.workoutTimeSec) * (self.workoutCount - 1)
+            workoutBreakTime = toSecond(self.workoutBreakTimeMin, self.workoutBreakTimeSec) * (self.workoutCount - 1)
         }
+        
         var setBreakTime = 0
         if self.setCount != 0 {
             setBreakTime = toSecond(self.setBreakTimeMin, self.setBreakTimeSec) * (self.setCount - 1) * self.workoutCount
@@ -328,9 +325,14 @@ class Time: NSObject, NSCoding {
         let wrapUpTime = toSecond(self.wrapUpTimeMin, self.wrapUpTimeSec)
         let totalTime = prepareTime + workoutTime + workoutBreakTime + setBreakTime + wrapUpTime
         
+        
         let totalMinute = totalTime / 60
         let totalSecond = totalTime % 60
 
+        print(totalTime)
+        print(totalMinute)
+        print(totalSecond)
+        
         return (totalMinute, totalSecond)
     }
 
@@ -342,7 +344,7 @@ class Time: NSObject, NSCoding {
 
 extension Time {
     override var description: String {
-        let string = "\(_circuitTitle) PrepareTime: \(_prepareTimeMin) \(_prepareTimeSec) WorkOut Time: \(_workoutTimeMin) \(_workoutTimeSec) Count: \(_workoutCount) \(_setCount) workOutBreak Time: \(_workoutBreakTimeMin) \(_workoutBreakTimeSec) setBreak Time: \(_setBreakTimeMin) \(_setBreakTimeSec) wrapup Time: \(_wrapUpTimeMin) \(_wrapUpTimeSec) TotalTime: \(_totalTimeMin) \(_totalTimeSec)"
+        let string = "\(_circuitTitle) //\(_prepareTimeMin) \(_prepareTimeSec) //\(_workoutTimeMin) \(_workoutTimeSec) //\(_workoutCount) \(_setCount) //\(_workoutBreakTimeMin) \(_workoutBreakTimeSec) //\(_setBreakTimeMin) \(_setBreakTimeSec) //\(_wrapUpTimeMin) \(_wrapUpTimeSec) // \(_totalTimeMin) \(_totalTimeSec)"
         return string
     }
 }
