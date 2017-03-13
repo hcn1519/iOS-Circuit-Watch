@@ -302,7 +302,7 @@ class AddCircuitVC: UITableViewController {
                 
             }
             
-            print("enddisplay indexPath \(indexPath.row)")
+//            print("enddisplay indexPath \(indexPath.row)")
         }
         refreshTotalTime()
     }

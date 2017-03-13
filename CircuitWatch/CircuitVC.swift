@@ -49,7 +49,7 @@ class CircuitVC: UIViewController {
         timeSection = makeSection(timeData)
         minuteCounter = timeData.totalTimeMin
         secondCounter = timeData.totalTimeSec
-        print(timeSection)
+        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -180,12 +180,12 @@ class CircuitVC: UIViewController {
         let workoutBreakTotal = toSecond(data.workoutBreakTimeMin, data.workoutBreakTimeSec)
         let wrapupTotal = toSecond(data.wrapUpTimeMin, data.wrapUpTimeSec)
         
-        print("=============")
-        print(workoutTimeTotal)
-        print(setBreakTotal)
-        print(workoutBreakTotal)
-        print(wrapupTotal)
-        print("=============")
+//        print("=============")
+//        print(workoutTimeTotal)
+//        print(setBreakTotal)
+//        print(workoutBreakTotal)
+//        print(wrapupTotal)
+//        print("=============")
         
         // 준비시간 설정
         timeSection.updateValue(subTitle["section1"]!, forKey: allTime)
