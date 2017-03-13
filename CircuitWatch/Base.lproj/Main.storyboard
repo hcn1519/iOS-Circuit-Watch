@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,86 +23,122 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of this Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW3-aC-iLT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title of this Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="rW3-aC-iLT">
                                 <rect key="frame" x="36" y="94" width="303" height="28.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rW3-aC-iLT" secondAttribute="height" multiplier="303:28" id="PDl-Xn-xVQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
+                                </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRG-Bx-5Bw" customClass="RoundBtn" customModule="CircuitWatch" customModuleProvider="target">
-                                <rect key="frame" x="37" y="488" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="Prw-60-Ig5"/>
-                                    <constraint firstAttribute="width" constant="75" id="tIM-DB-sns"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="리셋">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dC-4z-q0G"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paJ-di-SWi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Before Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paJ-di-SWi">
                                 <rect key="frame" x="36" y="616" width="303" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Ps7-DZ-QQL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Ps7-DZ-QQL"/>
+                                    <constraint firstAttribute="width" secondItem="paJ-di-SWi" secondAttribute="height" multiplier="101:7" id="WkQ-rL-iCb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
+                                </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-oe-rA8" customClass="ProgressBar" customModule="CircuitWatch" customModuleProvider="target">
-                                <rect key="frame" x="37" y="172.5" width="300" height="300"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-oe-rA8" customClass="ProgressBar" customModule="CircuitWatch" customModuleProvider="target">
+                                <rect key="frame" x="37" y="180.5" width="300" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7l-W8-PrC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D7l-W8-PrC">
                                         <rect key="frame" x="100" y="126" width="101" height="48"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="40"/>
                                         <color key="textColor" red="0.99904614686965942" green="0.92020398378372192" blue="0.23121184110641479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=regular">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="80"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="D7l-W8-PrC" firstAttribute="centerX" secondItem="PNv-oe-rA8" secondAttribute="centerX" id="2o9-5l-vtR"/>
-                                    <constraint firstAttribute="width" constant="300" id="JBV-Wj-iOq"/>
-                                    <constraint firstAttribute="height" constant="300" id="Mag-rR-Ihl"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="HLi-bW-LdK"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="JBV-Wj-iOq"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Mag-rR-Ihl"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="WTu-yF-hJn"/>
                                     <constraint firstItem="D7l-W8-PrC" firstAttribute="centerY" secondItem="PNv-oe-rA8" secondAttribute="centerY" id="voP-YG-Tbi"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-vJ-noO" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ald-vJ-noO" customClass="CircuitBtn" customModule="CircuitWatch" customModuleProvider="target">
                                 <rect key="frame" x="263" y="493" width="75" height="75"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.3411764706" blue="0.60784313729999995" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="bC6-Kr-KUz"/>
-                                    <constraint firstAttribute="width" constant="75" id="t7Y-Rj-ftq"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="GBK-Ox-M4p"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="N7P-43-nQw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="bC6-Kr-KUz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="t7Y-Rj-ftq"/>
+                                    <constraint firstAttribute="width" secondItem="ald-vJ-noO" secondAttribute="height" multiplier="1:1" id="uYV-f2-RQA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="시작"/>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                </variation>
                                 <connections>
                                     <action selector="runningBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0fX-d6-lys"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRG-Bx-5Bw" customClass="RoundBtn" customModule="CircuitWatch" customModuleProvider="target">
+                                <rect key="frame" x="37" y="493" width="75" height="75"/>
+                                <color key="backgroundColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="Prw-60-Ig5"/>
+                                    <constraint firstAttribute="width" secondItem="LRG-Bx-5Bw" secondAttribute="height" multiplier="1:1" id="Ztk-mJ-Lgv"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="ehq-WE-g6F"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="jdg-PF-pyt"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="tIM-DB-sns"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="리셋">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="35"/>
+                                </variation>
+                                <connections>
+                                    <action selector="resetBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dC-4z-q0G"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LRG-Bx-5Bw" firstAttribute="top" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="15.5" id="2mp-w1-YmC"/>
+                            <constraint firstItem="LRG-Bx-5Bw" firstAttribute="top" relation="lessThanOrEqual" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="15" id="2mp-w1-YmC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="paJ-di-SWi" secondAttribute="bottom" constant="15" id="3hw-Qq-OMq"/>
+                            <constraint firstItem="paJ-di-SWi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LRG-Bx-5Bw" secondAttribute="bottom" constant="20" id="3uc-Zf-lLo"/>
                             <constraint firstItem="LRG-Bx-5Bw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="8gX-XL-OA3"/>
                             <constraint firstItem="rW3-aC-iLT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ejo-a4-WEb"/>
-                            <constraint firstItem="PNv-oe-rA8" firstAttribute="top" secondItem="rW3-aC-iLT" secondAttribute="bottom" constant="50" id="UDd-GR-aY3"/>
+                            <constraint firstItem="PNv-oe-rA8" firstAttribute="top" relation="lessThanOrEqual" secondItem="rW3-aC-iLT" secondAttribute="bottom" constant="40" id="UDd-GR-aY3"/>
+                            <constraint firstItem="paJ-di-SWi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ald-vJ-noO" secondAttribute="bottom" constant="20" id="UsX-bg-be0"/>
+                            <constraint firstItem="paJ-di-SWi" firstAttribute="top" relation="lessThanOrEqual" secondItem="LRG-Bx-5Bw" secondAttribute="bottom" constant="48" id="W5Q-H1-bSa"/>
                             <constraint firstItem="paJ-di-SWi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WXg-qz-h5j"/>
+                            <constraint firstItem="LRG-Bx-5Bw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="10" id="Xff-dV-0RW"/>
                             <constraint firstItem="PNv-oe-rA8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="aDL-Au-7Nk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rW3-aC-iLT" secondAttribute="trailing" constant="20" id="acz-VN-3gv"/>
-                            <constraint firstItem="ald-vJ-noO" firstAttribute="top" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="20.5" id="cne-mg-0ph"/>
+                            <constraint firstItem="ald-vJ-noO" firstAttribute="top" relation="lessThanOrEqual" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="15" id="cne-mg-0ph"/>
                             <constraint firstAttribute="trailingMargin" secondItem="paJ-di-SWi" secondAttribute="trailing" constant="20" id="d7e-84-QP7"/>
                             <constraint firstItem="PNv-oe-rA8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dVx-Tq-r3s"/>
-                            <constraint firstItem="rW3-aC-iLT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="fdL-z6-z4l"/>
+                            <constraint firstItem="rW3-aC-iLT" firstAttribute="top" relation="lessThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="fdL-z6-z4l"/>
+                            <constraint firstItem="paJ-di-SWi" firstAttribute="top" relation="lessThanOrEqual" secondItem="ald-vJ-noO" secondAttribute="bottom" constant="48" id="gPO-Bp-p0C"/>
                             <constraint firstItem="rW3-aC-iLT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jaC-kH-wRb"/>
+                            <constraint firstItem="rW3-aC-iLT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="kc5-tK-rAJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ald-vJ-noO" secondAttribute="trailing" constant="21" id="kvK-eZ-F5R"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="paJ-di-SWi" secondAttribute="bottom" constant="30" id="qRi-3b-3OQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="lessThanOrEqual" secondItem="paJ-di-SWi" secondAttribute="bottom" constant="30" id="qRi-3b-3OQ"/>
+                            <constraint firstItem="ald-vJ-noO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PNv-oe-rA8" secondAttribute="bottom" constant="10" id="vRV-Id-URl"/>
+                            <constraint firstItem="PNv-oe-rA8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rW3-aC-iLT" secondAttribute="bottom" constant="10" id="vqD-Fr-i8s"/>
                             <constraint firstItem="paJ-di-SWi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="y0a-yo-ceN"/>
                         </constraints>
                     </view>

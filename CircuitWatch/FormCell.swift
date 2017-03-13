@@ -59,8 +59,6 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         
         pickerView.selectRow(1, inComponent: 0, animated: true)
         pickerView.selectRow(30, inComponent: 1, animated: true)
-        detailLabel.text = "01min 30sec"
-        timeSetup = "01min 30sec"
         
         let marginTop = pickerView.frame.height / 3 + 3
         let marginLeft = pickerView.frame.width / 3 + 20
@@ -129,7 +127,6 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
                 } else {
                     minute = "0\(row)min"
                 }
-                
             } else {
                 minute = "\(row)min"
             }
@@ -140,36 +137,33 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
                 } else {
                     second = " 0\(row)sec"
                 }
-                
             } else {
                 second = " \(row)sec"
             }
         }
         label = minute! + second!
         self.detailLabel.text = label
-//        print("from pick \(label!)")
-        
-        timeSetup = self.detailLabel.text
-        
+
         let min = pickerView.selectedRow(inComponent: 0)
         let sec = pickerView.selectedRow(inComponent: 1)
         
         selectedMin = min
         selectedSec = sec
-        
     }
+    
+    
     
     // set observer for expanding
     func watchFrameChanges() {
         if !isObserving {
             addObserver(self, forKeyPath: "frame", options: [NSKeyValueObservingOptions.new, NSKeyValueObservingOptions.initial], context: nil)
-            isObserving = true;
+            isObserving = true
         }
     }
     func ignoreFrameChanges() {
         if isObserving {
             removeObserver(self, forKeyPath: "frame")
-            isObserving = false;
+            isObserving = false
         }
     }
     
