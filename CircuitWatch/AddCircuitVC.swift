@@ -231,9 +231,9 @@ class AddCircuitVC: UITableViewController {
 //                print("selected \(selectedIndexPath?.row)")
 //                print(previousIndexPath)
 //                print("=====")
-                
-                print("-------------------------")
-                print("draw End")
+//                
+//                print("-------------------------")
+//                print("draw End")
             }
         }
         refreshTotalTime()
@@ -373,7 +373,7 @@ class AddCircuitVC: UITableViewController {
     // view tap
     func handleViewTap(recognizer: UIGestureRecognizer) {
         self.tableView.endEditing(true)
-        print(Time.currentTime.description)
+//        print(Time.currentTime.description)
         refreshTotalTime()
     }
     
@@ -408,7 +408,7 @@ class AddCircuitVC: UITableViewController {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
         }
 
-        print(Time.currentTime.description)
+//        print(Time.currentTime.description)
         saveToUserDefaults(dataObject: Time.currentTime)
         
         updateTime.invalidate()

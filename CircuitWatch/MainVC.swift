@@ -43,8 +43,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "circuitCell", for: indexPath) as? CircuitCell {
             let dataArray = circuitData[indexPath.row]
-            print("---")
-            print(dataArray.description)
             
             cell.trainingTitle.text = "\(dataArray.circuitTitle)"
 
