@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  CircuitWatch
+
+  Created by 홍창남 on 2017. 3. 15..
+  Copyright © 2017년 홍창남. All rights reserved.
+*/
+
+"min " = "분 ";
+"min" = "분";
+"0min" = "0분";
+"0%dmin" = "0%d분";
+"%dmin" = " %d분";
+
+"sec" = "초";
+" 0sec" = " 0초";
+" 0%dsec" = "0%d초";
+" %dsec" = " %d초";
+
+
+"Title of Training" = "트레이닝 이름";
+"Prepare Time" = "준비시간";
+"Workout Time" = "운동시간";
+"How many Workout?" = "운동 수";
+"How many Set?" = "운동별 세트 수";
+"Workout BreakTime" = "운동별 쉬는시간";
+"Set BreakTime" = "세트 사이 쉬는시간";
+"Wrapup Time" = "마무리 시간";
+"Total Time" = "전체 시간";
+"Count" = "Count";
+
+"Done" = "완료";
+
+"Start" = "시작";
+"Pause" = "일시정지";
+"Before Start" = "시작 전";
+
+
+"Workout Finish" = "운동 완료";
+"Great job, You are done!" = "잘하셨어요, 해냈습니다!";

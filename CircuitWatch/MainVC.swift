@@ -9,8 +9,9 @@
 import UIKit
 
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
@@ -19,7 +20,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.navigationController?.navigationBar.isTranslucent = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -118,7 +119,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.setEditing(!tableView.isEditing, animated: true)
         
         if tableView.isEditing {
-            self.editButton.title = "Done"
+            self.editButton.title = "Done".localized
         } else {
             self.editButton.title = "Edit"
         }

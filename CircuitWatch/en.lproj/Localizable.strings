@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  CircuitWatch
+
+  Created by 홍창남 on 2017. 3. 15..
+  Copyright © 2017년 홍창남. All rights reserved.
+*/
+
+"min" = "min";
+"0min" = "0min";
+"0%dmin" = "0%dmin";
+"%dmin" = " %dmin";
+
+"sec" = "sec";
+" 0sec" = " 0sec";
+" 0%dsec" = "0%dsec";
+" %dsec" = " %dsec";
+
+"Title of Training" = "Title of Training";
+"Prepare Time" = "Prepare Time";
+"Workout Time" = "Workout Time";
+"How many Workout?" = "How many Workout?";
+"How many Set?" = "How many Set?";
+"Workout BreakTime" = "Workout BreakTime";
+"Set BreakTime" = "Set BreakTime";
+"Wrapup Time" = "Wrapup Time";
+"Total Time" = "Total Time";
+"Count" = "Count";
+
+"Done" = "Done";
+
+"Start" = "Start";
+"Pause" = "Pause";
+"Before Start" = "Before Start";
+
+"Workout Finish" = "Workout Finish";
+"Great job, You are done!" = "Great job, You are done!";
