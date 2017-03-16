@@ -191,7 +191,6 @@
 				7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */,
 				7E4F2D831E64179500E27F26 /* FormTableFooter.swift */,
 				7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */,
-				7EDCBC251E79309E00C82829 /* StringExtenstion.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -205,6 +204,7 @@
 				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
 				7EAD9B331E5D7356005B48A3 /* LaunchScreen.storyboard */,
 				7EAD9B361E5D7356005B48A3 /* Info.plist */,
+				7EDCBC251E79309E00C82829 /* StringExtenstion.swift */,
 				7EDCBC531E79404900C82829 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
