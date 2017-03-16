@@ -39,7 +39,7 @@ class InputCell: UITableViewCell, UITextFieldDelegate {
         case .NumberFieldTag:
             if let text = self.textField.text {
                 let value = Int(text)
-                if titleLabel.text == "How many Workout?" {
+                if titleLabel.text == "How many Workout?".localized {
                     if value != nil {
                         workoutCount = value!
                     }

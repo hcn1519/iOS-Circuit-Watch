@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "20:00"; ObjectID = "0fP-oi-YEe"; */
+"0fP-oi-YEe.text" = "20:00";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "D7l-W8-PrC"; */
+"D7l-W8-PrC.text" = "00:00";
+
+/* Class = "UILabel"; text = "20분 서킷 트레이닝"; ObjectID = "IpW-1q-Tdp"; */
+"IpW-1q-Tdp.text" = "20분 서킷 트레이닝";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "LRG-Bx-5Bw"; */
+"LRG-Bx-5Bw.normalTitle" = "리셋";
+
+/* Class = "UITextField"; placeholder = "SetCount"; ObjectID = "Ner-FJ-0B6"; */
+"Ner-FJ-0B6.placeholder" = "세트 수";
+
+/* Class = "UILabel"; text = "MyDetail"; ObjectID = "Y1e-9M-77q"; */
+"Y1e-9M-77q.text" = "MyDetail";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "ald-vJ-noO"; */
+"ald-vJ-noO.normalTitle" = "시작";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "cNU-fC-xpw"; */
+"cNU-fC-xpw.title" = "편집";
+
+/* Class = "UILabel"; text = "MyTitle"; ObjectID = "d8a-Fg-fMH"; */
+"d8a-Fg-fMH.text" = "MyTitle";
+
+/* Class = "UILabel"; text = "MyTitle"; ObjectID = "hcj-XM-8g1"; */
+"hcj-XM-8g1.text" = "MyTitle";
+
+/* Class = "UILabel"; text = "MyTitle"; ObjectID = "pV8-GC-COg"; */
+"pV8-GC-COg.text" = "MyTitle";
+
+/* Class = "UILabel"; text = "Before Start"; ObjectID = "paJ-di-SWi"; */
+"paJ-di-SWi.text" = "시작 전";
+
+/* Class = "UILabel"; text = "Title of this Workout"; ObjectID = "rW3-aC-iLT"; */
+"rW3-aC-iLT.text" = "Title of this Workout";
+
+/* Class = "UILabel"; text = "MyDetail"; ObjectID = "s55-XN-26J"; */
+"s55-XN-26J.text" = "MyDetail";
+
+/* Class = "UIButton"; normalTitle = "Let's GO"; ObjectID = "vEK-Pv-ZFy"; */
+"vEK-Pv-ZFy.normalTitle" = "Let's GO";
+
+/* Class = "UILabel"; text = "Set Your Own Circuit (Tap the table)"; ObjectID = "ysj-Kg-DC9"; */
+"ysj-Kg-DC9.text" = "서킷을 설정해보세요";

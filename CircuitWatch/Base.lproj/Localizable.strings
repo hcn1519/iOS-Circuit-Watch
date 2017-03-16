@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  CircuitWatch
+
+  Created by 홍창남 on 2017. 3. 15..
+  Copyright © 2017년 홍창남. All rights reserved.
+*/
+
+"min" = "min";
+"sec" = "sec";
+"Title of Training" = "Title of Training";
+"Prepare Time" = "Prepare Time";
+"Workout Time" = "Workout Time";
+"How many Workout?" = "How many Workout?";
+"How many Set?" = "How many Set?";
+"Workout BreakTime" = "Workout BreakTime";
+"Set BreakTime" = "Set BreakTime";
+"Wrapup Time" = "Wrapup Time";
+"Total Time" = "Total Time";
+"Count" = "Count";
+
+"Done" = "Done";
+
+"Start" = "Start";
+"Pause" = "Pause";

@@ -26,9 +26,9 @@ class AddCircuitVC: UITableViewController {
     var selectedIndexPath: IndexPath?
     var dataArray: [[String: String]] = []
     
-    let titleKey = "title"
-    let minuteKey = "min"
-    let secondkey = "sec"
+    let titleKey = "title".localized
+    let minuteKey = "min".localized
+    let secondkey = "sec".localized
     var isFirstLoad: Bool = true
     var pickerData = [[Int]?]()
     
@@ -92,7 +92,7 @@ class AddCircuitVC: UITableViewController {
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? WordCell {
                 
                 cell.selectionStyle = .none;
-                cell.titleLabel.text = itemData[titleKey]
+                cell.titleLabel.text = itemData[titleKey]?.localized
                 cell.detailLabel.text = "03min 0sec"
                 
                 if let _ = tableView.lastIndexPath {
@@ -107,16 +107,16 @@ class AddCircuitVC: UITableViewController {
                 
                 cell.selectionStyle = .none;
                 cell.textField.frame.size.width = 120
-                cell.titleLabel.text = itemData[titleKey]
+                cell.titleLabel.text = itemData[titleKey]?.localized
                 
                 if indexPath.row == 0 {
-                    cell.textField.placeholder = "Title of Training"
+                    cell.textField.placeholder = "Title of Training".localized
                     cell.fieldType = textFieldCase.StringFieldTag
                 } else if indexPath.row == 3 {
-                    cell.textField.placeholder = "Count"
+                    cell.textField.placeholder = "Count".localized
                     cell.fieldType = textFieldCase.NumberFieldTag
                 } else {
-                    cell.textField.placeholder = "Count"
+                    cell.textField.placeholder = "Count".localized
                     cell.fieldType = textFieldCase.NumberFieldTag
                 }
                 
@@ -131,7 +131,7 @@ class AddCircuitVC: UITableViewController {
         } else {
             cellID = formCellID
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? FormCell {
-                cell.titleLabel.text = itemData[titleKey]
+                cell.titleLabel.text = itemData[titleKey]?.localized
                 
                 let min = pickerData[indexPath.row]?[0]
                 let sec = pickerData[indexPath.row]?[1]
@@ -313,26 +313,25 @@ class AddCircuitVC: UITableViewController {
         
         if min < 10 {
             if min == 0 {
-                minute = "0min"
+                minute = "0min".localized
             } else {
-                minute = "0\(min)min"
+                minute = String(format: NSLocalizedString("0%dmin", comment: ""), min)
             }
         } else {
-            minute = "\(min)min"
+            minute = String(format: NSLocalizedString("%dmin", comment: ""), min)
         }
     
         if sec < 10 {
             if sec == 0 {
-                second = " 0sec"
+                second = " 0sec".localized
             } else {
-                second = " 0\(sec)sec"
+                second = String(format: NSLocalizedString(" 0%dsec", comment: ""), sec)
             }
         } else {
-            second = " \(sec)sec"
+            second = String(format: NSLocalizedString(" %dsec", comment: ""), sec)
         }
         return (minute + second)
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

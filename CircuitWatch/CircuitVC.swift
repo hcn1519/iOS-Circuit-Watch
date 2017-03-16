@@ -73,7 +73,7 @@ class CircuitVC: UIViewController {
         secondCounter -= 1
     
         if minuteCounter == 0 && secondCounter == 0 {
-            alertHandle(title: "Workout Finish", message: "Great job, You are done!", style: .alert)
+            alertHandle(title: "Workout Finish".localized, message: "Great job, You are done!".localized, style: .alert)
             remainTime.text = "00:00"
             circuitProgressView.progress = CGFloat(1)
             timeSet.invalidate()
@@ -154,10 +154,10 @@ class CircuitVC: UIViewController {
                 playSound(isBtnPressed: false)
             }
             if minimum && maximum {
-                return currentSection
+                return currentSection.localized
             }
         }
-        return currentSection
+        return currentSection.localized
     }
     
     
@@ -249,11 +249,11 @@ class CircuitVC: UIViewController {
         minuteCounter = timeData.totalTimeMin
         secondCounter = timeData.totalTimeSec
         remainTime.text = timeStringSet(minuteCounter, secondCounter)
-        progressDescriptionLabel.text = "Before Start"
+        progressDescriptionLabel.text = "Before Start".localized
         
         // 시작 버튼 초기화
         startAndPauseBtn.isSelected = false
-        startAndPauseBtn.setTitle("시작", for: .selected)
+        startAndPauseBtn.setTitle("Start".localized, for: .selected)
         isInProgress = false
         
     }

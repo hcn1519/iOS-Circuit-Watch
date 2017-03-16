@@ -47,6 +47,6 @@ class WordCell: UITableViewCell {
 //        print("temp2 - \(temp2)")
 //        print("=== WordCell End ===")
         
-        detailLabel.text = (temp1 + "min " + temp2 + "sec")
+        detailLabel.text = (temp1 + "min ".localized + temp2 + "sec".localized)
     }
 }
