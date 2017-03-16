@@ -62,6 +62,7 @@
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
 		7E3518181E70010A001B0C92 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
+		7E4A89261E7A6A9A009B3036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableHeader.swift; sourceTree = "<group>"; };
 		7E4F2D831E64179500E27F26 /* FormTableFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableFooter.swift; sourceTree = "<group>"; };
@@ -426,6 +427,7 @@
 			children = (
 				7EAD9B2F1E5D7356005B48A3 /* Base */,
 				7EDCBC3B1E79382800C82829 /* ko */,
+				7E4A89261E7A6A9A009B3036 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
