@@ -7,7 +7,15 @@
 */
 
 "min" = "min";
+"0min" = "0min";
+"0%dmin" = "0%dmin";
+"%dmin" = " %dmin";
+
 "sec" = "sec";
+" 0sec" = " 0sec";
+" 0%dsec" = "0%dsec";
+" %dsec" = " %dsec";
+
 "Title of Training" = "Title of Training";
 "Prepare Time" = "Prepare Time";
 "Workout Time" = "Workout Time";
@@ -19,7 +27,12 @@
 "Total Time" = "Total Time";
 "Count" = "Count";
 
+"Edit" = "Edit";
 "Done" = "Done";
 
 "Start" = "Start";
 "Pause" = "Pause";
+"Before Start" = "Before Start";
+
+"Workout Finish" = "Workout Finish";
+"Great job, You are done!" = "Great job, You are done!";

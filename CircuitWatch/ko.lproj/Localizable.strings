@@ -23,12 +23,13 @@
 "Workout Time" = "운동시간";
 "How many Workout?" = "운동 수";
 "How many Set?" = "운동별 세트 수";
-"Workout BreakTime" = "운동별 쉬는시간";
-"Set BreakTime" = "세트 사이 쉬는시간";
+"Workout BreakTime" = "운동 쉬는시간";
+"Set BreakTime" = "세트 쉬는시간";
 "Wrapup Time" = "마무리 시간";
 "Total Time" = "전체 시간";
 "Count" = "Count";
 
+"Edit" = "편집";
 "Done" = "완료";
 
 "Start" = "시작";

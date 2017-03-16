@@ -121,7 +121,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if tableView.isEditing {
             self.editButton.title = "Done".localized
         } else {
-            self.editButton.title = "Edit"
+            self.editButton.title = "Edit".localized
         }
     }
     

@@ -154,10 +154,10 @@ class CircuitVC: UIViewController {
                 playSound(isBtnPressed: false)
             }
             if minimum && maximum {
-                return currentSection
+                return currentSection.localized
             }
         }
-        return currentSection
+        return currentSection.localized
     }
     
     
