@@ -276,39 +276,11 @@ class Time: NSObject, NSCoding {
         if let totalTimeMin = _totalTimeMin { aCoder.encode(totalTimeMin, forKey: "totalTimeMin") }
         if let totalTimeSec = _totalTimeSec { aCoder.encode(totalTimeSec, forKey: "totalTimeSec") }
     }
-    
-    public func detectTimeData(indexPath: IndexPath, min: Int, sec: Int) {
-        if indexPath.row == 1{
-            self.prepareTimeMin = min
-            self.prepareTimeSec = sec
-        } else if indexPath.row == 2 {
-            self.workoutTimeMin = min
-            self.workoutTimeSec = sec
-        } else if indexPath.row == 5 {
-            self.workoutBreakTimeMin = min
-            self.workoutBreakTimeSec = sec
-        } else if indexPath.row == 6 {
-            self.setBreakTimeMin = min
-            self.setBreakTimeSec = sec
-        } else if indexPath.row == 7 {
-            self.wrapUpTimeMin = min
-            self.wrapUpTimeSec = sec
-        }
-    }
-    func detectTextFieldData(indexPath: IndexPath, value: String) {
-        if indexPath.row == 0 {
-            self.circuitTitle = value
-        } else if indexPath.row == 3 {
-            self.workoutCount = Int(value)!
-        } else if indexPath.row == 4 {
-            self.setCount = Int(value)!
-        }
-    }
+
     // 전체시간 계산
     func calulateTotalTime() -> (Int, Int) {
         let prepareTime = toSecond(self.prepareTimeMin, self.prepareTimeSec)
         let workoutTime = toSecond(self.workoutTimeMin, self.workoutTimeSec) * self.workoutCount * self.setCount
-        
         
         var workoutBreakTime = 0
         if self.workoutCount != 0 {
