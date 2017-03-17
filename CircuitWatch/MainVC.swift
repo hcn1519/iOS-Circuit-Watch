@@ -75,6 +75,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if isEditingMode {
             performSegue(withIdentifier: "goToEditCircuit", sender: time)
             isEditingMode = false
+            tableView.setEditing(false, animated: true)
+            self.editButton.title = "Edit".localized
         } else {
             performSegue(withIdentifier: "goToCircuit", sender: time)
         }
@@ -93,6 +95,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if let destination = segue.destination as? AddCircuitVC {
                     if let item = sender as? Time {
                         destination.editTime = item
+                        if let indexPath = self.tableView.indexPathForSelectedRow {
+                            destination.editIndexPath = indexPath
+                        }
+                        
                     }
                 }
                 Time.currentTime = (sender as? Time)!
