@@ -75,12 +75,12 @@ class AddCircuitVC: UITableViewController {
 
         if editTime != nil {
             print(Time.currentTime.description)
-            loadData()
+            loadEditData()
         }
         
     }
     
-    func loadData() {
+    func loadEditData() {
         let indexPath = self.tableView.indexPathsForVisibleRows
 
         for i in 0...tableView.numberOfSections-1 {
@@ -101,11 +101,11 @@ class AddCircuitVC: UITableViewController {
                             minute = Time.currentTime.workoutBreakTimeMin
                             second = Time.currentTime.workoutBreakTimeSec
                         } else if (indexPath?[j])!.row == 6 {
-                            minute = Time.currentTime.prepareTimeMin
-                            second = Time.currentTime.prepareTimeSec
+                            minute = Time.currentTime.setBreakTimeMin
+                            second = Time.currentTime.setBreakTimeSec
                         } else if (indexPath?[j])!.row == 7 {
-                            minute = Time.currentTime.prepareTimeMin
-                            second = Time.currentTime.prepareTimeSec
+                            minute = Time.currentTime.wrapUpTimeMin
+                            second = Time.currentTime.wrapUpTimeSec
                         }
                         
                         (cell as? FormCell)?.pickerView.selectRow(minute, inComponent: 0, animated: true)
@@ -438,9 +438,9 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
-//            print("=== RefreshTotalTime Start ===")
-//            print(Time.currentTime.description)
-//            print("=== RefreshTotalTime End ===")
+            print("=== RefreshTotalTime Start ===")
+            print(Time.currentTime.description)
+            print("=== RefreshTotalTime End ===")
             let total = Time.currentTime.calulateTotalTime()
             
             print(total.0)
