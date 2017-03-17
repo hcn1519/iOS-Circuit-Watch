@@ -33,6 +33,7 @@ class AddCircuitVC: UITableViewController {
     var pickerData = [[Int]?]()
     
     var updateTime = Timer()
+    var editTime: Time?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +72,64 @@ class AddCircuitVC: UITableViewController {
         
         updateTime = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshTotalTime), userInfo: nil, repeats: true)
         updateTime.fire()
+
+        if editTime != nil {
+            print(Time.currentTime.description)
+            loadEditData()
+        }
+        
     }
     
+    func loadEditData() {
+        let indexPath = self.tableView.indexPathsForVisibleRows
 
+        for i in 0...tableView.numberOfSections-1 {
+            for j in 0...tableView.numberOfRows(inSection: i)-1 {
+                if let cell = tableView.cellForRow(at: (indexPath?[j])!) {
+                    if cell.isKind(of: FormCell.self) {
+
+                        var minute: Int!
+                        var second: Int!
+                        
+                        if (indexPath?[j])!.row == 1 {
+                            minute = Time.currentTime.prepareTimeMin
+                            second = Time.currentTime.prepareTimeSec
+                        } else if (indexPath?[j])!.row == 2 {
+                            minute = Time.currentTime.workoutTimeMin
+                            second = Time.currentTime.workoutTimeSec
+                        } else if (indexPath?[j])!.row == 5 {
+                            minute = Time.currentTime.workoutBreakTimeMin
+                            second = Time.currentTime.workoutBreakTimeSec
+                        } else if (indexPath?[j])!.row == 6 {
+                            minute = Time.currentTime.setBreakTimeMin
+                            second = Time.currentTime.setBreakTimeSec
+                        } else if (indexPath?[j])!.row == 7 {
+                            minute = Time.currentTime.wrapUpTimeMin
+                            second = Time.currentTime.wrapUpTimeSec
+                        }
+                        
+                        (cell as? FormCell)?.pickerView.selectRow(minute, inComponent: 0, animated: true)
+                        (cell as? FormCell)?.pickerView.selectRow(second, inComponent: 1, animated: true)
+                        (cell as? FormCell)?.detailLabel.text = makeTimeString(min: minute, sec: second)
+                        
+                    } else if cell.isKind(of: WordCell.self) {
+                        (cell as? WordCell)?.detailLabel.text = makeTimeString(min: Time.currentTime.totalTimeMin, sec: Time.currentTime.totalTimeSec)
+                    } else if cell.isKind(of: InputCell.self) {
+                        if (indexPath?[j])!.row == 0 {
+                            (cell as? InputCell)?.textField.text = "\(Time.currentTime.circuitTitle)"
+                        } else if (indexPath?[j])!.row == 3 {
+                            (cell as? InputCell)?.textField.text = "\(Time.currentTime.workoutCount)"
+                        } else if (indexPath?[j])!.row == 4 {
+                            (cell as? InputCell)?.textField.text = "\(Time.currentTime.setCount)"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -86,14 +142,14 @@ class AddCircuitVC: UITableViewController {
         
         let itemData = dataArray[indexPath.row]
         var cellID = wordCellID
-        
+            
         if indexPath.row == 8 {
             cellID = wordCellID
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? WordCell {
                 
-                cell.selectionStyle = .none;
+                cell.selectionStyle = .none
                 cell.titleLabel.text = itemData[titleKey]?.localized
-                cell.detailLabel.text = "03min 0sec"
+                cell.detailLabel.text = makeTimeString(min: Time.currentTime.totalTimeMin, sec: Time.currentTime.totalTimeSec)
                 
                 if let _ = tableView.lastIndexPath {
                     isFirstLoad = false
@@ -105,7 +161,7 @@ class AddCircuitVC: UITableViewController {
             cellID = inputCellID
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? InputCell {
                 
-                cell.selectionStyle = .none;
+                cell.selectionStyle = .none
                 cell.textField.frame.size.width = 120
                 cell.titleLabel.text = itemData[titleKey]?.localized
                 
@@ -147,6 +203,7 @@ class AddCircuitVC: UITableViewController {
             }
             return UITableViewCell()
         }
+            
         
     }
     
@@ -381,13 +438,13 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
-//            
-//            print("=== RefreshTotalTime Start ===")
-//            print(Time.currentTime.description)
-//            print("=== RefreshTotalTime End ===")
+            print("=== RefreshTotalTime Start ===")
+            print(Time.currentTime.description)
+            print("=== RefreshTotalTime End ===")
             let total = Time.currentTime.calulateTotalTime()
             
-            
+            print(total.0)
+            print(total.1)
             lastCell?.timeStringSet(total.0, total.1)
         }
     }

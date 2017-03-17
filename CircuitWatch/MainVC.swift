@@ -26,6 +26,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +72,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // 데이터 전송 segue 설정
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let time = circuitData[indexPath.row]
-        performSegue(withIdentifier: "goToCircuit", sender: time)
+        if isEditingMode {
+            performSegue(withIdentifier: "goToEditCircuit", sender: time)
+            isEditingMode = false
+        } else {
+            performSegue(withIdentifier: "goToCircuit", sender: time)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +87,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if let item = sender as? Time {
                     destination.timeData = item
                 }
+            }
+        } else if segue.identifier == "goToEditCircuit" {
+            if isEditingMode {
+                if let destination = segue.destination as? AddCircuitVC {
+                    if let item = sender as? Time {
+                        destination.editTime = item
+                    }
+                }
+                Time.currentTime = (sender as? Time)!
             }
         } else if segue.identifier == "goToAddCircuit" {
             Time.currentTime = Time(circuitTitle: "", prepareTimeMin: 1, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 30, workoutCount: 0, setCount: 0, workoutBreakTimeMin: 1, workoutBreakTimeSec: 30, setBreakTimeMin: 1, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 30, totalTimeMin: 3, totalTimeSec: 0)
@@ -117,11 +133,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // IBAction
     @IBAction func editBtnPressed(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        tableView.allowsSelectionDuringEditing = true
         
         if tableView.isEditing {
             self.editButton.title = "Done".localized
+            self.isEditingMode = true
         } else {
             self.editButton.title = "Edit".localized
+            self.isEditingMode = false
         }
     }
     
