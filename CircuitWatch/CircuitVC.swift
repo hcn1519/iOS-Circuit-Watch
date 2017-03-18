@@ -82,7 +82,9 @@ class CircuitVC: UIViewController {
         remainTime.text = timeStringSet(minuteCounter, secondCounter)
         progressDescriptionLabel.text = checkSection(timeData, currentProgress)
     }
-    
+    func fetch(_ completion: () -> Void) {
+        completion()
+    }
     // 버튼 클릭 사운드
     func playSound(isBtnPressed: Bool) {
         if isBtnPressed {

@@ -80,6 +80,7 @@ class AddCircuitVC: UITableViewController {
         
     }
     
+    // edit 상태이면 기존 데이터 로딩
     func loadEditData() {
         let indexPath = self.tableView.indexPathsForVisibleRows
 
@@ -422,6 +423,7 @@ class AddCircuitVC: UITableViewController {
                 }
             }
         }
+        // edit 상태이면 수정
         if editTime == nil {
             newTime.append(dataObject)
         } else {
