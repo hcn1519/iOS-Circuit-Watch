@@ -410,30 +410,6 @@ class AddCircuitVC: UITableViewController {
         return 44
     }
     
-    // UserDefault 데이터 저장
-    func saveToUserDefaults(dataObject: Time) {
-        
-
-        var newTime = [Time]()
-        if let loadedData = UserDefaults().data(forKey: "encodedTimeData") {
-            
-            if let loadedTime = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Time] {
-                for time in loadedTime {
-                    newTime.append(time)
-                }
-            }
-        }
-        // edit 상태이면 수정
-        if editTime == nil {
-            newTime.append(dataObject)
-        } else {
-            if let indexPath = editIndexPath {
-                newTime[indexPath.row] = dataObject
-            }
-        }
-        let encodedTimeData = NSKeyedArchiver.archivedData(withRootObject: newTime)
-        UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
-    }
     
     // view tap
     func handleViewTap(recognizer: UIGestureRecognizer) {
@@ -474,7 +450,7 @@ class AddCircuitVC: UITableViewController {
         }
 
 //        print(Time.currentTime.description)
-        saveToUserDefaults(dataObject: Time.currentTime)
+        DataHelper.saveToUserDefaults(dataObject: Time.currentTime, editTime: editTime, editIndexPath: editIndexPath)
         
         updateTime.invalidate()
         
