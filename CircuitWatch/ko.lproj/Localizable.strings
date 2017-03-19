@@ -19,6 +19,10 @@
 " 0%dsec" = " 0%d초";
 " %dsec" = " %d초";
 
+"10 minutes Challange" = "10분 타바타 도전";
+"15 minutes a day Tabata" = "하루 15분 타바타";
+"20 minutes Circuit" = "20분 서킷 트레이닝";
+
 
 "Title of Training" = "트레이닝 이름";
 "Prepare Time" = "준비시간";

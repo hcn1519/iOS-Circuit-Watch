@@ -26,7 +26,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        
+        if !isAppAlreadyLaunchedOnce() {
+            generateDefaultData()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +48,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "circuitCell", for: indexPath) as? CircuitCell {
             let dataArray = circuitData[indexPath.row]
             
-            cell.trainingTitle.text = "\(dataArray.circuitTitle)"
+            cell.trainingTitle.text = "\(dataArray.circuitTitle)".localized
             
             cell.trainingDetail.text = String(format: NSLocalizedString("%d Workouts - %d Sets", comment: ""), dataArray.workoutCount, dataArray.setCount)
             
@@ -160,15 +162,26 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    /*  테스트 데이터 생성용
-    func generateTestData() {
-        let temp1 = Time(circuitTitle: "첫 번째 트레이닝", prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 22, totalTimeSec: 0)
-        let temp2 = Time(circuitTitle: "23분 트레이닝",prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 23, totalTimeSec: 0)
-        let temp3 = Time(circuitTitle: "3 번째 트레이닝",prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 23, totalTimeSec: 0)
+    func isAppAlreadyLaunchedOnce()->Bool{
+        let defaults = UserDefaults.standard
         
-        circuitData.append(temp1)
-        circuitData.append(temp2)
-        circuitData.append(temp3)
+        if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+            print("App already launched : \(isAppAlreadyLaunchedOnce)")
+            return true
+        }else{
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
     }
-*/
+    
+    func generateDefaultData() {
+        let temp1 = Time(circuitTitle: "10 minutes Challange".localized, prepareTimeMin: 0, prepareTimeSec: 30, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 5, setCount: 1, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 0, wrapUpTimeSec: 30, totalTimeMin: 10, totalTimeSec: 0)
+        let temp2 = Time(circuitTitle: "15 minutes a day Tabata".localized, prepareTimeMin: 0, prepareTimeSec: 15, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 5, setCount: 2, workoutBreakTimeMin: 0, workoutBreakTimeSec: 30, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 0, wrapUpTimeSec: 15, totalTimeMin: 15, totalTimeSec: 0)
+        let temp3 = Time(circuitTitle: "20 minutes Circuit".localized, prepareTimeMin: 0, prepareTimeSec: 15, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 25, wrapUpTimeMin: 0, wrapUpTimeSec: 15, totalTimeMin: 20, totalTimeSec: 0)
+        
+        DataHelper.saveToUserDefaults(dataObject: temp1, editTime: nil, editIndexPath: nil)
+        DataHelper.saveToUserDefaults(dataObject: temp2, editTime: nil, editIndexPath: nil)
+        DataHelper.saveToUserDefaults(dataObject: temp3, editTime: nil, editIndexPath: nil)
+    }
 }

@@ -44,7 +44,7 @@ class CircuitVC: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         remainTime.text = timeStringSet(timeData.totalTimeMin, timeData.totalTimeSec)
-        titleLabel.text = timeData.circuitTitle
+        titleLabel.text = timeData.circuitTitle.localized
         
         timeSection = makeSection(timeData)
         minuteCounter = timeData.totalTimeMin
