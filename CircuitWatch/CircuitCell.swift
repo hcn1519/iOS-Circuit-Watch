@@ -12,6 +12,7 @@ class CircuitCell: UITableViewCell {
 
     @IBOutlet weak var trainingTitle: UILabel!
     @IBOutlet weak var trainingTime: UILabel!
+    @IBOutlet weak var trainingDetail: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

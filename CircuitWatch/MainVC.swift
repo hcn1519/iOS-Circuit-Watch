@@ -47,7 +47,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let dataArray = circuitData[indexPath.row]
             
             cell.trainingTitle.text = "\(dataArray.circuitTitle)"
-
+            
+            cell.trainingDetail.text = String(format: NSLocalizedString("%d Workouts - %d Sets", comment: ""), dataArray.workoutCount, dataArray.setCount)
+            
             
             if dataArray.totalTimeMin < 10 {
                 if dataArray.totalTimeSec < 10 {
@@ -62,10 +64,18 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     cell.trainingTime.text = "\(dataArray.totalTimeMin):\(dataArray.totalTimeSec)"
                 }
             }
+            
             cell.selectionStyle = .none;
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.isiPad || UIDevice.current.isiPadPro12 {
+            return 140
+        } else {
+            return 100
         }
     }
     
