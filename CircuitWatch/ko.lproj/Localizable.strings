@@ -6,15 +6,17 @@
   Copyright © 2017년 홍창남. All rights reserved.
 */
 
+"%d Workouts - %d Sets" = "%d개 운동 - %d세트 씩";
+
 "min " = "분 ";
 "min" = "분";
-"0min" = "0분";
+"00min" = "00분";
 "0%dmin" = "0%d분";
-"%dmin" = " %d분";
+"%dmin" = "%d분";
 
 "sec" = "초";
-" 0sec" = " 0초";
-" 0%dsec" = "0%d초";
+" 00sec" = " 00초";
+" 0%dsec" = " 0%d초";
 " %dsec" = " %d초";
 
 

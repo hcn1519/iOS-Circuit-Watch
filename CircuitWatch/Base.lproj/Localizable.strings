@@ -6,14 +6,16 @@
   Copyright © 2017년 홍창남. All rights reserved.
 */
 
+"%d Workouts - %d Sets" = "%d Workouts - %d Sets";
+
 "min" = "min";
 "0min" = "0min";
 "0%dmin" = "0%dmin";
-"%dmin" = " %dmin";
+"%dmin" = "%dmin";
 
 "sec" = "sec";
 " 0sec" = " 0sec";
-" 0%dsec" = "0%dsec";
+" 0%dsec" = " 0%dsec";
 " %dsec" = " %dsec";
 
 "Title of Training" = "Title of Training";

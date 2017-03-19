@@ -134,7 +134,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         if component == 0 {
             if row < 10 {
                 if row == 0 {
-                    minute = "0min".localized
+                    minute = "00min".localized
                 } else {
                     minute = String(format: NSLocalizedString("0%dmin", comment: ""), row)
                 }
@@ -144,7 +144,7 @@ class FormCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
         } else {
             if row < 10 {
                 if row == 0 {
-                    second = " 0sec".localized
+                    second = " 00sec".localized
                 } else {
                     second = String(format: NSLocalizedString(" 0%dsec", comment: ""), row)
                 }

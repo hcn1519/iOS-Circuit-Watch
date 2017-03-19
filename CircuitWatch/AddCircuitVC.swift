@@ -34,6 +34,7 @@ class AddCircuitVC: UITableViewController {
     
     var updateTime = Timer()
     var editTime: Time?
+    var editIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,12 +75,12 @@ class AddCircuitVC: UITableViewController {
         updateTime.fire()
 
         if editTime != nil {
-            print(Time.currentTime.description)
             loadEditData()
         }
         
     }
     
+    // edit 상태이면 기존 데이터 로딩
     func loadEditData() {
         let indexPath = self.tableView.indexPathsForVisibleRows
 
@@ -411,6 +412,8 @@ class AddCircuitVC: UITableViewController {
     
     // UserDefault 데이터 저장
     func saveToUserDefaults(dataObject: Time) {
+        
+
         var newTime = [Time]()
         if let loadedData = UserDefaults().data(forKey: "encodedTimeData") {
             
@@ -420,8 +423,14 @@ class AddCircuitVC: UITableViewController {
                 }
             }
         }
-        newTime.append(dataObject)
-        
+        // edit 상태이면 수정
+        if editTime == nil {
+            newTime.append(dataObject)
+        } else {
+            if let indexPath = editIndexPath {
+                newTime[indexPath.row] = dataObject
+            }
+        }
         let encodedTimeData = NSKeyedArchiver.archivedData(withRootObject: newTime)
         UserDefaults().set(encodedTimeData, forKey: "encodedTimeData")
     }
@@ -438,13 +447,13 @@ class AddCircuitVC: UITableViewController {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
             
-            print("=== RefreshTotalTime Start ===")
-            print(Time.currentTime.description)
-            print("=== RefreshTotalTime End ===")
+//            print("=== RefreshTotalTime Start ===")
+//            print(Time.currentTime.description)
+//            print("=== RefreshTotalTime End ===")
             let total = Time.currentTime.calulateTotalTime()
             
-            print(total.0)
-            print(total.1)
+//            print(total.0)
+//            print(total.1)
             lastCell?.timeStringSet(total.0, total.1)
         }
     }
@@ -458,9 +467,9 @@ class AddCircuitVC: UITableViewController {
 //        refreshTotalTime()
         
         // error handle
-        if workoutCount == 0 {
+        if Time.currentTime.workoutCount == 0 {
             alertHandle(title: "Count Value Error", message: "Invalid Workout Count", style: .alert)
-        } else if setCount == 0 {
+        } else if Time.currentTime.setCount == 0 {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
         }
 
