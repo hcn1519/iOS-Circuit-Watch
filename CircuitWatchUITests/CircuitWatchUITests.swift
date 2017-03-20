@@ -30,22 +30,33 @@ class CircuitWatchUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-//    func testScreenShots() {
-//        let app = XCUIApplication()
-//        let masterNavigationBar = app.navigationBars.element(boundBy: 0)
-//        let addButton = masterNavigationBar.buttons.element(boundBy: 2)
-//        addButton.tap()
-//        addButton.tap()
-//        
-//        let tablesQuery = app.tables
-//        tablesQuery.cells.element(boundBy: 0).tap()
-//        app.navigationBars.element(boundBy: 0).buttons.element(boundBy: 0).tap()
-//        masterNavigationBar.buttons.element(boundBy: 0).tap()
-//        let cell = tablesQuery.cells.element(boundBy: 0)
-//        cell.buttons.element(boundBy: 0).tap()
-//        cell.buttons.element(boundBy: 1).tap()
-//        masterNavigationBar.buttons.element(boundBy: 0).tap()
-//    }
+    func testSnapshot() {
+
+        let app = XCUIApplication()
+        
+        snapshot("1-Main")
+        app.tables.cells.element(boundBy: 0).tap()
+        
+        snapshot("2-Circuit")
+        let backBtn = app.navigationBars["CircuitWatch.CircuitVC"].children(matching: .button).element(boundBy: 1)
+        backBtn.tap()
+        
+        let circuitwatchMainvcNavigationBar = app.navigationBars["CircuitWatch.MainVC"]
+        
+        circuitwatchMainvcNavigationBar.buttons.element(boundBy: 1).tap()
+        
+        
+        snapshot("3-AddCircuit")
+        
+        let addBackBtn = app.navigationBars["CircuitWatch.AddCircuitVC"].children(matching: .button).element(boundBy: 1)
+        addBackBtn.tap()
+        
+        let editBtn = app.navigationBars["CircuitWatch.MainVC"].buttons.element(boundBy: 0)
+        editBtn.tap()
+        snapshot("4-MainEdit")
+        
+        editBtn.tap()
+        
+    }
     
 }

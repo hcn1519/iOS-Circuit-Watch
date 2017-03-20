@@ -1,25 +1,26 @@
 # Uncomment the lines below you want to change by removing the # in the beginning
-
 # A list of devices you want to take the screenshots from
  devices([
-   "iPhone 6",
-   "iPhone 6 Plus",
+   "iPhone 7",
+   "iPhone 7 Plus",
    "iPhone SE",
    "iPad Retina",
-   "iPad Pro (12.9 inch)",
-   "iPad Pro (9.7 inch)",
+   "iPad Pro (12.9 inch)"
  ])
 
 languages([
   "en-US",
   "ko"
 ])
+project "./CircuitWatch.xcodeproj"
+scheme "ScreenShots"
 
-# The name of the scheme which contains the UI Tests
-# scheme "SchemeName"
+output_directory './snapshots'
 
-# Where should the resulting screenshots be stored?
-# output_directory "./screenshots"
+clear_previous_screenshots true
+
+
+
 
 # clear_previous_screenshots true # remove the '#' to clear all previously generated screenshots before creating new ones
 
@@ -32,3 +33,4 @@ languages([
 
 # For more information about all available options run
 # fastlane snapshot --help
+

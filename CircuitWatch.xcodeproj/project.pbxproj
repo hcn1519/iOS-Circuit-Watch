@@ -31,7 +31,6 @@
 		7EAD9B401E5D7356005B48A3 /* CircuitWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9B3F1E5D7356005B48A3 /* CircuitWatchTests.swift */; };
 		7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4CAE51E6022A200B7A78A /* FormCell.swift */; };
 		7ECD9C341E726A0A00949316 /* CircuitWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */; };
-		7ECD9C421E726B3700949316 /* snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD9C3F1E726B3700949316 /* snapfile */; };
 		7ECD9C461E72700100949316 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C451E72700100949316 /* SnapshotHelper.swift */; };
 		7EDCBC261E79309E00C82829 /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDCBC251E79309E00C82829 /* StringExtenstion.swift */; };
 		7EDCBC511E79404900C82829 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EDCBC531E79404900C82829 /* Localizable.strings */; };
@@ -86,7 +85,6 @@
 		7ECD9C311E726A0A00949316 /* CircuitWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircuitWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitWatchUITests.swift; sourceTree = "<group>"; };
 		7ECD9C351E726A0A00949316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ECD9C3F1E726B3700949316 /* snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = snapfile; sourceTree = "<group>"; };
 		7ECD9C451E72700100949316 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		7EDCBC251E79309E00C82829 /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
 		7EDCBC3B1E79382800C82829 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 		7ECD9C321E726A0A00949316 /* CircuitWatchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7ECD9C3F1E726B3700949316 /* snapfile */,
 				7ECD9C451E72700100949316 /* SnapshotHelper.swift */,
 				7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */,
 				7ECD9C351E726A0A00949316 /* Info.plist */,
@@ -368,7 +365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ECD9C421E726B3700949316 /* snapfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

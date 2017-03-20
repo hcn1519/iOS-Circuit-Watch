@@ -165,12 +165,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func isAppAlreadyLaunchedOnce()->Bool{
         let defaults = UserDefaults.standard
         
-        if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
-            print("App already launched : \(isAppAlreadyLaunchedOnce)")
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
             return true
         }else{
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("App launched first time")
             return false
         }
     }

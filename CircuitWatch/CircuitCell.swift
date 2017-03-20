@@ -17,6 +17,11 @@ class CircuitCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        if UIDevice.current.isiPadPro12 || UIDevice.current.isiPad {
+            trainingTime.frame.size.width = 160
+        } else {
+            trainingTime.frame.size.width = 130
+        }
     }
     
 }
