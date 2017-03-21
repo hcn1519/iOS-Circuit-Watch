@@ -371,7 +371,7 @@ class AddCircuitVC: UITableViewController {
         
         if min < 10 {
             if min == 0 {
-                minute = "0min".localized
+                minute = "00min".localized
             } else {
                 minute = String(format: NSLocalizedString("0%dmin", comment: ""), min)
             }
@@ -381,7 +381,7 @@ class AddCircuitVC: UITableViewController {
     
         if sec < 10 {
             if sec == 0 {
-                second = " 0sec".localized
+                second = " 00sec".localized
             } else {
                 second = String(format: NSLocalizedString(" 0%dsec", comment: ""), sec)
             }

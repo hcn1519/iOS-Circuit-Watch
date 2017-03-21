@@ -26,7 +26,9 @@ class CircuitVC: UIViewController {
     // variable
     var btnSound: AVAudioPlayer!
     let pauseSoundURL = URL(fileURLWithPath: (Bundle.main.path(forResource: "pause", ofType: "m4r"))!)
-    let breakSoundURL = URL(fileURLWithPath: (Bundle.main.path(forResource: "breakTime", ofType: "m4r"))!)
+    let breakSoundURL = URL(fileURLWithPath: (Bundle.main.path(forResource: "breakSound", ofType: "mp3"))!)
+    let tickSoundURL = URL(fileURLWithPath: (Bundle.main.path(forResource: "tickingSound", ofType: "mp3"))!)
+    
     var progress: CGFloat!
     var currentProgress: CGFloat = 0
     var timeSection = [Int: String]()
@@ -47,9 +49,10 @@ class CircuitVC: UIViewController {
         titleLabel.text = timeData.circuitTitle.localized
         
         timeSection = makeSection(timeData)
+        timeSection = insertTick(section: timeSection)
         minuteCounter = timeData.totalTimeMin
         secondCounter = timeData.totalTimeSec
-        
+ 
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -81,15 +84,23 @@ class CircuitVC: UIViewController {
         }
         remainTime.text = timeStringSet(minuteCounter, secondCounter)
         progressDescriptionLabel.text = checkSection(timeData, currentProgress)
+        
     }
     func fetch(_ completion: () -> Void) {
         completion()
     }
     // 버튼 클릭 사운드
-    func playSound(isBtnPressed: Bool) {
+    func playSound(isBtnPressed: Bool, tickTime: Bool) {
         if isBtnPressed {
             do {
                 try btnSound = AVAudioPlayer(contentsOf: pauseSoundURL)
+                btnSound.prepareToPlay()
+            } catch let err as NSError {
+                print(err.debugDescription)
+            }
+        } else if tickTime {
+            do {
+                try btnSound = AVAudioPlayer(contentsOf: tickSoundURL)
                 btnSound.prepareToPlay()
             } catch let err as NSError {
                 print(err.debugDescription)
@@ -102,10 +113,13 @@ class CircuitVC: UIViewController {
                 print(err.debugDescription)
             }
         }
+        
+        
         if btnSound.isPlaying {
             btnSound.stop()
         }
         btnSound.play()
+        
     }
     
     // 시간 string 만들기
@@ -137,6 +151,8 @@ class CircuitVC: UIViewController {
     // 어떤 섹션(prepareTime)에 있는지 체크 후 리턴
     func checkSection(_ data: Time, _ currentTime: CGFloat) -> String {
         let sortedTimeSection = timeSection.sorted(by: { $0.0 > $1.0 })
+            
+        print(sortedTimeSection)
         
         let time = toSecond(data.totalTimeMin, data.totalTimeSec)
         let currentTime = CGFloat(time) - currentTime
@@ -150,44 +166,35 @@ class CircuitVC: UIViewController {
             }
             if currentTime > CGFloat(key) {
                 minimum = true
-                currentSection = section
             }
             if currentTime == CGFloat(key) {
-                playSound(isBtnPressed: false)
+                if section == "tick" {
+                    playSound(isBtnPressed: false, tickTime: true)
+                } else {
+                    playSound(isBtnPressed: false, tickTime: false)
+                }
             }
             if minimum && maximum {
+                if section == "tick" {
+                    continue
+                }
+                currentSection = section
                 return currentSection.localized
             }
         }
         return currentSection.localized
     }
     
-    
-/*  테스트 데이터 생성용
-    func generateTestData() {
-        let temp1 = Time(circuitTitle: "첫 번째 트레이닝", prepareTimeMin: 1, prepareTimeSec: 0, workoutTimeMin: 1, workoutTimeSec: 0, workoutCount: 6, setCount: 2, workoutBreakTimeMin: 1, workoutBreakTimeSec: 0, setBreakTimeMin: 0, setBreakTimeSec: 30, wrapUpTimeMin: 1, wrapUpTimeSec: 0, totalTimeMin: 22, totalTimeSec: 0)
-        timeData = temp1
-    }
-*/
-    
-    
     // 시간 섹션 구간 설정
     func makeSection(_ data: Time) -> [Int: String] {
         var allTime = toSecond(data.totalTimeMin, data.totalTimeSec) // 70
         
         let prepareEnd = toSecond(data.prepareTimeMin, data.prepareTimeSec)
-        
         let workoutTimeTotal = toSecond(data.workoutTimeMin, data.workoutTimeSec)
         let setBreakTotal = toSecond(data.setBreakTimeMin, data.setBreakTimeSec)
         let workoutBreakTotal = toSecond(data.workoutBreakTimeMin, data.workoutBreakTimeSec)
         let wrapupTotal = toSecond(data.wrapUpTimeMin, data.wrapUpTimeSec)
         
-//        print("=============")
-//        print(workoutTimeTotal)
-//        print(setBreakTotal)
-//        print(workoutBreakTotal)
-//        print(wrapupTotal)
-//        print("=============")
         
         // 준비시간 설정
         timeSection.updateValue(subTitle["section1"]!, forKey: allTime)
@@ -216,6 +223,32 @@ class CircuitVC: UIViewController {
         return timeSection
     }
     
+    // tick 소리 넣기
+    // issue: 5초 이하의 구간에 대해서는 오류 발생
+    func insertTick(section: [Int: String]) -> [Int: String] {
+        var section = section
+
+        var temp: Int!
+        for (key, value) in section {
+            if value == subTitle["section1"] {
+                if temp == nil {
+                    temp = key
+                } else {
+                    if temp - key > 0 {
+                        section.updateValue("tick", forKey: key+5)
+                    }
+                }
+            } else if value != subTitle["section5"] {
+                if temp != nil {
+                    if temp - key > 0 {
+                        section.updateValue("tick", forKey: key+5)
+                    }
+                }
+            }
+        }
+        return section
+    }
+    
     func toSecond(_ min: Int, _ sec: Int) -> Int {
         return (min * 60 + sec)
     }
@@ -228,7 +261,7 @@ class CircuitVC: UIViewController {
     
     // IBAction
     @IBAction func runningBtnPressed(_ sender: CircuitBtn) {
-        playSound(isBtnPressed: true)
+        playSound(isBtnPressed: true, tickTime: false)
 
         if isInProgress {
             sender.isSelected = false
@@ -242,7 +275,7 @@ class CircuitVC: UIViewController {
     }
   
     @IBAction func resetBtnPressed(_ sender: Any) {
-        playSound(isBtnPressed: true)
+        playSound(isBtnPressed: true, tickTime: false)
         
         // 시간 초기화
         timeSet.invalidate()
