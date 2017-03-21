@@ -10,7 +10,6 @@
 		7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0561541E633118002C4096 /* AddCircuitVC.swift */; };
 		7E0D763A1E716DCA009BB8E2 /* ScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */; };
 		7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB21E6BDC5700BD627D /* pause.m4r */; };
-		7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */; };
 		7E2CA9CC1E64439100CBF2DC /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA9CB1E64439100CBF2DC /* InputCell.swift */; };
 		7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */; };
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
@@ -32,6 +31,8 @@
 		7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4CAE51E6022A200B7A78A /* FormCell.swift */; };
 		7ECD9C341E726A0A00949316 /* CircuitWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */; };
 		7ECD9C461E72700100949316 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD9C451E72700100949316 /* SnapshotHelper.swift */; };
+		7EDA215F1E803B30008C5188 /* breakSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EDA215D1E803B30008C5188 /* breakSound.mp3 */; };
+		7EDA21601E803B30008C5188 /* tickingSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EDA215E1E803B30008C5188 /* tickingSound.mp3 */; };
 		7EDCBC261E79309E00C82829 /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDCBC251E79309E00C82829 /* StringExtenstion.swift */; };
 		7EDCBC511E79404900C82829 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EDCBC531E79404900C82829 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -57,7 +58,6 @@
 		7E0561541E633118002C4096 /* AddCircuitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCircuitVC.swift; sourceTree = "<group>"; };
 		7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenExtension.swift; sourceTree = "<group>"; };
 		7E1DEBB21E6BDC5700BD627D /* pause.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = pause.m4r; sourceTree = "<group>"; };
-		7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = breakTime.m4r; sourceTree = "<group>"; };
 		7E2CA9CB1E64439100CBF2DC /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
 		7E2FEF581E5ECFA900EED5D0 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 		7ECD9C331E726A0A00949316 /* CircuitWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitWatchUITests.swift; sourceTree = "<group>"; };
 		7ECD9C351E726A0A00949316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECD9C451E72700100949316 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		7EDA215D1E803B30008C5188 /* breakSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = breakSound.mp3; sourceTree = "<group>"; };
+		7EDA215E1E803B30008C5188 /* tickingSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickingSound.mp3; sourceTree = "<group>"; };
 		7EDCBC251E79309E00C82829 /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
 		7EDCBC3B1E79382800C82829 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		7EDCBC521E79404900C82829 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -207,7 +209,8 @@
 		7EB4CAE71E6059D900B7A78A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7E1DEBB41E6BF9A500BD627D /* breakTime.m4r */,
+				7EDA215D1E803B30008C5188 /* breakSound.mp3 */,
+				7EDA215E1E803B30008C5188 /* tickingSound.mp3 */,
 				7E1DEBB21E6BDC5700BD627D /* pause.m4r */,
 				7EAD9B311E5D7356005B48A3 /* Assets.xcassets */,
 				7EAD9B2A1E5D7356005B48A3 /* AppDelegate.swift */,
@@ -347,10 +350,11 @@
 			files = (
 				7E1DEBB31E6BDC5700BD627D /* pause.m4r in Resources */,
 				7EDCBC511E79404900C82829 /* Localizable.strings in Resources */,
-				7E1DEBB51E6BF9A500BD627D /* breakTime.m4r in Resources */,
+				7EDA215F1E803B30008C5188 /* breakSound.mp3 in Resources */,
 				7EAD9B351E5D7356005B48A3 /* LaunchScreen.storyboard in Resources */,
 				7EAD9B321E5D7356005B48A3 /* Assets.xcassets in Resources */,
 				7EAD9B301E5D7356005B48A3 /* Main.storyboard in Resources */,
+				7EDA21601E803B30008C5188 /* tickingSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
