@@ -15,97 +15,79 @@ class Time: NSObject, NSCoding {
     fileprivate var _circuitTitle: String!
     fileprivate var _prepareTimeMin: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
     fileprivate var _prepareTimeSec: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _workoutTimeMin: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _workoutTimeSec: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _workoutCount: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _setCount: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _workoutBreakTimeMin: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _workoutBreakTimeSec: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _setBreakTimeMin: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _setBreakTimeSec: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _wrapUpTimeMin: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
     }
 
     fileprivate var _wrapUpTimeSec: Int! {
         didSet {
-            let time = self.calulateTotalTime()
-            self._totalTimeMin = time.0
-            self._totalTimeSec = time.1
+            setTime()
         }
+    }
+    
+    func setTime() {
+        let time = self.calulateTotalTime()
+        self._totalTimeMin = time.0
+        self._totalTimeSec = time.1
     }
 
     fileprivate var _totalTimeMin: Int!
@@ -298,10 +280,6 @@ class Time: NSObject, NSCoding {
         
         let totalMinute = totalTime / 60
         let totalSecond = totalTime % 60
-
-//        print(totalTime)
-//        print(totalMinute)
-//        print(totalSecond)
         
         return (totalMinute, totalSecond)
     }

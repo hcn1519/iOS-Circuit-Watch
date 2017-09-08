@@ -10,26 +10,21 @@ import UIKit
 
 extension UIDevice {
     public var isiPhoneSE: Bool {
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && (UIScreen.main.bounds.size.height == 568 || UIScreen.main.bounds.size.width == 320) {
-            return true
-        }
-        return false
+        return compare(height: 568, width: 320)
     }
     public var isiPhonePlus: Bool {
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && (UIScreen.main.bounds.size.height == 736 || UIScreen.main.bounds.size.width == 414) {
-            return true
-        }
-        return false
+        return compare(height: 736, width: 414)
     }
     
     public var isiPad: Bool {
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad && (UIScreen.main.bounds.size.height == 1024 || UIScreen.main.bounds.size.width == 768) {
-            return true
-        }
-        return false
+        return compare(height: 1024, width: 768)
     }
     public var isiPadPro12: Bool {
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad && (UIScreen.main.bounds.size.height == 1366 || UIScreen.main.bounds.size.width == 1366) {
+        return compare(height: 1366, width: 1366)
+    }
+    
+    private func compare(height: CGFloat, width: CGFloat) -> Bool {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && (UIScreen.main.bounds.size.height == height || UIScreen.main.bounds.size.width == width) {
             return true
         }
         return false

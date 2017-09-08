@@ -16,8 +16,6 @@ class CircuitBtn: RoundBtn {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        layer.cornerRadius = self.frame.width / 2
     }
     
     override var isSelected: Bool {

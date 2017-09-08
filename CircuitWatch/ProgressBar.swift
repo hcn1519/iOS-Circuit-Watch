@@ -37,15 +37,4 @@ class ProgressBar: UIView {
     override func draw(_ rect: CGRect) {
         CircuitProgress.drawCircuitProgress(frame: bounds, progress: progress)
     }
-//    func setSize() {
-//        if UIDevice.current.isiPadPro12 {
-//            var newFrame = self.frame;
-//            
-//            newFrame.size.width = 200
-//            newFrame.size.height = 200
-//            
-//            self.frame = newFrame
-//            
-//        }
-//    }
 }
