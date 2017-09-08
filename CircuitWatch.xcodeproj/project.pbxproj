@@ -15,8 +15,6 @@
 		7E2FEF5B1E5ED1E900EED5D0 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2FEF5A1E5ED1E900EED5D0 /* CircuitCell.swift */; };
 		7E3518191E70010A001B0C92 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3518181E70010A001B0C92 /* RoundBtn.swift */; };
 		7E4F2D7E1E63F18D00E27F26 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */; };
-		7E4F2D821E64178A00E27F26 /* FormTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */; };
-		7E4F2D841E64179500E27F26 /* FormTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F2D831E64179500E27F26 /* FormTableFooter.swift */; };
 		7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */; };
 		7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */; };
 		7E5AF36A1E5DC9C300999E1D /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF3691E5DC9C300999E1D /* Time.swift */; };
@@ -64,8 +62,6 @@
 		7E3518181E70010A001B0C92 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		7E4A89261E7A6A9A009B3036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
-		7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableHeader.swift; sourceTree = "<group>"; };
-		7E4F2D831E64179500E27F26 /* FormTableFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableFooter.swift; sourceTree = "<group>"; };
 		7E5AF35F1E5DA51400999E1D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7E5AF3631E5DB63700999E1D /* CircuitBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitBtn.swift; sourceTree = "<group>"; };
 		7E5AF3691E5DC9C300999E1D /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -199,8 +195,6 @@
 				7EB4CAE51E6022A200B7A78A /* FormCell.swift */,
 				7E4F2D7D1E63F18D00E27F26 /* WordCell.swift */,
 				7E2CA9CB1E64439100CBF2DC /* InputCell.swift */,
-				7E4F2D811E64178A00E27F26 /* FormTableHeader.swift */,
-				7E4F2D831E64179500E27F26 /* FormTableFooter.swift */,
 				7E0D76391E716DCA009BB8E2 /* ScreenExtension.swift */,
 			);
 			name = View;
@@ -386,12 +380,10 @@
 				7EB4CAE61E6022A200B7A78A /* FormCell.swift in Sources */,
 				7E5AF3641E5DB63700999E1D /* CircuitBtn.swift in Sources */,
 				7E3518191E70010A001B0C92 /* RoundBtn.swift in Sources */,
-				7E4F2D841E64179500E27F26 /* FormTableFooter.swift in Sources */,
 				7E0561551E633118002C4096 /* AddCircuitVC.swift in Sources */,
 				7E7F23B31E7E872A0063F371 /* DataHelper.swift in Sources */,
 				7E5AF3601E5DA51400999E1D /* ProgressBar.swift in Sources */,
 				7EAD9B2B1E5D7356005B48A3 /* AppDelegate.swift in Sources */,
-				7E4F2D821E64178A00E27F26 /* FormTableHeader.swift in Sources */,
 				7E2FEF591E5ECFAA00EED5D0 /* MainVC.swift in Sources */,
 				7E0D763A1E716DCA009BB8E2 /* ScreenExtension.swift in Sources */,
 				7EDCBC261E79309E00C82829 /* StringExtenstion.swift in Sources */,

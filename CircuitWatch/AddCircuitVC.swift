@@ -250,17 +250,12 @@ class AddCircuitVC: UITableViewController {
                 cell.pickerView.selectRow(min!, inComponent: 0, animated: true)
                 cell.pickerView.selectRow(sec!, inComponent: 1, animated: true)
                 
-//                print("drawing \(indexPath.row)")
-//                print(pickerData)
-//                print("===")
-                
                 // 펼쳐진 셀을 접을 때 실행
                 // 다른 셀
                 if selectedIndexPath != nil && selectedIndexPath != indexPath {
 //                    print("from draw \(indexPath)")
                     let prevMin = pickerData[indexPath.row]?[0]
                     let prevSec = pickerData[indexPath.row]?[1]
-//                    print("selected from draw \(selectedIndexPath)")
                     
                     if let prev = tableView.cellForRow(at: indexPath) as? FormCell {
                         prev.detailLabel.text = makeTimeString(min: prevMin!, sec: prevSec!)
@@ -269,29 +264,6 @@ class AddCircuitVC: UITableViewController {
                     }
                 // 같은 셀
                 }
-//                else if selectedIndexPath == nil {
-//                    let currentMin = cell.pickerView.selectedRow(inComponent: 0)
-//                    let currentSec = cell.pickerView.selectedRow(inComponent: 1)
-//                    
-//                    pickerData[indexPath.row]?[0] = currentMin
-//                    pickerData[indexPath.row]?[1] = currentSec
-//                    
-//                    if let sameCell = tableView.cellForRow(at: indexPath) as? FormCell {
-//                        sameCell.detailLabel.text = makeTimeString(min: currentMin, sec: currentSec)
-//                        print(sameCell.detailLabel.text)
-//                    }
-//                    
-//                    print(pickerData)
-//                }
-                
-                
-//                print("=====")
-//                print("selected \(selectedIndexPath?.row)")
-//                print(previousIndexPath)
-//                print("=====")
-//                
-//                print("-------------------------")
-//                print("draw End")
             }
         }
         refreshTotalTime()
@@ -310,16 +282,10 @@ class AddCircuitVC: UITableViewController {
 
                 pickerData[indexPath.row]?[0] = min
                 pickerData[indexPath.row]?[1] = sec
-
-//                print("removing \(indexPath.row)")
-//                print(pickerData)
-//                print("selected \(selectedIndexPath?.row)")
                 
                 if selectedIndexPath != nil && selectedIndexPath != indexPath {
-//                    print("from did \(indexPath)")
                     let prevMin = pickerData[indexPath.row]?[0]
                     let prevSec = pickerData[indexPath.row]?[1]
-//                    print("from did \(selectedIndexPath)")
                     
                     if let prev = tableView.cellForRow(at: indexPath) as? FormCell {
                         prev.detailLabel.text = makeTimeString(min: prevMin!, sec: prevSec!)
@@ -422,14 +388,8 @@ class AddCircuitVC: UITableViewController {
     func refreshTotalTime() {
         if let lastIndexPath = tableView.lastIndexPath {
             let lastCell = tableView.cellForRow(at: lastIndexPath) as? WordCell
-            
-//            print("=== RefreshTotalTime Start ===")
-//            print(Time.currentTime.description)
-//            print("=== RefreshTotalTime End ===")
             let total = Time.currentTime.calulateTotalTime()
-            
-//            print(total.0)
-//            print(total.1)
+
             lastCell?.timeStringSet(total.0, total.1)
         }
     }
@@ -449,7 +409,6 @@ class AddCircuitVC: UITableViewController {
             alertHandle(title: "Count Value Error", message: "Invalid SetCount", style: .alert)
         }
 
-//        print(Time.currentTime.description)
         DataHelper.saveToUserDefaults(dataObject: Time.currentTime, editTime: editTime, editIndexPath: editIndexPath)
         
         updateTime.invalidate()
